@@ -1,0 +1,28 @@
+Changes in v2.16
+  * Replaced .Internal() calls with new .filled.contour() function.
+  
+Changes in v2.15
+  * Added option to control limits of density estimate in hdr.boxplot.2d()
+
+Changes in v2.14
+  * Updated references for hdrbw().
+
+Changes in v2.13
+	* Added color options to hdr.boxplot.2d().
+
+Changes in v2.12
+	* Modified hdr(), hdr.boxplot() and hdr.den() to allow a Box-Cox transformation to be used when computing the density. This allows the density estimate to be non-zero only on the positive real line.
+	
+Changes in v2.11
+  * Added hdrbw() from Matt Wand to compute better bandwidths for hdr(), hdr.den() and hdr.boxplot().
+  * Fixed a few bugs in the help files.
+
+Changes in v2.10
+  * Bug fix in hdr.boxplot.2d(). The show.points option was not working.
+
+Changes in v2.09
+  * Bug fix: the a bandwidth in cde() when fw=TRUE and use.locfit=TRUE was twice as large as it should have been.
+
+Changes in v2.08
+    * Bug fix in hdr.boxplot.2d(). It would sometimes plot outliers on a separate plot.
+    * New argument to hdr.boxplot.2d() to allow the density to be estimated using the kde() function from the ks package.

@@ -1,0 +1,15 @@
+Package: hdrcde
+Type: Package
+Title: Highest density regions and conditional density estimation
+Version: 2.16
+Date: 2010-03-02
+Author: Rob J Hyndman <Rob.Hyndman@monash.edu> with contributions from Jochen Einbeck and Matt Wand
+Maintainer: Rob J Hyndman <Rob.Hyndman@monash.edu>
+Depends: R (>= 2.15), locfit, ash, ks, KernSmooth
+LazyData: yes
+LazyLoad: yes
+Description: Computation of highest density regions in one and two dimensions,
+    kernel estimation of univariate density functions conditional on one covariate,
+    and multimodal regression.
+License: GPL (>= 2)
+URL: http://www.robjhyndman.com/software/hdrcde

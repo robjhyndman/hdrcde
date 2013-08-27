@@ -1,0 +1,61 @@
+\name{cde.bandwidths}
+\alias{cde.bandwidths}
+\title{Bandwidth calculation for conditional density estimation}
+\description{
+Calculates bandwidths for kernel conditional density estimates. Methods described in Bashtannyk and Hyndman (2001) and Hyndman and Yao (2002).
+}
+\usage{
+cde.bandwidths(x, y, deg = 0, link = "identity", method = 1,
+    y.margin, passes=2, ngrid=8, min.a=NULL, ny=25, use.sample=FALSE,
+    GCV=TRUE, b=NULL,...)
+}
+\arguments{
+  \item{x}{Numerical vector: the conditioning variable.}
+  \item{y}{Numerical vector: the response variable.}
+  \item{deg}{Degree of local polynomial used in estimation.}
+  \item{link}{Link function used in estimation. Default "identity". The other possibility is "log" which is recommended if degree > 0.}
+  \item{method}{\describe{
+    \item{method = 1:}{Hyndman-Yao algorithm if deg>0; Bashtannyk-Hyndman algorithm if deg=0;}
+    \item{method = 2:}{Normal reference rules;}
+    \item{method = 3:}{Bashtannyk-Hyndman regression method if deg=0;}
+    \item{method = 4:}{Bashtannyk-Hyndman bootstrap method if deg=0.}}}
+  \item{y.margin}{Values in y-space on which conditional density is calculated. If not specified, an equi-spaced grid of 50 values over the range of y is used.}
+  \item{passes}{Number of passes through Bashtannyk-Hyndman algorithm.}
+  \item{ngrid}{Number of values of smoothing parameter in grid.}
+  \item{min.a}{Smallest value of a to consider if method=1.}
+  \item{ny}{Number of values to use for y margin if \code{y.margin} is missing.}
+  \item{use.sample}{Used when regression method (3) is chosen.}
+  \item{GCV}{Generalized cross-validation. Used only if method=1 and deg>0. If GCV=FALSE, method=1 and deg=0, then the AIC is used instead.
+    The argument is ignored if deg=0 or method>1.}
+  \item{b}{Value of b can be specified only if method=1 and deg>0. For deg=0 or method>1, this argument is ignored.}
+  \item{\dots}{Other arguments control details for individual methods.}
+}
+\value{
+  \item{a}{Window width in \code{x} direction.}
+  \item{b}{Window width in \code{y} direction.}
+}
+
+\details{Details of the various algorithms are in Bashtannyk and Hyndman (2001) and Hyndman and Yao (2002).}
+
+\references{Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
+"Estimating and visualizing conditional densities". \emph{Journal of
+Computational and Graphical Statistics}, \bold{5}, 315-336.
+
+Bashtannyk, D.M., and Hyndman, R.J. (2001) "Bandwidth selection for kernel
+conditional density estimation". \emph{Computational statistics and data
+analysis}, \bold{36}(3), 279-298.
+
+Hyndman, R.J. and Yao, Q. (2002) "Nonparametric estimation and symmetry tests
+for conditional density functions". \emph{Journal of Nonparametric Statistics},
+\bold{14}(3), 259-278.}
+
+\author{Rob Hyndman}
+
+\seealso{\code{\link{cde}}}
+
+\examples{
+    bands <- cde.bandwidths(faithful$waiting,faithful$eruptions,method=2)
+    plot(cde(faithful$waiting,faithful$eruptions,a=bands$a,b=bands$b))
+}
+\keyword{smooth}
+\keyword{distribution}
