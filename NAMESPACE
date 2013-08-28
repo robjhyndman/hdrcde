@@ -1,8 +1,10 @@
 export(cde, cde.bandwidths, hdr, hdr.boxplot, hdr.boxplot.2d, hdr.cde, hdr.den, hdrconf,
-       plot.cde, plot.hdrconf, modalreg, hdrbw, BoxCox, InvBoxCox)
+       plot.cde, plot.hdrconf, modalreg, hdrbw, BoxCox, InvBoxCox, hdr.2d, plot.hdr2d)
 
 S3method(plot,hdrconf)
 S3method(print,cde)
 S3method(plot,cde)
+S3method(plot,hdr2d)
 
-
+useDynLib(hdrcde)
+	

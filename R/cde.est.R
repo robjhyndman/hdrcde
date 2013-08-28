@@ -63,7 +63,6 @@ cde <- function(x, y, deg=0, link="identity", a, b, mean=NULL,
     }
     if(use.locfit)
     {
-        require(locfit)
         if(fw)
             locfit.a <- c(0,2.5*a)  ## For fixed bandwidth of a in locfit
         else
@@ -140,7 +139,7 @@ cde <- function(x, y, deg=0, link="identity", a, b, mean=NULL,
         {
             yscale <- mean(newy)
             newy <- newy/yscale
-            junk <- locfit.raw(x,newy, alpha=locfit.a,deg=deg,link=link,family="qgauss",
+            junk <- locfit::locfit.raw(x,newy, alpha=locfit.a,deg=deg,link=link,family="qgauss",
                     kern="gauss",maxit=400,...)
             sum.coef <- sum(abs(junk$eva$coef))
             fits <- try(predict(junk,newdata=as.matrix(x.margin.grid)),silent=TRUE)

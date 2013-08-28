@@ -1,3 +1,8 @@
+Changes in v3.0
+  * Reduced dependency on KernSmooth and changed ::: calls to ::
+  * New functions hdr.2d() and plot.hdr2d() to return and plot bivariate HDR information. 
+  * Rewritten hdr.boxplot.2d() function.
+
 Changes in v2.16
   * Replaced .Internal() calls with new .filled.contour() function.
   

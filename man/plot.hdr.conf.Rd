@@ -17,7 +17,7 @@
 
 \references{Hyndman, R.J. (1996) Computing and graphing highest density regions
 \emph{American Statistician}, \bold{50}, 120-126.}
-\author{Rob Hyndman}
+\author{Rob J Hyndman}
 
 \seealso{\code{\link{hdrconf}}}
 

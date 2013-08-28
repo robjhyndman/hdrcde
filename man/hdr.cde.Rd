@@ -40,7 +40,7 @@ hdr.cde(den, prob = c(50, 95, 99), plot = TRUE, plot.modes = TRUE,
 Computational and Graphical Statistics}, \bold{5}, 315-336.
 }
 
-\author{Rob Hyndman}
+\author{Rob J Hyndman}
 
 \seealso{\code{\link{cde}}, \code{\link{hdr}}}
 \examples{

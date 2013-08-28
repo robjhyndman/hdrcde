@@ -28,7 +28,7 @@ conditioning variable, nothing is returned.}
 Computational and Graphical Statistics}, \bold{5}, 315-336.
 }
 
-\author{Rob Hyndman}
+\author{Rob J Hyndman}
 
 \seealso{\code{\link{hdr.cde}}, \code{\link{cde}}, \code{\link{hdr}}}
 

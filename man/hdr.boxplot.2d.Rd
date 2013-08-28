@@ -1,50 +1,67 @@
 \name{hdr.boxplot.2d}
 \alias{hdr.boxplot.2d}
+\alias{hdr.2d}
+\alias{plot.hdr2d}
 \title{Bivariate Highest Density Regions}
 \description{
 Calculates and plots highest density regions in two dimensions, including the
 bivariate HDR boxplot.}
 \usage{
-hdr.boxplot.2d(x, y, prob=c(0.01,0.50), h, show.points = FALSE, 
-    xlab="", ylab="",  kde.package=c("ash","ks"), shadecols, pointcol, xextend=0.15, yextend=0.15, ...)
+hdr.2d(x, y, prob = c(50, 95, 99), den=NULL, kde.package=c("ash","ks"), h=NULL, 
+  xextend=0.15, yextend=0.15)
+
+\S3method{plot}{hdr2d}(x, shaded=TRUE, show.points=FALSE, outside.points=FALSE, pch=20, 
+  shadecols=gray((length(x$alpha):1)/(length(x$alpha)+1)),  pointcol=1, ...)
+
+hdr.boxplot.2d(x, y, prob=c(50, 99), kde.package=c("ash","ks"), h=NULL,
+  xextend=0.15, yextend=0.15, xlab="", ylab="", 
+  shadecols=gray((length(prob):1)/(length(prob)+1)), pointcol=1, ...)
 }
 
 \arguments{
   \item{x}{Numeric vector}
   \item{y}{Numeric vector of same length as \code{x}.}
   \item{prob}{Probability coverage required for HDRs}
-  \item{h}{Pair of bandwidths passed to either \code{\link[ash]{ash2}} or \code{\link[ks]{kde}}. If missing,
-    a reasonable default is used.}
-  \item{show.points}{If TRUE, will plot points over the top of contours.}
-  \item{xlab}{Label for x-axis.}
-  \item{ylab}{Label for y-axis.}
-  \item{kde.package}{Package to be used in calculating the kernel density estimate.}
-  \item{shadecols}{Colors for shaded regions}
-  \item{pointcol}{Color for outliers and mode}
+  \item{den}{Bivariate density estimate (a list with elements x, y and z where x and y are grid values and z is a matrix of density values). If \code{NULL}, the density is estimated.}
+  \item{kde.package}{Package to be used in calculating the kernel density estimate when \code{den=NULL}.}
+  \item{h}{Pair of bandwidths passed to either \code{\link[ash]{ash2}} or \code{\link[ks]{kde}}. If NULL,
+    a reasonable default is used. Ignored if \code{den} is not \code{NULL}.}
   \item{xextend}{Proportion of range of \code{x}. The density is estimated on a grid extended by \code{xextend} beyond the range of \code{x}.}
   \item{yextend}{Proportion of range of \code{y}. The density is estimated on a grid extended by \code{yextend} beyond the range of \code{y}.}
+  \item{xlab}{Label for x-axis.}
+  \item{ylab}{Label for y-axis.}
+  \item{shadecols}{Colors for shaded regions}
+  \item{pointcol}{Color for outliers and mode}
+  \item{shaded}{If \code{TRUE}, the HDR contours are shown as shaded regions.}
+  \item{show.points}{If \code{TRUE}, the observations are plotted over the top of the HDR contours.}
+  \item{outside.points}{If \code{TRUE}, the observations lying outside the largest HDR are shown.}
+  \item{pch}{The plotting character used for observations.}
   \item{\dots}{Other arguments to be passed to plot.}
 }
 
 \details{The density is estimated using kernel density estimation. Either \code{\link[ash]{ash2}} or \code{\link[ks]{kde}} is used to 
-do the calculations. Then Hyndman's (1996) density quantile algorithm is used to compute the HDRs.}
+do the calculations. Then Hyndman's (1996) density quantile algorithm is used to compute the HDRs. 
+
+\code{hdr.2d} returns an object of class \code{hdr2d} containing all the information needed to compute the HDR contours. This object can be plotted using \code{plot.hdr2d}.
+
+\code{hdr.boxplot.2d} produces a bivariate HDR boxplot. This is a special case of applying \code{plot.hdr2d} to an object computed using \code{hdr.2d}.}
 
 \references{Hyndman, R.J. (1996) Computing and graphing highest density regions
 \emph{American Statistician}, \bold{50}, 120-126.}
 
-\author{Rob Hyndman}
+\author{Rob J Hyndman}
 
 \value{Some information about the HDRs is returned. See code for details.}
-
 
 \seealso{\code{\link{hdr.boxplot}}}
 
 \examples{
 x <- c(rnorm(200,0,1),rnorm(200,4,1))
 y <- c(rnorm(200,0,1),rnorm(200,4,1))
-par(mfrow=c(1,2))
-plot(x,y)
 hdr.boxplot.2d(x,y)
+
+hdrinfo <- hdr.2d(x,y)
+plot(hdrinfo, pointcol="red", show.points=TRUE, pch=3)
 }
 
 \keyword{smooth}

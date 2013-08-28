@@ -26,7 +26,7 @@ hdrbw <- function(x,HDRlevel,gridsize=801,nMChdr=1000000,
    n <- length(x)
    Ivec <- sample(1:n,nMChdr,replace=TRUE)
    xHat <- x[Ivec] + hHat0*rnorm(nMChdr)
-   fhat <- bkde(x,bandwidth=hHat0,gridsize=gridsize,
+   fhat <- KernSmooth::bkde(x,bandwidth=hHat0,gridsize=gridsize,
                 range.x=c(min(xHat),max(xHat)))
    fhatx <- approx(fhat$x,fhat$y,xHat,rule=2)$y
    fTauHat <- quantile(fhatx,HDRlevel)
@@ -221,15 +221,13 @@ drvKDE <- function(x,x0,bandwidth,drv)
 densDPI <- function(x,drv=0,gridsize=401,range.x=range(x),
                     truncate=TRUE)
 {
-   require(KernSmooth)
-
    # Set preliminary values:
     
    n <- length(x)
    a <- range.x[1]
    b <- range.x[2]
    gpoints <- seq(a,b,length = gridsize)
-   gcounts <- KernSmooth:::linbin(x,gpoints,truncate)
+   gcounts <- linbin(x,gpoints,truncate)
    scalest <- min(sd(x),(quantile(x,3/4)-quantile(x,1/4))/1.349)
 
    # Obtain estimated bandwidth via two-stage plug-in strategy
@@ -238,10 +236,10 @@ densDPI <- function(x,drv=0,gridsize=401,range.x=range(x),
    if (drv==(-1))
    {
       alpha <- (2*(sqrt(2)*scalest)^7/(9*n))^(1/7)
-      psi4hat <- KernSmooth:::bkfe(gcounts,4,alpha,
+      psi4hat <- KernSmooth::bkfe(gcounts,4,alpha,
                                    range.x=c(a,b),binned=TRUE)
       alpha <- (sqrt(2/pi)/(psi4hat*n))^(1/5)
-      psi2hat <- KernSmooth:::bkfe(gcounts,2,alpha,
+      psi2hat <- KernSmooth::bkfe(gcounts,2,alpha,
                                    range.x=c(a,b),binned=TRUE)
       hHat <- (-1/(sqrt(pi)*psi2hat*n))^(1/3)
    }
@@ -249,10 +247,10 @@ densDPI <- function(x,drv=0,gridsize=401,range.x=range(x),
    if (drv==0)
    {
       alpha <- (2*(sqrt(2)*scalest)^9/(7*n))^(1/9)
-      psi6hat <- KernSmooth:::bkfe(gcounts,6,alpha,
+      psi6hat <- KernSmooth::bkfe(gcounts,6,alpha,
                                    range.x=c(a,b),binned=TRUE)
       alpha <- (-3*sqrt(2/pi)/(psi6hat*n))^(1/7)
-      psi4hat <- KernSmooth:::bkfe(gcounts,4,alpha,
+      psi4hat <- KernSmooth::bkfe(gcounts,4,alpha,
                                    range.x=c(a,b),binned=TRUE)
       hHat <- (1/(2*sqrt(pi)*psi4hat*n))^(1/5)
    }
@@ -260,10 +258,10 @@ densDPI <- function(x,drv=0,gridsize=401,range.x=range(x),
    if (drv==1)
    {
       alpha <- (2*(sqrt(2)*scalest)^11/(9*n))^(1/11)
-      psi8hat <- KernSmooth:::bkfe(gcounts,8,alpha,
+      psi8hat <- KernSmooth::bkfe(gcounts,8,alpha,
                                    range.x=c(a,b),binned=TRUE)
       alpha <- (15*sqrt(2/pi)/(psi8hat*n))^(1/9)
-      psi6hat <- KernSmooth:::bkfe(gcounts,6,alpha,
+      psi6hat <- KernSmooth::bkfe(gcounts,6,alpha,
                                    range.x=c(a,b),binned=TRUE)
       hHat <- (-3/(4*sqrt(pi)*psi6hat*n))^(1/7)
    }
@@ -271,10 +269,10 @@ densDPI <- function(x,drv=0,gridsize=401,range.x=range(x),
    if (drv==2)
    {
       alpha <- (2*(sqrt(2)*scalest)^13/(11*n))^(1/13)
-      psi10hat <- KernSmooth:::bkfe(gcounts,10,alpha,
+      psi10hat <- KernSmooth::bkfe(gcounts,10,alpha,
                                     range.x=c(a,b),binned=TRUE)
       alpha <- (-105*sqrt(2/pi)/(psi10hat*n))^(1/11)
-      psi8hat <- KernSmooth:::bkfe(gcounts,8,alpha,
+      psi8hat <- KernSmooth::bkfe(gcounts,8,alpha,
                                    range.x=c(a,b),binned=TRUE)
       hHat <- (15/(8*sqrt(pi)*psi8hat*n))^(1/9)
    }

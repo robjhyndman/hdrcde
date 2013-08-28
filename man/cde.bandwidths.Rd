@@ -49,7 +49,7 @@ Hyndman, R.J. and Yao, Q. (2002) "Nonparametric estimation and symmetry tests
 for conditional density functions". \emph{Journal of Nonparametric Statistics},
 \bold{14}(3), 259-278.}
 
-\author{Rob Hyndman}
+\author{Rob J Hyndman}
 
 \seealso{\code{\link{cde}}}
 

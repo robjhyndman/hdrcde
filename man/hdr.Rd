@@ -58,7 +58,7 @@ Wand, M.P., Marron, J S., Ruppert, D. (1991) Transformations in density estimati
 \emph{Journal of the American Statistical Association}, \bold{86}, 343-353.
 }
 
-\author{Rob Hyndman}
+\author{Rob J Hyndman}
 
 \seealso{\code{\link{hdr.boxplot.2d}}}
 \examples{

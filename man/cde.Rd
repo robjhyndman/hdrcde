@@ -8,7 +8,8 @@ polynomial estimation.}
 \usage{
 cde(x, y, deg = 0, link = "identity", a, b, mean,
   x.margin, y.margin, x.name, y.name,
-  use.locfit = FALSE, fw = TRUE, rescale = TRUE, nxmargin=15, nymargin=100, a.nndefault=0.3, ...)
+  use.locfit = FALSE, fw = TRUE, rescale = TRUE, nxmargin=15, nymargin=100, 
+  a.nndefault=0.3, ...)
 }
 \arguments{
   \item{x}{Numerical vector or matrix: the conditioning variable(s).}
@@ -62,7 +63,7 @@ for conditional density functions". \emph{Journal of Nonparametric Statistics},
 \bold{14}(3), 259-278.}
 
 
-\author{Rob Hyndman}
+\author{Rob J Hyndman}
 
 \seealso{\code{\link{cde.bandwidths}}}
 \examples{
