@@ -1,3 +1,6 @@
+Changes in v3.1
+  * Added dependency on mvtnorm to avoid problems with ks.
+  
 Changes in v3.0
   * Reduced dependency on KernSmooth and changed ::: calls to ::
   * New functions hdr.2d() and plot.hdr2d() to return and plot bivariate HDR information. 

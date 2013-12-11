@@ -7,4 +7,3 @@ S3method(plot,cde)
 S3method(plot,hdr2d)
 
 useDynLib(hdrcde)
-	

@@ -1,11 +1,11 @@
 Package: hdrcde
 Type: Package
 Title: Highest density regions and conditional density estimation
-Version: 3.0
-Date: 2013-08-27
+Version: 3.1
+Date: 2013-10-19
 Author: Rob J Hyndman <Rob.Hyndman@monash.edu> with contributions from Jochen Einbeck and Matt Wand
 Maintainer: Rob J Hyndman <Rob.Hyndman@monash.edu>
-Depends: R (>= 2.15)
+Depends: R (>= 2.15), mvtnorm
 Imports: locfit, ash, ks, KernSmooth
 LazyData: yes
 LazyLoad: yes
