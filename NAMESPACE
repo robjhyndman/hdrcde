@@ -1,3 +1,4 @@
+import(mvtnorm)
 export(cde, cde.bandwidths, hdr, hdr.boxplot, hdr.boxplot.2d, hdr.cde, hdr.den, hdrconf,
        plot.cde, plot.hdrconf, modalreg, hdrbw, BoxCox, InvBoxCox, hdr.2d, plot.hdr2d)
 

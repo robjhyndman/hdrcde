@@ -10,7 +10,7 @@ Calculates and plots highest density regions in one dimension including the HDR 
 hdr(x, prob = c(50, 95, 99), den, h=hdrbw(BoxCox(x,lambda),mean(prob)), lambda=1, 
     nn=5000, all.modes=FALSE)
 hdr.den(x, prob = c(50, 95, 99), den, h=hdrbw(BoxCox(x,lambda),mean(prob)), lambda=1, 
-    xlab=NULL, ylab="Density", ...)
+    xlab=NULL, ylab="Density", ylim=NULL, plot.lines=TRUE, col=2:8, ...)
 hdr.boxplot(x, prob = c(99, 50), h=hdrbw(BoxCox(x,lambda),mean(prob)), lambda=1, 
     boxlabels = "", col = gray((9:1)/10), main="", xlab="", ylab="", pch=1, ...)
 }
@@ -27,10 +27,12 @@ hdr.boxplot(x, prob = c(99, 50), h=hdrbw(BoxCox(x,lambda),mean(prob)), lambda=1,
   \item{nn}{Number of random numbers used in computing f-alpha quantiles.}
   \item{all.modes}{Return all local modes or just the global mode?}
   \item{boxlabels}{Label for each box plotted.}
+  \item{plot.lines}{If \code{TRUE}, will show how the HDRs are determined using lines.}
   \item{col}{Colours for regions of each box.}
   \item{main}{Overall title for the plot.}
   \item{xlab}{Label for x-axis.}
   \item{ylab}{Label for y-axis.}
+  \item{ylim}{Limits for y-axis.}
   \item{pch}{Plotting character.}
   \item{\dots}{Other arguments passed to plot.}
 }
