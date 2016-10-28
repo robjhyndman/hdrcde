@@ -1,0 +1,35 @@
+\name{hdrscatterplot}
+\alias{hdrscatterplot}
+\title{Scatterplot showing bivariate highest density regions}
+\description{
+Produces a scatterplot where the points are coloured according to the bivariate
+HDRs in which they fall.}
+\usage{
+hdrscatterplot(x, y, levels=c(1,50,99),
+  kde.package=c("ash","ks"), noutliers=NULL)
+}
+
+\arguments{
+  \item{x}{Numeric vector or matrix with 2 columns.}
+  \item{y}{Numeric vector of same length as \code{x}.}
+  \item{levels}{Percentage coverage for HDRs}
+  \item{kde.package}{Package to be used in calculating the kernel density estimate when \code{den=NULL}.}
+  \item{noutliers}{Number of outliers to be labelled. By default, all points outside the largest HDR are labelled.}
+}
+
+\details{The bivariate density is estimated using kernel density estimation. Either \code{\link[ash]{ash2}} or \code{\link[ks]{kde}} is used to 
+do the calculations. Then Hyndman's (1996) density quantile algorithm is used to compute the HDRs. The scatterplot of (x,y) is created where the points are coloured according to which HDR they fall. A ggplot object is returned.}
+
+\author{Rob J Hyndman}
+
+\seealso{\code{\link{hdr.boxplot.2d}}}
+
+\examples{
+x <- c(rnorm(200,0,1),rnorm(200,4,1))
+y <- c(rnorm(200,0,1),rnorm(200,4,1))
+hdrscatterplot(x,y)
+}
+
+\keyword{smooth}
+\keyword{distribution}
+\keyword{hplot}

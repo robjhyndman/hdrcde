@@ -1,5 +1,16 @@
+ importFrom("grDevices", "cm.colors", "gray", "n2mfrow")
+  importFrom("graphics", ".filled.contour", "Axis", "abline", "axis",
+             "box", "contour", "lines", "matpoints", "mtext", "par",
+             "persp", "plot", "plot.default", "plot.new", "plot.window",
+             "points", "polygon", "text", "title")
+  importFrom("stats", "approx", "density", "deviance", "dnorm", "fitted",
+             "ksmooth", "lm", "nlm", "pnorm", "predict", "qnorm",
+             "quantile", "residuals", "rnorm", "runif", "sd", "var")
+  importFrom("utils", "head")
+
 import(mvtnorm)
-export(cde, cde.bandwidths, hdr, hdr.boxplot, hdr.boxplot.2d, hdr.cde, hdr.den, hdrconf,
+
+export(cde, cde.bandwidths, hdr, hdr.boxplot, hdr.boxplot.2d, hdr.cde, hdr.den, hdrconf, hdrscatterplot,
        plot.cde, plot.hdrconf, modalreg, hdrbw, BoxCox, InvBoxCox, hdr.2d, plot.hdr2d)
 
 S3method(plot,hdrconf)
