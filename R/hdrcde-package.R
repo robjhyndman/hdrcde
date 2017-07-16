@@ -25,11 +25,13 @@ NULL
 #' approach to multi-valued regression based on conditional mean shift.
 #'
 #' @aliases lane2 lane3
+#' @usage lane2; lane3
 #' @format Two data frames (\code{lane2} and \code{lane3}) each with 1318
-#' observations on the following two variables: \describe{
-#' \item{list("flow")}{a numeric vector giving the traffic flow in vehicles per
-#' lane per hour.} \item{list("speed")}{a numeric vector giving the speed in
-#' miles per hour.} }
+#' observations on the following two variables:
+#'  \describe{
+#'    \item{flow}{a numeric vector giving the traffic flow in vehicles per lane per hour.}
+#'    \item{speed}{a numeric vector giving the speed in miles per hour.}
+#' }
 #' @references Einbeck, J., and Tutz, G. (2006). ``Modelling beyond regression
 #' functions: an application of multimodal regression to speed-flow data''.
 #' \emph{Journal of the Royal Statistical Society, Series C (Applied
@@ -45,12 +47,9 @@ NULL
 #' @keywords datasets
 #' @examples
 #'
-#'  plot(lane2$flow, lane2$speed)
-#' @name lane2
-NULL
-
-
-
+#' plot(lane2)
+#' plot(lane3)
+"lane2"
 
 
 #' Daily maximum temperatures in Melbourne, Australia
@@ -67,7 +66,6 @@ NULL
 #' @examples
 #' plot(maxtemp)
 #'
-#' @name maxtemp
 "maxtemp"
 
 

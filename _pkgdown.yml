@@ -1,0 +1,33 @@
+template:
+  params:
+    bootswatch: flatly
+
+authors:
+  Rob Hyndman:
+    href: http://robjhyndman.com
+
+navbar:
+  type: default
+  left:
+    - text: "Reference"
+      href: reference/index.html
+    - text: "Change Log"
+      href: news/index.html
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/robjhyndman/hdrcde
+
+reference:
+  - title: "Functions"
+    desc: "Functions for estimating and plotting highest density regions and conditional density estimates"
+    contents:
+      - BoxCox
+      - starts_with("cde")
+      - starts_with("hdr")
+      - starts_with("plot")
+      - modalreg
+  - title: "Data"
+    desc: "Data sets in the package"
+    contents:
+      - maxtemp
+      - lane2

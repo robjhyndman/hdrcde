@@ -1,7 +1,8 @@
 ## Version 3.2
   * Updated hdr.den() to demonstrate the calculation of hdr more clearly (thanks to Dennis Freuer for the suggestion)
-  * Added hdrscatterplot function
+  * Added hdrscatterplot() function
   * Roxygenized the package
+  * Added pkgdown site
 
 ## Version 3.1
   * Added dependency on mvtnorm to avoid problems with ks.

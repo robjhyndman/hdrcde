@@ -1,20 +1,23 @@
 #' Bandwidth calculation for conditional density estimation
-#' 
+#'
 #' Calculates bandwidths for kernel conditional density estimates. Methods
 #' described in Bashtannyk and Hyndman (2001) and Hyndman and Yao (2002).
-#' 
+#'
 #' Details of the various algorithms are in Bashtannyk and Hyndman (2001) and
 #' Hyndman and Yao (2002).
-#' 
+#'
 #' @param x Numerical vector: the conditioning variable.
 #' @param y Numerical vector: the response variable.
 #' @param deg Degree of local polynomial used in estimation.
 #' @param link Link function used in estimation. Default "identity". The other
 #' possibility is "log" which is recommended if degree > 0.
-#' @param method \describe{ \item{method = 1:}{Hyndman-Yao algorithm if deg>0;
-#' Bashtannyk-Hyndman algorithm if deg=0;} \item{method = 2:}{Normal reference
-#' rules;} \item{method = 3:}{Bashtannyk-Hyndman regression method if deg=0;}
-#' \item{method = 4:}{Bashtannyk-Hyndman bootstrap method if deg=0.}}
+#' @param method
+#'   \describe{
+#'     \item{method = 1:}{Hyndman-Yao algorithm if deg>0; Bashtannyk-Hyndman algorithm if deg=0;}
+#'     \item{method = 2:}{Normal reference rules;}
+#'     \item{method = 3:}{Bashtannyk-Hyndman regression method if deg=0;}
+#'     \item{method = 4:}{Bashtannyk-Hyndman bootstrap method if deg=0.}
+#' }
 #' @param y.margin Values in y-space on which conditional density is
 #' calculated. If not specified, an equi-spaced grid of 50 values over the
 #' range of y is used.
@@ -37,20 +40,20 @@
 #' @references Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
 #' "Estimating and visualizing conditional densities". \emph{Journal of
 #' Computational and Graphical Statistics}, \bold{5}, 315-336.
-#' 
+#'
 #' Bashtannyk, D.M., and Hyndman, R.J. (2001) "Bandwidth selection for kernel
 #' conditional density estimation". \emph{Computational statistics and data
 #' analysis}, \bold{36}(3), 279-298.
-#' 
+#'
 #' Hyndman, R.J. and Yao, Q. (2002) "Nonparametric estimation and symmetry
 #' tests for conditional density functions". \emph{Journal of Nonparametric
 #' Statistics}, \bold{14}(3), 259-278.
 #' @keywords smooth distribution
 #' @examples
-#' 
+#'
 #'     bands <- cde.bandwidths(faithful$waiting,faithful$eruptions,method=2)
 #'     plot(cde(faithful$waiting,faithful$eruptions,a=bands$a,b=bands$b))
-#' 
+#'
 #' @export cde.bandwidths
 cde.bandwidths <- function(x,y,deg=0,link="identity",method=1,y.margin,passes=2,
                    ngrid=8,min.a=NULL,ny=25,use.sample=FALSE,GCV=TRUE,b=NULL,...)

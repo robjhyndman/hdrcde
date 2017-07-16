@@ -18,10 +18,12 @@ cde.bandwidths(x, y, deg = 0, link = "identity", method = 1, y.margin,
 \item{link}{Link function used in estimation. Default "identity". The other
 possibility is "log" which is recommended if degree > 0.}
 
-\item{method}{\describe{ \item{method = 1:}{Hyndman-Yao algorithm if deg>0;
-Bashtannyk-Hyndman algorithm if deg=0;} \item{method = 2:}{Normal reference
-rules;} \item{method = 3:}{Bashtannyk-Hyndman regression method if deg=0;}
-\item{method = 4:}{Bashtannyk-Hyndman bootstrap method if deg=0.}}}
+\item{method}{\describe{
+    \item{method = 1:}{Hyndman-Yao algorithm if deg>0; Bashtannyk-Hyndman algorithm if deg=0;}
+    \item{method = 2:}{Normal reference rules;}
+    \item{method = 3:}{Bashtannyk-Hyndman regression method if deg=0;}
+    \item{method = 4:}{Bashtannyk-Hyndman bootstrap method if deg=0.}
+}}
 
 \item{y.margin}{Values in y-space on which conditional density is
 calculated. If not specified, an equi-spaced grid of 50 values over the
