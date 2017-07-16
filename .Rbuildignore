@@ -1,4 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-Makefile
 ^_pkgdown\.yml$
+docs
+Makefile
