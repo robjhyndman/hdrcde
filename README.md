@@ -8,7 +8,7 @@ The R package *hdrcde* provides tools for computing highest density regions in o
 
 Author: Rob J Hyndman with contributions from Jochen Einbeck and Matt Wand
 
-This package implements the methods described in
+This package implements the methods described in the following papers.
 
  * [Rob J Hyndman (1996) "Computing and graphing highest density regions". *American Statistician*, **50**, 120-126.](https://robjhyndman.com/publications/computing-and-graphing-highest-density-regions/)
  * [Rob J Hyndman and David Bashtannyk (1996) "Estimating and visualizing conditional densities". *Journal of Computational and Graphical Statistics*, **5**, 315-336.](https://robjhyndman.com/publications/estimating-and-visualizing-conditional-densities/)
