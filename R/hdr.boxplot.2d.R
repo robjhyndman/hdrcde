@@ -3,8 +3,12 @@
 
 
 # Main function. Called by hdr.boxplot.2d
-
-hdr.2d <- function(x, y, prob = c(50, 95, 99), den=NULL, kde.package=c("ash","ks"), h=NULL, 
+#' @rdname hdr.boxplot.2d
+#' @param den Bivariate density estimate (a list with elements x, y and z where
+#' x and y are grid values and z is a matrix of density values). If
+#' \code{NULL}, the density is estimated.
+#' @export
+hdr.2d <- function(x, y, prob = c(50, 95, 99), den=NULL, kde.package=c("ash","ks"), h=NULL,
     xextend=0.15, yextend=0.15)
 {
    # Convert prob to coverage percentage if necessary
@@ -27,8 +31,62 @@ hdr.2d <- function(x, y, prob = c(50, 95, 99), den=NULL, kde.package=c("ash","ks
   return(structure(list(mode=mode,falpha=falpha,fxy=fxy, den=den, alpha=alpha, x=x, y=y), class="hdr2d"))
 }
 
+
+
+#' Bivariate Highest Density Regions
+#'
+#' Calculates and plots highest density regions in two dimensions, including
+#' the bivariate HDR boxplot.
+#'
+#' The density is estimated using kernel density estimation. Either
+#' \code{\link[ash]{ash2}} or \code{\link[ks]{kde}} is used to do the
+#' calculations. Then Hyndman's (1996) density quantile algorithm is used to
+#' compute the HDRs.
+#'
+#' \code{hdr.2d} returns an object of class \code{hdr2d} containing all the
+#' information needed to compute the HDR contours. This object can be plotted
+#' using \code{plot.hdr2d}.
+#'
+#' \code{hdr.boxplot.2d} produces a bivariate HDR boxplot. This is a special
+#' case of applying \code{plot.hdr2d} to an object computed using
+#' \code{hdr.2d}.
+#'
+#' @aliases hdr.boxplot.2d hdr.2d plot.hdr2d
+#' @param x Numeric vector
+#' @param y Numeric vector of same length as \code{x}.
+#' @param prob Probability coverage required for HDRs
+#' @param kde.package Package to be used in calculating the kernel density
+#' estimate when \code{den=NULL}.
+#' @param h Pair of bandwidths passed to either \code{\link[ash]{ash2}} or
+#' \code{\link[ks]{kde}}. If NULL, a reasonable default is used. Ignored if
+#' \code{den} is not \code{NULL}.
+#' @param xextend Proportion of range of \code{x}. The density is estimated on
+#' a grid extended by \code{xextend} beyond the range of \code{x}.
+#' @param yextend Proportion of range of \code{y}. The density is estimated on
+#' a grid extended by \code{yextend} beyond the range of \code{y}.
+#' @param xlab Label for x-axis.
+#' @param ylab Label for y-axis.
+#' @param shadecols Colors for shaded regions
+#' @param pointcol Color for outliers and mode
+#' @param \dots Other arguments to be passed to plot.
+#' @return Some information about the HDRs is returned. See code for details.
+#' @author Rob J Hyndman
+#' @seealso \code{\link{hdr.boxplot}}
+#' @references Hyndman, R.J. (1996) Computing and graphing highest density
+#' regions \emph{American Statistician}, \bold{50}, 120-126.
+#' @keywords smooth distribution hplot
+#' @examples
+#'
+#' x <- c(rnorm(200,0,1),rnorm(200,4,1))
+#' y <- c(rnorm(200,0,1),rnorm(200,4,1))
+#' hdr.boxplot.2d(x,y)
+#'
+#' hdrinfo <- hdr.2d(x,y)
+#' plot(hdrinfo, pointcol="red", show.points=TRUE, pch=3)
+#'
+#' @export hdr.boxplot.2d
 hdr.boxplot.2d <- function(x, y, prob=c(50, 99), kde.package=c("ash","ks"), h=NULL,
-  xextend=0.15, yextend=0.15, xlab="", ylab="", 
+  xextend=0.15, yextend=0.15, xlab="", ylab="",
   shadecols=gray((length(prob):1)/(length(prob)+1)), pointcol=1, ...)
 {
   # Estimate bivariate density
@@ -37,7 +95,15 @@ hdr.boxplot.2d <- function(x, y, prob=c(50, 99), kde.package=c("ash","ks"), h=NU
   plot(hdr, xlab=xlab, ylab=ylab, shadecols=shadecols, pointcol=pointcol, outside.points=TRUE,...)
 }
 
-plot.hdr2d <- function(x, shaded=TRUE, show.points=FALSE, outside.points=FALSE, pch=20,  shadecols=gray((length(x$alpha):1)/(length(x$alpha)+1)), 
+#' @param shaded If \code{TRUE}, the HDR contours are shown as shaded regions.
+#' @param show.points If \code{TRUE}, the observations are plotted over the top
+#' of the HDR contours.
+#' @param outside.points If \code{TRUE}, the observations lying outside the
+#' largest HDR are shown.
+#' @param pch The plotting character used for observations.
+#' @rdname hdr.boxplot.2d
+#' @export
+plot.hdr2d <- function(x, shaded=TRUE, show.points=FALSE, outside.points=FALSE, pch=20,  shadecols=gray((length(x$alpha):1)/(length(x$alpha)+1)),
     pointcol=1, ...)
 {
   if(shaded)
@@ -55,14 +121,14 @@ plot.hdr2d <- function(x, shaded=TRUE, show.points=FALSE, outside.points=FALSE, 
   invisible(x)
 }
 
-hdrcde.filled.contour <- function (x,y,z, xlim = range(x, finite = TRUE), 
-    ylim = range(y, finite = TRUE), zlim = range(z, finite = TRUE), 
-    levels = pretty(zlim, nlevels), nlevels = 20, color.palette = cm.colors, 
-    col = color.palette(length(levels) - 1), plot.title, plot.axes, 
-    asp = NA, xaxs = "i", yaxs = "i", las = 1, 
-    axes = TRUE, frame.plot = axes, ...) 
+hdrcde.filled.contour <- function (x,y,z, xlim = range(x, finite = TRUE),
+    ylim = range(y, finite = TRUE), zlim = range(z, finite = TRUE),
+    levels = pretty(zlim, nlevels), nlevels = 20, color.palette = cm.colors,
+    col = color.palette(length(levels) - 1), plot.title, plot.axes,
+    asp = NA, xaxs = "i", yaxs = "i", las = 1,
+    axes = TRUE, frame.plot = axes, ...)
 {
-  if (any(diff(x) <= 0) || any(diff(y) <= 0)) 
+  if (any(diff(x) <= 0) || any(diff(y) <= 0))
     stop("increasing 'x' and 'y' values expected")
   plot.new()
   plot.window(xlim, ylim, "", xaxs = xaxs, yaxs = yaxs, asp = asp)
@@ -75,9 +141,9 @@ hdrcde.filled.contour <- function (x,y,z, xlim = range(x, finite = TRUE),
     }
   }
   else plot.axes
-  if (frame.plot) 
+  if (frame.plot)
       box()
-  if (missing(plot.title)) 
+  if (missing(plot.title))
       title(...)
   else plot.title
   invisible()
@@ -89,7 +155,7 @@ hdrcde.filled.contour <- function (x,y,z, xlim = range(x, finite = TRUE),
   # Bilinear interpolation of function (x,y,z) onto (x0,y0).
   # Taken from Numerical Recipies (second edition) section 3.6.
   # Called by hdr.2d
-  # Vectorized version of old.interp.2d. 
+  # Vectorized version of old.interp.2d.
   # Contributed by Mrigesh Kshatriya (mkshatriya@zoology.up.ac.za)
 
   nx <- length(x)
@@ -107,7 +173,7 @@ hdrcde.filled.contour <- function (x,y,z, xlim = range(x, finite = TRUE),
   j[j == nx] <- nx - 1
   k[k == ny] <- ny - 1
   v <- (x0 - x[j])/(x[j + 1] - x[j])
-  u <- (y0 - y[k])/(y[k + 1] - y[k]) 
+  u <- (y0 - y[k])/(y[k + 1] - y[k])
   AA <- z[cbind(j, k)]
   BB <- z[cbind(j + 1, k)]
   CC <- z[cbind(j + 1, k + 1)]

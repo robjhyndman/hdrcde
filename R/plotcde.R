@@ -1,3 +1,43 @@
+#' Plots conditional densities
+#'
+#' Produces stacked density plots or highest density region plots for a
+#' univariate density conditional on one covariate.
+#'
+#'
+#' @param x Output from \code{\link{cde}}.
+#' @param firstvar If there is more than one conditioning variable,
+#' \code{firstvar} specifies which variable to fix first.
+#' @param mfrow If there is more than one conditioning variable, \code{mfrow}
+#' is passed to \code{\link[graphics]{par}} before plotting.
+#' @param plot.fn Specifies which plotting function to use: "stacked" results
+#' in stacked conditional densities and "hdr" results in highest density
+#' regions.
+#' @param x.name Name of x (conditioning) variable for use on x-axis.
+#' @param margin Marginal density of conditioning variable. If present, only
+#' conditional densities corresponding to non-negligible marginal densities
+#' will be plotted.
+#' @param \dots Additional arguments to plot.
+#' @return If \code{plot.fn=="stacked"} and there is only one conditioning
+#' variable, the function returns the output from
+#' \code{\link[graphics]{persp}}.  If \code{plot.fn=="hdr"} and there is only
+#' one conditioning variable, the function returns the output from
+#' \code{\link{hdr.cde}}. When there is more than one conditioning variable,
+#' nothing is returned.
+#' @author Rob J Hyndman
+#' @seealso \code{\link{hdr.cde}}, \code{\link{cde}}, \code{\link{hdr}}
+#' @references Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
+#' "Estimating and visualizing conditional densities". \emph{Journal of
+#' Computational and Graphical Statistics}, \bold{5}, 315-336.
+#' @keywords smooth distribution hplot
+#' @examples
+#'
+#' faithful.cde <- cde(faithful$waiting,faithful$eruptions,
+#' 	x.name="Waiting time", y.name="Duration time")
+#' plot(faithful.cde)
+#' plot(faithful.cde,plot.fn="hdr")
+#'
+#' @name plot.cde
+#' @export
 plot.cde <- function(x, firstvar=1, mfrow=n2mfrow(dim(x$z)[firstvar]), plot.fn="stacked",x.name,margin=NULL,...)
 {
     dimz <- dim(x$z)
@@ -147,6 +187,49 @@ stacked.plot <- function(den,mden=rep(1,length(den$x)),threshold=0.05,main="",xl
     invisible(junk)
 }
 
+
+
+#' Calculate highest density regions continously over some conditioned
+#' variable.
+#'
+#' Calculates and plots highest density regions for a conditional density
+#' estimate. Uses output from \code{\link{cde}}.
+#'
+#'
+#' @param den Conditional density in the same format as the output from
+#' \code{\link{cde}}.
+#' @param prob Probability coverage level for HDRs
+#' @param plot Should HDRs be plotted? If FALSE, results are returned.
+#' @param plot.modes Should modes be plotted as well as HDRs?
+#' @param mden Marginal density in the \code{x} direction. When small, the HDRs
+#' won't be plotted. Default is uniform so all HDRs are plotted.
+#' @param threshold Threshold for margin density. HDRs are not plotted if the
+#' margin density \code{mden} is lower than this value.
+#' @param nn Number of points to be sampled from each density when estimating
+#' the HDRs.
+#' @param xlim Limits for x-axis.
+#' @param ylim Limits for y-axis.
+#' @param xlab Label for x-axis.
+#' @param ylab Label for y-axis.
+#' @param border Show border of polygons
+#' @param font Font to be used in plot.
+#' @param cex Size of characters.
+#' @param \dots Other arguments passed to plotting functions.
+#' @return \item{hdr}{array (a,b,c) where where a specifies conditioning value,
+#' b gives the HDR endpoints and c gives the probability coverage.}
+#' \item{modes}{estimated mode of each conditional density}
+#' @author Rob J Hyndman
+#' @seealso \code{\link{cde}}, \code{\link{hdr}}
+#' @references Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
+#' "Estimating and visualizing conditional densities". \emph{Journal of
+#' Computational and Graphical Statistics}, \bold{5}, 315-336.
+#' @keywords smooth distribution hplot
+#' @examples
+#'
+#' faithful.cde <- cde(faithful$waiting,faithful$eruptions)
+#' plot(faithful.cde,xlab="Waiting time",ylab="Duration time",plot.fn="hdr")
+#'
+#' @export hdr.cde
 hdr.cde <- function(den,prob=c(50,95,99),plot=TRUE,plot.modes=TRUE,
             mden=rep(1,length(den$x)),threshold=0.05,nn=1000,
             xlim,ylim,xlab,ylab, border=TRUE,font=1,cex=1,...)

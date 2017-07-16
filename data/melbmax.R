@@ -1,4 +1,4 @@
-maxtemp <- ts(c(
+maxtemp <- stats::ts(c(
 38.1,
 32.4,
 34.5,

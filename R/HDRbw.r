@@ -5,6 +5,42 @@
 
 # Last changed: 06 AUG 2009
 
+
+
+#' Highest Density Region Bandwidth
+#' 
+#' Estimates the optimal bandwidth for 1-dimensional highest density regions
+#' 
+#' This is a plug-in rule for bandwidth selection tailored to highest density
+#' region estimation
+#' 
+#' @param x Numerical vector containing data.
+#' @param HDRlevel HDR-level as defined in Hyndman (1996). Setting `HDRlevel'
+#' equal to p (0<p<1) corresponds to a probability of 1-p of inclusion in the
+#' highest density region.
+#' @param gridsize the number of equally spaced points used for binned kernel
+#' density estimation.
+#' @param nMChdr the size of the Monte Carlo sample used for density quantile
+#' approximation of the highest density region, as described in Hyndman (1996).
+#' @param graphProgress logical flag: if `TRUE' then plots showing the progress
+#' of the bandwidth selection algorithm are produced.
+#' @return A numerical vector of length 1.
+#' @author Matt Wand
+#' @references Hyndman, R.J. (1996). Computing and graphing highest density
+#' regions.  \emph{The American Statistician}, \bold{50}, 120-126.
+#' 
+#' Samworth, R.J. and Wand, M.P. (2010). Asymptotics and optimal bandwidth
+#' selection for highest density region estimation.  \emph{The Annals of
+#' Statistics}, \bold{38}, 1767-1792.
+#' @keywords smooth distribution
+#' @examples
+#' 
+#' HDRlevelVal <- 0.55
+#' x <- faithful$eruptions
+#' hHDR <- hdrbw(x,HDRlevelVal)
+#' HDRhat <- hdr.den(x,prob=100*(1-HDRlevelVal),h=hHDR)
+#' 
+#' @export hdrbw
 hdrbw <- function(x,HDRlevel,gridsize=801,nMChdr=1000000,
                   graphProgress=FALSE)
 {
