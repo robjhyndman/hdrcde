@@ -1,0 +1,14 @@
+
+year <- sub("-.*", "", meta$Date)
+if(!length(year))
+  year <- substr(Sys.Date(),1,4)
+vers <- paste("R package version", packageVersion("hdrcde"))
+
+citHeader("To cite the hdrcde package in publications, please use:")
+
+bibentry(bibtype = "Manual",
+  title = "{hdrcde}: Highest Density Regions and Conditional Density Estimation",
+  author = "Rob J Hyndman",
+  year = year,
+  note = vers,
+  url = "http://pkg.robjhyndman.com/hdrcde")
