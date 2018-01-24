@@ -1,5 +1,6 @@
 # hdrcde: Highest Density Regions and Conditional Density Estimation
 
+[![Travis-CI Build Status](https://travis-ci.org/robjhyndman/hdrcde.svg?branch=master)](https://travis-ci.org/robjhyndman/hdrcde)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/hdrcde)](https://cran.r-project.org/package=hdrcde)
 [![Downloads](http://cranlogs.r-pkg.org/badges/hdrcde)](https://cran.r-project.org/package=hdrcde)
 [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
