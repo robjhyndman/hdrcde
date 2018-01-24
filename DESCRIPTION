@@ -1,6 +1,6 @@
 Package: hdrcde
 Type: Package
-Title: Highest density regions and conditional density estimation
+Title: Highest Density Regions and Conditional Density Estimation
 Version: 3.2
 Authors@R: c(
   person("Rob", "Hyndman", role=c("aut", "cre", "cph"), email="Rob.Hyndman@monash.edu"),
