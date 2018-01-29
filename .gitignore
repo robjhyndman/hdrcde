@@ -2,3 +2,16 @@ src/*.o
 src/*.so
 src/symbols.rds
 .Rproj.user
+.Rhistory
+.RData
+inst/doc
+.httr-oauth
+.*.Rnb.cached
+
+man/.Rapp.history
+revdep/checks
+revdep/library
+revdep/checks.noindex
+revdep/library.noindex
+revdep/data.sqlite
+revdep/checks.rds
