@@ -103,6 +103,7 @@ hdr.boxplot.2d <- function(x, y, prob=c(50, 99), kde.package=c("ash","ks"), h=NU
 #' @param pch The plotting character used for observations.
 #' @rdname hdr.boxplot.2d
 #' @export
+#' @export plot.hdr2d
 plot.hdr2d <- function(x, shaded=TRUE, show.points=FALSE, outside.points=FALSE, pch=20,  shadecols=gray((length(x$alpha):1)/(length(x$alpha)+1)),
     pointcol=1, ...)
 {
