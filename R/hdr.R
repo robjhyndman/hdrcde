@@ -232,7 +232,7 @@ hdr.den <- function(x, prob=c(50,95,99), den, h=hdrbw(BoxCox(x,lambda),mean(prob
 #' @param pch Plotting character.
 #' @export
 hdr.boxplot <- function(x, prob=c(99,50), h=hdrbw(BoxCox(x,lambda),mean(prob)), lambda=1, boxlabels="", col= gray((9:1)/10),
-    main = "", xlab="",ylab="", pch=1, border=1,...)
+    main = "", xlab="",ylab="", pch=1, border=1,outline=T,...)
 {
     if(!is.list(x))
         x <- list(x)
@@ -273,8 +273,10 @@ hdr.boxplot <- function(x, prob=c(99,50), h=hdrbw(BoxCox(x,lambda),mean(prob)), 
         }
         for(k in 1:length(ends$mode))
             lines(c(j-0.35,j+0.35),rep(ends$mode[k],2),lty=1)
-        outliers <- xx[xx<min(ends[[1]]) | xx>max(ends[[1]])]
-        points(rep(j,length(outliers)),outliers,pch=pch)
+        if(outline){
+            outliers <- xx[xx<min(ends[[1]]) | xx>max(ends[[1]])]
+            points(rep(j,length(outliers)),outliers,pch=pch)
+        }
     }
     invisible()
 }
