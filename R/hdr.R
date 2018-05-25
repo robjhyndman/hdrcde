@@ -228,6 +228,7 @@ hdr.den <- function(x, prob=c(50,95,99), den, h=hdrbw(BoxCox(x,lambda),mean(prob
 
 #' @rdname hdr
 #' @param boxlabels Label for each box plotted.
+#' @param outline If ‘outline’ is not true, the outliers are not drawn .
 #' @param main Overall title for the plot.
 #' @param pch Plotting character.
 #' @export
