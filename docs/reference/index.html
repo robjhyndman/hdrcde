@@ -18,13 +18,19 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Function reference" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +53,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">hdrcde</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">hdrcde</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">3.2</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -67,6 +77,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -74,127 +85,123 @@
       
       </header>
 
-      <div class="row">
-  <div class="col-md-9">
+<div class="row">
+  <div class="contents col-md-9">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;3.2</small>
-      </h1>
+      <h1>Reference</h1>
     </div>
 
-    <div class="contents">
-      <table class="ref-index">
+    <table class="ref-index">
 
-      <colgroup>
-        <col class="alias" />
-        <col class="title" />
-      </colgroup>
+    <colgroup>
+      
+      <col class="alias" />
+      <col class="title" />
+    </colgroup>
 
-      <tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-functions" class="hasAnchor"><a href="#section-functions" class="anchor"></a>Functions</h2>
-            <p class="section-desc"><p>Functions for estimating and plotting highest density regions and conditional density estimates</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="BoxCox.html">BoxCox</a></code> </p>
-          </td>
-          <td><p>Box Cox Transformation</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="cde.bandwidths.html">cde.bandwidths</a></code> </p>
-          </td>
-          <td><p>Bandwidth calculation for conditional density estimation</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="cde.html">cde</a></code> </p>
-          </td>
-          <td><p>Conditional Density Estimation</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="hdr.boxplot.2d.html">hdr.2d</a></code> <code><a href="hdr.boxplot.2d.html">hdr.boxplot.2d</a></code> <code><a href="hdr.boxplot.2d.html">plot</a></code> </p>
-          </td>
-          <td><p>Bivariate Highest Density Regions</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="hdrbw.html">hdrbw</a></code> </p>
-          </td>
-          <td><p>Highest Density Region Bandwidth</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="hdr.cde.html">hdr.cde</a></code> </p>
-          </td>
-          <td><p>Calculate highest density regions continously over some conditioned
+    <tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-functions" class="hasAnchor"><a href="#section-functions" class="anchor"></a>Functions</h2>
+          <p class="section-desc"><p>Functions for estimating and plotting highest density regions and conditional density estimates</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="BoxCox.html">BoxCox()</a></code> </p>
+        </td>
+        <td><p>Box Cox Transformation</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="cde.html">cde()</a></code> </p>
+        </td>
+        <td><p>Conditional Density Estimation</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="cde.bandwidths.html">cde.bandwidths()</a></code> </p>
+        </td>
+        <td><p>Bandwidth calculation for conditional density estimation</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="hdr.html">hdr()</a></code> <code><a href="hdr.html">hdr.den()</a></code> <code><a href="hdr.html">hdr.boxplot()</a></code> </p>
+        </td>
+        <td><p>Highest Density Regions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="hdr.boxplot.2d.html">hdr.2d()</a></code> <code><a href="hdr.boxplot.2d.html">hdr.boxplot.2d()</a></code> <code><a href="hdr.boxplot.2d.html">plot(<i>&lt;hdr2d&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Bivariate Highest Density Regions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="hdr.cde.html">hdr.cde()</a></code> </p>
+        </td>
+        <td><p>Calculate highest density regions continously over some conditioned
 variable.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="hdrconf.html">hdrconf</a></code> </p>
-          </td>
-          <td><p>HDRs with confidence intervals</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="hdr.html">hdr</a></code> <code><a href="hdr.html">hdr.den</a></code> <code><a href="hdr.html">hdr.boxplot</a></code> </p>
-          </td>
-          <td><p>Highest Density Regions</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="hdrscatterplot.html">hdrscatterplot</a></code> </p>
-          </td>
-          <td><p>Scatterplot showing bivariate highest density regions</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="plot.cde.html">plot</a></code> </p>
-          </td>
-          <td><p>Plots conditional densities</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="plot.hdrconf.html">plot</a></code> </p>
-          </td>
-          <td><p>Plot HDRs with confidence intervals</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="modalreg.html">modalreg</a></code> </p>
-          </td>
-          <td><p>Nonparametric Multimodal Regression</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
-            <p class="section-desc"><p>Data sets in the package</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="maxtemp.html">maxtemp</a></code> </p>
-          </td>
-          <td><p>Daily maximum temperatures in Melbourne, Australia</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="lane2.html">lane2</a></code> <code><a href="lane2.html">lane3</a></code> </p>
-          </td>
-          <td><p>Speed-Flow data for Californian Freeway</p></td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="hdrbw.html">hdrbw()</a></code> </p>
+        </td>
+        <td><p>Highest Density Region Bandwidth</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="hdrconf.html">hdrconf()</a></code> </p>
+        </td>
+        <td><p>HDRs with confidence intervals</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="hdrscatterplot.html">hdrscatterplot()</a></code> </p>
+        </td>
+        <td><p>Scatterplot showing bivariate highest density regions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot.cde.html">plot(<i>&lt;cde&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Plots conditional densities</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot.hdrconf.html">plot(<i>&lt;hdrconf&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Plot HDRs with confidence intervals</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="modalreg.html">modalreg()</a></code> </p>
+        </td>
+        <td><p>Nonparametric Multimodal Regression</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
+          <p class="section-desc"><p>Data sets in the package</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="maxtemp.html">maxtemp</a></code> </p>
+        </td>
+        <td><p>Daily maximum temperatures in Melbourne, Australia</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="lane2.html">lane2</a></code> <code><a href="lane2.html">lane3</a></code> </p>
+        </td>
+        <td><p>Speed-Flow data for Californian Freeway</p></td>
+      </tr>
+    </tbody>
+    </table>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -218,5 +225,8 @@ variable.</p></td>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

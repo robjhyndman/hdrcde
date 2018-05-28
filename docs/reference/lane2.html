@@ -18,13 +18,25 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Speed-Flow data for Californian Freeway — lane2" />
+
+<meta property="og:description" content="These are two data sets collected in 1993 on two individual lanes (lane 2
+and lane 3) of the 4-lane Californian freeway I-880. The data were collected
+by loop detectors, and the time units are 30 seconds per observation (see
+Petty et al., 1996, for details)." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +59,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">hdrcde</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">hdrcde</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">3.2</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -67,6 +83,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -74,18 +91,22 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Speed-Flow data for Californian Freeway</h1>
+    <small class="dont-index">Source: <a href='https://github.com/robjhyndman/hdrcde/blob/master/R/hdrcde-package.R'><code>R/hdrcde-package.R</code></a></small>
+    <div class="hidden name"><code>lane2.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>These are two data sets collected in 1993 on two individual lanes (lane 2
 and lane 3) of the 4-lane Californian freeway I-880. The data were collected
 by loop detectors, and the time units are 30 seconds per observation (see
 Petty et al., 1996, for details).</p>
     
+    </div>
 
     <pre class="usage"><span class='no'>lane2</span>; <span class='no'>lane3</span></pre>
         
@@ -122,7 +143,7 @@ Statistics)</em>, <b>55</b>, 461-475.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>plot</span>(<span class='no'>lane2</span>)</div><div class='img'><img src='lane2-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>lane3</span>)</div><div class='img'><img src='lane2-2.png' alt='' width='700' height='432.632880098887' /></div></pre>
+<span class='fu'>plot</span>(<span class='no'>lane2</span>)</div><div class='img'><img src='lane2-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>lane3</span>)</div><div class='img'><img src='lane2-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -154,5 +175,8 @@ Statistics)</em>, <b>55</b>, 461-475.</p>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

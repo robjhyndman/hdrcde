@@ -18,13 +18,23 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Highest Density Regions — hdr" />
+
+<meta property="og:description" content="Calculates and plots highest density regions in one dimension including the
+HDR boxplot." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +57,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">hdrcde</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">hdrcde</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">3.2</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -67,6 +81,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -74,16 +89,20 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Highest Density Regions</h1>
+    <small class="dont-index">Source: <a href='https://github.com/robjhyndman/hdrcde/blob/master/R/hdr.R'><code>R/hdr.R</code></a></small>
+    <div class="hidden name"><code>hdr.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Calculates and plots highest density regions in one dimension including the
 HDR boxplot.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>hdr</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>50</span>, <span class='fl'>95</span>, <span class='fl'>99</span>), <span class='kw'>den</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>h</span> <span class='kw'>=</span> <span class='fu'><a href='hdrbw.html'>hdrbw</a></span>(<span class='fu'><a href='BoxCox.html'>BoxCox</a></span>(<span class='no'>x</span>,
   <span class='no'>lambda</span>), <span class='fu'>mean</span>(<span class='no'>prob</span>)), <span class='kw'>lambda</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>nn</span> <span class='kw'>=</span> <span class='fl'>5000</span>, <span class='kw'>all.modes</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
@@ -94,9 +113,10 @@ HDR boxplot.</p>
 
 <span class='fu'>hdr.boxplot</span>(<span class='no'>x</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>99</span>, <span class='fl'>50</span>), <span class='kw'>h</span> <span class='kw'>=</span> <span class='fu'><a href='hdrbw.html'>hdrbw</a></span>(<span class='fu'><a href='BoxCox.html'>BoxCox</a></span>(<span class='no'>x</span>, <span class='no'>lambda</span>), <span class='fu'>mean</span>(<span class='no'>prob</span>)),
   <span class='kw'>lambda</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>boxlabels</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'>gray</span>((<span class='fl'>9</span>:<span class='fl'>1</span>)/<span class='fl'>10</span>), <span class='kw'>main</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>pch</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>pch</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>border</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>outline</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>space</span> <span class='kw'>=</span> <span class='fl'>0.25</span>, <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -170,6 +190,18 @@ using lines.</p></td>
       <th>pch</th>
       <td><p>Plotting character.</p></td>
     </tr>
+    <tr>
+      <th>border</th>
+      <td><p>Width of border of box.</p></td>
+    </tr>
+    <tr>
+      <th>outline</th>
+      <td><p>If not &lt;code&gt;TRUE&lt;/code&gt;, the outliers are not drawn.</p></td>
+    </tr>
+    <tr>
+      <th>space</th>
+      <td><p>The space between each box, between 0 and 0.5.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -206,7 +238,7 @@ estimation. <em>Journal of the American Statistical Association</em>,
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='hdr.boxplot.2d.html'>hdr.boxplot.2d</a></code></p>
+    <div class='dont-index'><p><code><a href='hdr.boxplot.2d.html'>hdr.boxplot.2d</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -214,52 +246,52 @@ estimation. <em>Journal of the American Statistical Association</em>,
 <span class='co'># Old faithful eruption duration times</span>
 <span class='fu'>hdr</span>(<span class='no'>faithful</span>$<span class='no'>eruptions</span>)</div><div class='output co'>#&gt; $hdr
 #&gt;         [,1]     [,2]     [,3]     [,4]
-#&gt; 99% 1.323922 2.819339 3.152030 5.281990
-#&gt; 95% 1.500710 2.520789 3.500000 5.091577
-#&gt; 50% 1.923458 2.024619 3.942421 4.772085
+#&gt; 99% 1.324069 2.819334 3.151815 5.281895
+#&gt; 95% 1.500759 2.520736 3.500000 5.091489
+#&gt; 50% 1.923347 2.024525 3.942943 4.771763
 #&gt; 
 #&gt; $mode
-#&gt; [1] 4.377615
+#&gt; [1] 4.382471
 #&gt; 
 #&gt; $falpha
 #&gt;         1%         5%        50% 
-#&gt; 0.06748624 0.15301144 0.36117284 
-#&gt; </div><div class='input'><span class='fu'>hdr.boxplot</span>(<span class='no'>faithful</span>$<span class='no'>eruptions</span>)</div><div class='img'><img src='hdr-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>hdr.den</span>(<span class='no'>faithful</span>$<span class='no'>eruptions</span>)</div><div class='img'><img src='hdr-2.png' alt='' width='700' height='432.632880098887' /></div><div class='output co'>#&gt; $hdr
+#&gt; 0.06737237 0.15293361 0.36147332 
+#&gt; </div><div class='input'><span class='fu'>hdr.boxplot</span>(<span class='no'>faithful</span>$<span class='no'>eruptions</span>)</div><div class='img'><img src='hdr-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>hdr.den</span>(<span class='no'>faithful</span>$<span class='no'>eruptions</span>)</div><div class='img'><img src='hdr-2.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; $hdr
 #&gt;         [,1]     [,2]     [,3]     [,4]
-#&gt; 99% 1.324308 2.819325 3.151474 5.281758
-#&gt; 95% 1.500841 2.520650 3.500000 5.091343
-#&gt; 50% 1.923230 2.024310 3.943777 4.771247
+#&gt; 99% 1.323612 2.819350 3.152483 5.282185
+#&gt; 95% 1.500616 2.520902 3.500000 5.091769
+#&gt; 50% 1.923714 2.024811 3.941307 4.772767
 #&gt; 
 #&gt; $mode
-#&gt; [1] 4.38173
+#&gt; [1] 4.378605
 #&gt; 
 #&gt; $falpha
 #&gt;         1%         5%        50% 
-#&gt; 0.06719217 0.15281007 0.36195375 
+#&gt; 0.06772808 0.15317729 0.36053289 
 #&gt; </div><div class='input'>
 <span class='co'># Simple bimodal example</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fu'>rnorm</span>(<span class='fl'>100</span>,<span class='fl'>0</span>,<span class='fl'>1</span>), <span class='fu'>rnorm</span>(<span class='fl'>100</span>,<span class='fl'>5</span>,<span class='fl'>1</span>))
 <span class='fu'>par</span>(<span class='kw'>mfrow</span><span class='kw'>=</span><span class='fu'>c</span>(<span class='fl'>1</span>,<span class='fl'>2</span>))
 <span class='fu'>boxplot</span>(<span class='no'>x</span>)
-<span class='fu'>hdr.boxplot</span>(<span class='no'>x</span>)</div><div class='img'><img src='hdr-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>par</span>(<span class='kw'>mfrow</span><span class='kw'>=</span><span class='fu'>c</span>(<span class='fl'>1</span>,<span class='fl'>1</span>))
-<span class='fu'>hdr.den</span>(<span class='no'>x</span>)</div><div class='img'><img src='hdr-4.png' alt='' width='700' height='432.632880098887' /></div><div class='output co'>#&gt; $hdr
-#&gt;           [,1]      [,2]    [,3]     [,4]
-#&gt; 99% -2.4620857 7.2784723      NA       NA
-#&gt; 95% -1.7628534 6.6026853      NA       NA
-#&gt; 50% -0.5282631 0.7653226 4.21876 5.360576
+<span class='fu'>hdr.boxplot</span>(<span class='no'>x</span>)</div><div class='img'><img src='hdr-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>par</span>(<span class='kw'>mfrow</span><span class='kw'>=</span><span class='fu'>c</span>(<span class='fl'>1</span>,<span class='fl'>1</span>))
+<span class='fu'>hdr.den</span>(<span class='no'>x</span>)</div><div class='img'><img src='hdr-4.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; $hdr
+#&gt;           [,1]      [,2]     [,3]     [,4]
+#&gt; 99% -1.7872239 6.9317621       NA       NA
+#&gt; 95% -1.6813901 2.0187595 2.839914 6.834484
+#&gt; 50% -0.5988862 0.8669804 4.530821 5.666518
 #&gt; 
 #&gt; $mode
-#&gt; [1] 0.1060604
+#&gt; [1] 0.1441172
 #&gt; 
 #&gt; $falpha
 #&gt;         1%         5%        50% 
-#&gt; 0.04649925 0.07114561 0.10847419 
+#&gt; 0.04777415 0.05420913 0.13968375 
 #&gt; </div><div class='input'>
 <span class='co'># Highly skewed example</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>exp</span>(<span class='fu'>rnorm</span>(<span class='fl'>100</span>,<span class='fl'>0</span>,<span class='fl'>1</span>))
 <span class='fu'>par</span>(<span class='kw'>mfrow</span><span class='kw'>=</span><span class='fu'>c</span>(<span class='fl'>1</span>,<span class='fl'>2</span>))
 <span class='fu'>boxplot</span>(<span class='no'>x</span>)
-<span class='fu'>hdr.boxplot</span>(<span class='no'>x</span>,<span class='kw'>lambda</span><span class='kw'>=</span><span class='fl'>0</span>)</div><div class='img'><img src='hdr-5.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>hdr.boxplot</span>(<span class='no'>x</span>,<span class='kw'>lambda</span><span class='kw'>=</span><span class='fl'>0</span>)</div><div class='img'><img src='hdr-5.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -297,5 +329,8 @@ Rob J Hyndman
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

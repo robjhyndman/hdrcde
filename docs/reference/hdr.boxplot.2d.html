@@ -18,13 +18,23 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Bivariate Highest Density Regions — hdr.2d" />
+
+<meta property="og:description" content="Calculates and plots highest density regions in two dimensions, including
+the bivariate HDR boxplot." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +57,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">hdrcde</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">hdrcde</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">3.2</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -67,6 +81,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -74,16 +89,20 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Bivariate Highest Density Regions</h1>
+    <small class="dont-index">Source: <a href='https://github.com/robjhyndman/hdrcde/blob/master/R/hdr.boxplot.2d.R'><code>R/hdr.boxplot.2d.R</code></a></small>
+    <div class="hidden name"><code>hdr.boxplot.2d.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Calculates and plots highest density regions in two dimensions, including
 the bivariate HDR boxplot.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>hdr.2d</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>50</span>, <span class='fl'>95</span>, <span class='fl'>99</span>), <span class='kw'>den</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>kde.package</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"ash"</span>,
   <span class='st'>"ks"</span>), <span class='kw'>h</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>xextend</span> <span class='kw'>=</span> <span class='fl'>0.15</span>, <span class='kw'>yextend</span> <span class='kw'>=</span> <span class='fl'>0.15</span>)
@@ -98,7 +117,7 @@ the bivariate HDR boxplot.</p>
   <span class='kw'>shadecols</span> <span class='kw'>=</span> <span class='fu'>gray</span>((<span class='fu'>length</span>(<span class='no'>x</span>$<span class='no'>alpha</span>):<span class='fl'>1</span>)/(<span class='fu'>length</span>(<span class='no'>x</span>$<span class='no'>alpha</span>) + <span class='fl'>1</span>)), <span class='kw'>pointcol</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -189,11 +208,11 @@ largest HDR are shown.</p></td>
     <p>The density is estimated using kernel density estimation. Either
 <code><a href='http://www.rdocumentation.org/packages/ash/topics/ash2'>ash2</a></code> or <code><a href='http://www.rdocumentation.org/packages/ks/topics/kde'>kde</a></code> is used to do the
 calculations. Then Hyndman's (1996) density quantile algorithm is used to
-compute the HDRs.
-    <code>hdr.2d</code> returns an object of class <code>hdr2d</code> containing all the
+compute the HDRs.</p>
+<p><code>hdr.2d</code> returns an object of class <code>hdr2d</code> containing all the
 information needed to compute the HDR contours. This object can be plotted
-using <code>plot.hdr2d</code>.
-    <code>hdr.boxplot.2d</code> produces a bivariate HDR boxplot. This is a special
+using <code>plot.hdr2d</code>.</p>
+<p><code>hdr.boxplot.2d</code> produces a bivariate HDR boxplot. This is a special
 case of applying <code>plot.hdr2d</code> to an object computed using
 <code>hdr.2d</code>.</p>
     
@@ -204,16 +223,16 @@ regions <em>American Statistician</em>, <b>50</b>, 120-126.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code>hdr.boxplot</code></p>
+    <div class='dont-index'><p><code>hdr.boxplot</code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fu'>rnorm</span>(<span class='fl'>200</span>,<span class='fl'>0</span>,<span class='fl'>1</span>),<span class='fu'>rnorm</span>(<span class='fl'>200</span>,<span class='fl'>4</span>,<span class='fl'>1</span>))
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fu'>rnorm</span>(<span class='fl'>200</span>,<span class='fl'>0</span>,<span class='fl'>1</span>),<span class='fu'>rnorm</span>(<span class='fl'>200</span>,<span class='fl'>4</span>,<span class='fl'>1</span>))
-<span class='fu'>hdr.boxplot.2d</span>(<span class='no'>x</span>,<span class='no'>y</span>)</div><div class='img'><img src='hdr.boxplot.2d-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>hdr.boxplot.2d</span>(<span class='no'>x</span>,<span class='no'>y</span>)</div><div class='img'><img src='hdr.boxplot.2d-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='no'>hdrinfo</span> <span class='kw'>&lt;-</span> <span class='fu'>hdr.2d</span>(<span class='no'>x</span>,<span class='no'>y</span>)
-<span class='fu'>plot</span>(<span class='no'>hdrinfo</span>, <span class='kw'>pointcol</span><span class='kw'>=</span><span class='st'>"red"</span>, <span class='kw'>show.points</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>3</span>)</div><div class='img'><img src='hdr.boxplot.2d-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>plot</span>(<span class='no'>hdrinfo</span>, <span class='kw'>pointcol</span><span class='kw'>=</span><span class='st'>"red"</span>, <span class='kw'>show.points</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>3</span>)</div><div class='img'><img src='hdr.boxplot.2d-2.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -251,5 +270,8 @@ Rob J Hyndman
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+
