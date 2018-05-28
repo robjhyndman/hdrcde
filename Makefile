@@ -7,14 +7,14 @@ PKG_NAME=$(shell grep -i ^package DESCRIPTION | cut -d : -d \  -f 2)
 
 all: build pkgdown install
 
-check: 
+check:
 	rcheck
 
 build:
 	R CMD build .
 	mv -f *.tar.gz ..
 
-install: 
+install:
 	rmake
 
 pkgdown:
@@ -25,6 +25,7 @@ winbuild:
 
 clean:
 	-rm -f ../$(PKG_NAME)_*.tar.gz
-	-rm -r -f man/*.Rd
-	-rm -r -f NAMESPACE
+	-rm -rf man/*.Rd
+	-rm -rf src/*.o
+	-rm -rf src/*.so
 
