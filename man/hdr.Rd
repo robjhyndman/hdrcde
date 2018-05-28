@@ -17,7 +17,8 @@ hdr.den(x, prob = c(50, 95, 99), den, h = hdrbw(BoxCox(x, lambda),
 
 hdr.boxplot(x, prob = c(99, 50), h = hdrbw(BoxCox(x, lambda), mean(prob)),
   lambda = 1, boxlabels = "", col = gray((9:1)/10), main = "",
-  xlab = "", ylab = "", pch = 1, ...)
+  xlab = "", ylab = "", pch = 1, border = 1, outline = TRUE,
+  space = 0.25, ...)
 }
 \arguments{
 \item{x}{Numeric vector containing data. In \code{hdr} and \code{hdr.den},
@@ -58,6 +59,12 @@ using lines.}
 \item{main}{Overall title for the plot.}
 
 \item{pch}{Plotting character.}
+
+\item{border}{Width of border of box.}
+
+\item{outline}{If not <code>TRUE</code>, the outliers are not drawn.}
+
+\item{space}{The space between each box, between 0 and 0.5.}
 }
 \value{
 \code{hdr.boxplot} retuns nothing. \code{hdr} and \code{hdr.den}

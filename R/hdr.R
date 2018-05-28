@@ -173,7 +173,7 @@ function(den,falpha)
 #' @param xlab Label for x-axis.
 #' @param ylab Label for y-axis.
 #' @param ylim Limits for y-axis.
-#' @export
+#' @export hdr.den
 hdr.den <- function(x, prob=c(50,95,99), den, h=hdrbw(BoxCox(x,lambda),mean(prob)),
     lambda=1, xlab=NULL, ylab="Density", ylim=NULL, plot.lines=TRUE, col=2:8, ...)
 {
@@ -228,11 +228,12 @@ hdr.den <- function(x, prob=c(50,95,99), den, h=hdrbw(BoxCox(x,lambda),mean(prob
 
 #' @rdname hdr
 #' @param boxlabels Label for each box plotted.
-#' @param outline If ‘outline’ is not true, the outliers are not drawn .
-#' @param space The space beetwen each box, between 0 and .5.
+#' @param border Width of border of box.
+#' @param outline If not <code>TRUE</code>, the outliers are not drawn.
+#' @param space The space between each box, between 0 and 0.5.
 #' @param main Overall title for the plot.
 #' @param pch Plotting character.
-#' @export
+#' @export hdr.boxplot
 hdr.boxplot <- function(x, prob=c(99,50), h=hdrbw(BoxCox(x,lambda),mean(prob)), lambda=1, boxlabels="", col= gray((9:1)/10),
     main = "", xlab="",ylab="", pch=1, border=1,outline=TRUE,space=.25,...)
 {
@@ -256,18 +257,18 @@ hdr.boxplot <- function(x, prob=c(99,50), h=hdrbw(BoxCox(x,lambda),mean(prob)), 
     }
     axis(1,at=c(1:nplots),labels=boxlabels,tick=FALSE,...)
 
+    sp <- 0.5 - min(max(space, 0), 0.5)
+    nint <- length(prob)
+    cols <- rep(col,5)
     for(j in 1:nplots)
     {
         xx <- x[[j]]
         ends <- ends.list[[j]]
-        nint <- length(prob)
-        cols <- rep(col,5)
         for(i in 1:nint)
         {
             endsi <- ends[[i]]
             for(k in 1:(length(endsi)/2))
             {
-                sp=.5-space
                 polygon( c(j-sp,j-sp,j+sp,j+sp,j-sp),
                     c(endsi[k*2-1],endsi[k*2],
                     endsi[k*2],endsi[k*2-1],endsi[k*2-1]),
@@ -276,7 +277,7 @@ hdr.boxplot <- function(x, prob=c(99,50), h=hdrbw(BoxCox(x,lambda),mean(prob)), 
         }
         for(k in 1:length(ends$mode))
             lines(c(j-0.35,j+0.35),rep(ends$mode[k],2),lty=1)
-        if(outline){
+        if(outline) {
             outliers <- xx[xx<min(ends[[1]]) | xx>max(ends[[1]])]
             points(rep(j,length(outliers)),outliers,pch=pch)
         }
