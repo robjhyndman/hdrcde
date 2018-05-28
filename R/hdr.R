@@ -228,11 +228,13 @@ hdr.den <- function(x, prob=c(50,95,99), den, h=hdrbw(BoxCox(x,lambda),mean(prob
 
 #' @rdname hdr
 #' @param boxlabels Label for each box plotted.
+#' @param outline If ‘outline’ is not true, the outliers are not drawn .
+#' @param space The space beetwen each box, between 0 and .5.
 #' @param main Overall title for the plot.
 #' @param pch Plotting character.
 #' @export
 hdr.boxplot <- function(x, prob=c(99,50), h=hdrbw(BoxCox(x,lambda),mean(prob)), lambda=1, boxlabels="", col= gray((9:1)/10),
-    main = "", xlab="",ylab="", pch=1,  ...)
+    main = "", xlab="",ylab="", pch=1, border=1,outline=TRUE,space=.25,...)
 {
     if(!is.list(x))
         x <- list(x)
@@ -265,16 +267,19 @@ hdr.boxplot <- function(x, prob=c(99,50), h=hdrbw(BoxCox(x,lambda),mean(prob)), 
             endsi <- ends[[i]]
             for(k in 1:(length(endsi)/2))
             {
-                polygon( c(j-0.25,j-0.25,j+0.25,j+0.25,j-0.25),
+                sp=.5-space
+                polygon( c(j-sp,j-sp,j+sp,j+sp,j-sp),
                     c(endsi[k*2-1],endsi[k*2],
                     endsi[k*2],endsi[k*2-1],endsi[k*2-1]),
-                    col =cols[i])
+                    col =cols[i], border=border)
             }
         }
         for(k in 1:length(ends$mode))
             lines(c(j-0.35,j+0.35),rep(ends$mode[k],2),lty=1)
-        outliers <- xx[xx<min(ends[[1]]) | xx>max(ends[[1]])]
-        points(rep(j,length(outliers)),outliers,pch=pch)
+        if(outline){
+            outliers <- xx[xx<min(ends[[1]]) | xx>max(ends[[1]])]
+            points(rep(j,length(outliers)),outliers,pch=pch)
+        }
     }
     invisible()
 }
