@@ -170,12 +170,14 @@ function(den,falpha)
 #' @param plot.lines If \code{TRUE}, will show how the HDRs are determined
 #' using lines.
 #' @param col Colours for regions of each box.
+#' @param bgcol Colours for the background behind the boxes. Default \code{"gray"}, if \code{NULL} no box is drawn.
+#' @param legend If \code{TRUE} add a legend on the right of the boxes.
 #' @param xlab Label for x-axis.
 #' @param ylab Label for y-axis.
 #' @param ylim Limits for y-axis.
 #' @export hdr.den
 hdr.den <- function(x, prob=c(50,95,99), den, h=hdrbw(BoxCox(x,lambda),mean(prob)),
-    lambda=1, xlab=NULL, ylab="Density", ylim=NULL, plot.lines=TRUE, col=2:8, ...)
+    lambda=1, xlab=NULL, ylab="Density", ylim=NULL, plot.lines=TRUE, col=2:8,bgcol="gray",legend=FALSE, ...)
 {
   if(missing(den))
     den <- tdensity(x,bw=h,lambda=lambda)
@@ -192,8 +194,9 @@ hdr.den <- function(x, prob=c(50,95,99), den, h=hdrbw(BoxCox(x,lambda),mean(prob
   minx <- rangex[1]
   maxx <- rangex[2]
   rangex <- maxx-minx
-  polygon(c(minx-0.5*rangex, maxx+0.5*rangex, maxx+0.5*rangex, minx-0.5*rangex),
-    c(0,0,rep(-length(prob)*stepy*2,2)),col="gray",border=FALSE)
+  if(!is.null(bgcol))
+    polygon(c(minx-0.5*rangex, maxx+0.5*rangex, maxx+0.5*rangex, minx-0.5*rangex),
+      c(0,0,rep(-length(prob)*stepy*2,2)),col=bgcol,border=FALSE)
   #abline(h=0, col="gray")
   lines(den$x,den$y)
   box()
@@ -223,6 +226,10 @@ hdr.den <- function(x, prob=c(50,95,99), den, h=hdrbw(BoxCox(x,lambda),mean(prob
   }
   for(i in 1:nregions)
     add.hdr(hd$hdr[i,], (i-nregions-0.5)*stepy, stepy, col=col[i], horiz=TRUE)
+  if(legend){
+      rightlim=apply(hd$hdr,1,function(i)i[length(i[!is.na(i)])])
+      text(rightlim, ((1:nregions)-nregions-0.5)*stepy, label=paste0(rownames(hd$hdr)," HDR"),cex=.8,pos=4)
+  }
   return(hd)
 }
 

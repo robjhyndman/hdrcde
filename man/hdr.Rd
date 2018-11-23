@@ -13,7 +13,7 @@ hdr(x = NULL, prob = c(50, 95, 99), den = NULL, h = hdrbw(BoxCox(x,
 
 hdr.den(x, prob = c(50, 95, 99), den, h = hdrbw(BoxCox(x, lambda),
   mean(prob)), lambda = 1, xlab = NULL, ylab = "Density", ylim = NULL,
-  plot.lines = TRUE, col = 2:8, ...)
+  plot.lines = TRUE, col = 2:8, bgcol = "gray", legend = F, ...)
 
 hdr.boxplot(x, prob = c(99, 50), h = hdrbw(BoxCox(x, lambda), mean(prob)),
   lambda = 1, boxlabels = "", col = gray((9:1)/10), main = "",
@@ -51,6 +51,10 @@ If omitted, the density is estimated from \code{x} using
 using lines.}
 
 \item{col}{Colours for regions of each box.}
+
+\item{bgcol}{Colours for the background behind the boxes. Default \code{"gray"}, if \code{NULL} no box is drawn.}
+
+\item{legend}{If \code{TRUE} add legend on the right of the boxes.}
 
 \item{\dots}{Other arguments passed to plot.}
 
