@@ -1,3 +1,8 @@
+## Version 3.3
+  * More options for hdr.boxplot (thanks to Simon Carrignon)
+  * More flexible hdr.den plots (thanks to Simon Carrignon)
+  * Fixed colours in hdrscatterplot
+  
 ## Version 3.2
   * Updated hdr.den() to demonstrate the calculation of hdr more clearly (thanks to Dennis Freuer for the suggestion)
   * Added hdrscatterplot() function
