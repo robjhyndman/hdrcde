@@ -5,8 +5,9 @@
 \title{Conditional Density Estimation}
 \usage{
 cde(x, y, deg = 0, link = "identity", a, b, mean = NULL, x.margin,
-  y.margin, x.name, y.name, use.locfit = FALSE, fw = TRUE, rescale = TRUE,
-  nxmargin = 15, nymargin = 100, a.nndefault = 0.3, ...)
+  y.margin, x.name, y.name, use.locfit = FALSE, fw = TRUE,
+  rescale = TRUE, nxmargin = 15, nymargin = 100, a.nndefault = 0.3,
+  ...)
 }
 \arguments{
 \item{x}{Numerical vector or matrix: the conditioning variable(s).}

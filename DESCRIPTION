@@ -15,4 +15,4 @@ LazyLoad: yes
 Description: Computation of highest density regions in one and two dimensions, kernel estimation of univariate density functions conditional on one covariate,and multimodal regression.
 License: GPL-3
 URL: http://pkg.robjhyndman.com/hdrcde, https://github.com/robjhyndman/hdrcde
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.1.1

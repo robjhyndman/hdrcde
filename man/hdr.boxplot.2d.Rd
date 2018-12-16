@@ -3,8 +3,6 @@
 \name{hdr.2d}
 \alias{hdr.2d}
 \alias{hdr.boxplot.2d}
-\alias{hdr.2d}
-\alias{plot.hdr2d}
 \alias{plot.hdr2d}
 \title{Bivariate Highest Density Regions}
 \usage{
@@ -13,12 +11,13 @@ hdr.2d(x, y, prob = c(50, 95, 99), den = NULL, kde.package = c("ash",
 
 hdr.boxplot.2d(x, y, prob = c(50, 99), kde.package = c("ash", "ks"),
   h = NULL, xextend = 0.15, yextend = 0.15, xlab = "", ylab = "",
-  shadecols = gray((length(prob):1)/(length(prob) + 1)), pointcol = 1, ...)
+  shadecols = gray((length(prob):1)/(length(prob) + 1)), pointcol = 1,
+  ...)
 
 \method{plot}{hdr2d}(x, shaded = TRUE, show.points = FALSE,
   outside.points = FALSE, pch = 20,
-  shadecols = gray((length(x$alpha):1)/(length(x$alpha) + 1)), pointcol = 1,
-  ...)
+  shadecols = gray((length(x$alpha):1)/(length(x$alpha) + 1)),
+  pointcol = 1, ...)
 }
 \arguments{
 \item{x}{Numeric vector}

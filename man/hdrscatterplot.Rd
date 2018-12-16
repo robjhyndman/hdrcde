@@ -4,8 +4,8 @@
 \alias{hdrscatterplot}
 \title{Scatterplot showing bivariate highest density regions}
 \usage{
-hdrscatterplot(x, y, levels = c(1, 50, 99), kde.package = c("ash", "ks"),
-  noutliers = NULL)
+hdrscatterplot(x, y, levels = c(1, 50, 99), kde.package = c("ash",
+  "ks"), noutliers = NULL)
 }
 \arguments{
 \item{x}{Numeric vector or matrix with 2 columns.}
@@ -33,10 +33,9 @@ coloured according to which HDR they fall. A ggplot object is returned.
 }
 \examples{
 
-x <- c(rnorm(200,0,1),rnorm(200,4,1))
-y <- c(rnorm(200,0,1),rnorm(200,4,1))
-hdrscatterplot(x,y)
-
+x <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))
+y <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))
+hdrscatterplot(x, y)
 }
 \seealso{
 \code{\link{hdr.boxplot.2d}}

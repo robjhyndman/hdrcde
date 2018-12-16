@@ -4,7 +4,8 @@
 \alias{hdrbw}
 \title{Highest Density Region Bandwidth}
 \usage{
-hdrbw(x, HDRlevel, gridsize = 801, nMChdr = 1e+06, graphProgress = FALSE)
+hdrbw(x, HDRlevel, gridsize = 801, nMChdr = 1e+06,
+  graphProgress = FALSE)
 }
 \arguments{
 \item{x}{Numerical vector containing data.}

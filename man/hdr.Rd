@@ -4,21 +4,20 @@
 \alias{hdr}
 \alias{hdr.boxplot}
 \alias{hdr.den}
-\alias{hdr.den}
-\alias{hdr.boxplot}
 \title{Highest Density Regions}
 \usage{
 hdr(x = NULL, prob = c(50, 95, 99), den = NULL, h = hdrbw(BoxCox(x,
   lambda), mean(prob)), lambda = 1, nn = 5000, all.modes = FALSE)
 
 hdr.den(x, prob = c(50, 95, 99), den, h = hdrbw(BoxCox(x, lambda),
-  mean(prob)), lambda = 1, xlab = NULL, ylab = "Density", ylim = NULL,
-  plot.lines = TRUE, col = 2:8, bgcol = "gray", legend = FALSE, ...)
+  mean(prob)), lambda = 1, xlab = NULL, ylab = "Density",
+  ylim = NULL, plot.lines = TRUE, col = 2:8, bgcol = "gray",
+  legend = FALSE, ...)
 
-hdr.boxplot(x, prob = c(99, 50), h = hdrbw(BoxCox(x, lambda), mean(prob)),
-  lambda = 1, boxlabels = "", col = gray((9:1)/10), main = "",
-  xlab = "", ylab = "", pch = 1, border = 1, outline = TRUE,
-  space = 0.25, ...)
+hdr.boxplot(x, prob = c(99, 50), h = hdrbw(BoxCox(x, lambda),
+  mean(prob)), lambda = 1, boxlabels = "", col = gray((9:1)/10),
+  main = "", xlab = "", ylab = "", pch = 1, border = 1,
+  outline = TRUE, space = 0.25, ...)
 }
 \arguments{
 \item{x}{Numeric vector containing data. In \code{hdr} and \code{hdr.den},

@@ -4,8 +4,9 @@
 \alias{plot.cde}
 \title{Plots conditional densities}
 \usage{
-\method{plot}{cde}(x, firstvar = 1, mfrow = n2mfrow(dim(x$z)[firstvar]),
-  plot.fn = "stacked", x.name, margin = NULL, ...)
+\method{plot}{cde}(x, firstvar = 1,
+  mfrow = n2mfrow(dim(x$z)[firstvar]), plot.fn = "stacked", x.name,
+  margin = NULL, ...)
 }
 \arguments{
 \item{x}{Output from \code{\link{cde}}.}
