@@ -87,12 +87,12 @@ hdr.2d <- function(x, y, prob = c(50, 95, 99), den=NULL, kde.package=c("ash","ks
 #' @export hdr.boxplot.2d
 hdr.boxplot.2d <- function(x, y, prob=c(50, 99), kde.package=c("ash","ks"), h=NULL,
   xextend=0.15, yextend=0.15, xlab="", ylab="",
-  shadecols=gray((length(prob):1)/(length(prob)+1)), pointcol=1, ...)
+  shadecols=gray((length(prob):1)/(length(prob)+1)), pointcol=1,  outside.points=TRUE,...)
 {
   # Estimate bivariate density
   hdr <- hdr.2d(x, y, prob=prob, kde.package=kde.package, h=h, xextend=xextend, yextend=yextend)
   # Produce plot
-  plot(hdr, xlab=xlab, ylab=ylab, shadecols=shadecols, pointcol=pointcol, outside.points=TRUE,...)
+  plot(hdr, xlab=xlab, ylab=ylab, shadecols=shadecols, pointcol=pointcol, outside.points=outside.points,...)
 }
 
 #' @param shaded If \code{TRUE}, the HDR contours are shown as shaded regions.
