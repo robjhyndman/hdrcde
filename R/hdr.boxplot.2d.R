@@ -87,8 +87,10 @@ hdr.2d <- function(x, y, prob = c(50, 95, 99), den=NULL, kde.package=c("ash","ks
 #' @export hdr.boxplot.2d
 hdr.boxplot.2d <- function(x, y, prob=c(50, 99), kde.package=c("ash","ks"), h=NULL,
   xextend=0.15, yextend=0.15, xlab="", ylab="",
-  shadecols=gray((length(prob):1)/(length(prob)+1)), pointcol=1,  outside.points=TRUE,...)
+  shadecols="black", pointcol=1,  outside.points=TRUE,...)
 {
+  # Generate shades
+  shadecols  <-  shades(shadecols,length(prob))
   # Estimate bivariate density
   hdr <- hdr.2d(x, y, prob=prob, kde.package=kde.package, h=h, xextend=xextend, yextend=yextend)
   # Produce plot
@@ -104,7 +106,7 @@ hdr.boxplot.2d <- function(x, y, prob=c(50, 99), kde.package=c("ash","ks"), h=NU
 #' @rdname hdr.boxplot.2d
 #' @export
 #' @export plot.hdr2d
-plot.hdr2d <- function(x, shaded=TRUE, show.points=FALSE, outside.points=FALSE, pch=20,  shadecols=gray((length(x$alpha):1)/(length(x$alpha)+1)),
+plot.hdr2d <- function(x, shaded=TRUE, show.points=FALSE, outside.points=FALSE, pch=20, shadecols=gray((length(x$alpha):1)/(length(x$alpha)+1)),
     pointcol=1, ...)
 {
   if(shaded)
@@ -213,3 +215,18 @@ den.estimate.2d <- function(x, y, kde.package=c("ash","ks"), h=NULL, xextend=0.1
   return(den)
 }
 
+
+
+#' Alpha
+#'
+#' A simple function to change the opacity of a color
+#' @param  color the name or idea of a R color
+#' @param  alpha a value \in [0,1] defining the opacity wanted.
+alpha <- function(color,alpha) rgb(t(col2rgb(color)/255),alpha=alpha)
+
+#' Shades
+#'
+#' A simple function to genarte shade of one color by changing its opacity
+#' @param  color the name or idea of a R color
+#' @param  n number or shades wanted
+shades<-function(color,n) sapply(seq(0,1,length.out=n+1),alpha,color=color)[2:(n+1)]
