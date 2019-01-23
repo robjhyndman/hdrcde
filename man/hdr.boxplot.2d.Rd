@@ -11,8 +11,7 @@ hdr.2d(x, y, prob = c(50, 95, 99), den = NULL, kde.package = c("ash",
 
 hdr.boxplot.2d(x, y, prob = c(50, 99), kde.package = c("ash", "ks"),
   h = NULL, xextend = 0.15, yextend = 0.15, xlab = "", ylab = "",
-  shadecols = gray((length(prob):1)/(length(prob) + 1)), pointcol = 1,
-  ...)
+  shadecols = "black", pointcol = 1, outside.points = TRUE, ...)
 
 \method{plot}{hdr2d}(x, shaded = TRUE, show.points = FALSE,
   outside.points = FALSE, pch = 20,
@@ -51,15 +50,15 @@ a grid extended by \code{yextend} beyond the range of \code{y}.}
 
 \item{pointcol}{Color for outliers and mode}
 
+\item{outside.points}{If \code{TRUE}, the observations lying outside the
+largest HDR are shown.}
+
 \item{\dots}{Other arguments to be passed to plot.}
 
 \item{shaded}{If \code{TRUE}, the HDR contours are shown as shaded regions.}
 
 \item{show.points}{If \code{TRUE}, the observations are plotted over the top
 of the HDR contours.}
-
-\item{outside.points}{If \code{TRUE}, the observations lying outside the
-largest HDR are shown.}
 
 \item{pch}{The plotting character used for observations.}
 }
