@@ -11,7 +11,7 @@ hdr.2d(x, y, prob = c(50, 95, 99), den = NULL, kde.package = c("ash",
 
 hdr.boxplot.2d(x, y, prob = c(50, 99), kde.package = c("ash", "ks"),
   h = NULL, xextend = 0.15, yextend = 0.15, xlab = "", ylab = "",
-  shadecols = "black", pointcol = 1, outside.points = TRUE, ...)
+  shadecols = "darkgray", pointcol = 1, outside.points = TRUE, ...)
 
 \method{plot}{hdr2d}(x, shaded = TRUE, show.points = FALSE,
   outside.points = FALSE, pch = 20,
