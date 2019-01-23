@@ -9,7 +9,7 @@ alpha(color, alpha)
 \arguments{
 \item{color}{the name or idea of a R color}
 
-\item{alpha}{a value \in [0,1] defining the opacity wanted.}
+\item{alpha}{a value in [0,1] defining the opacity wanted.}
 }
 \description{
 A simple function to change the opacity of a color

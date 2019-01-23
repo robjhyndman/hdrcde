@@ -221,7 +221,7 @@ den.estimate.2d <- function(x, y, kde.package=c("ash","ks"), h=NULL, xextend=0.1
 #'
 #' A simple function to change the opacity of a color
 #' @param  color the name or idea of a R color
-#' @param  alpha a value \in [0,1] defining the opacity wanted.
+#' @param  alpha a value in [0,1] defining the opacity wanted.
 alpha <- function(color,alpha) rgb(t(col2rgb(color)/255),alpha=alpha)
 
 #' Shades
