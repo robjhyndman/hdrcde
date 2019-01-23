@@ -118,7 +118,7 @@ plot.hdr2d <- function(x, shaded=TRUE, show.points=FALSE, outside.points=FALSE, 
     index <- (x$fxy < 0.99999*min(x$falpha))
     points(x$x[index], x$y[index], pch=pch, col=pointcol)
   }
-  points(x$mode[1],x$mode[2],pch=19,col="black")
+  points(x$mode[1],x$mode[2],pch=19,col=pointcol)
   invisible(x)
 }
 
