@@ -89,8 +89,9 @@ hdr.boxplot.2d <- function(x, y, prob=c(50, 99), kde.package=c("ash","ks"), h=NU
   xextend=0.15, yextend=0.15, xlab="", ylab="",
   shadecols="black", pointcol=1,  outside.points=TRUE,...)
 {
-  # Estimate bivariate density
+  # Generate shades
   shadecols  <-  shades(shadecols,length(prob))
+  # Estimate bivariate density
   hdr <- hdr.2d(x, y, prob=prob, kde.package=kde.package, h=h, xextend=xextend, yextend=yextend)
   # Produce plot
   plot(hdr, xlab=xlab, ylab=ylab, shadecols=shadecols, pointcol=pointcol, outside.points=outside.points,...)
