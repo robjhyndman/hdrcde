@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Highest Density Region Bandwidth — hdrbw • hdrcde</title>
+<title>Shades — shades • hdrcde</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Highest Density Region Bandwidth — hdrbw" />
+<meta property="og:title" content="Shades — shades" />
 
-<meta property="og:description" content="Estimates the optimal bandwidth for 1-dimensional highest density regions" />
+<meta property="og:description" content="A simple function to genarte shade of one color by changing its opacity" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -96,92 +96,40 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Highest Density Region Bandwidth</h1>
-    <small class="dont-index">Source: <a href='https://github.com/robjhyndman/hdrcde/blob/master/R/HDRbw.r'><code>R/HDRbw.r</code></a></small>
-    <div class="hidden name"><code>hdrbw.Rd</code></div>
+    <h1>Shades</h1>
+    <small class="dont-index">Source: <a href='https://github.com/robjhyndman/hdrcde/blob/master/R/hdr.boxplot.2d.R'><code>R/hdr.boxplot.2d.R</code></a></small>
+    <div class="hidden name"><code>shades.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Estimates the optimal bandwidth for 1-dimensional highest density regions</p>
+    <p>A simple function to genarte shade of one color by changing its opacity</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>hdrbw</span>(<span class='no'>x</span>, <span class='no'>HDRlevel</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>801</span>, <span class='kw'>nMChdr</span> <span class='kw'>=</span> <span class='fl'>1e+06</span>,
-  <span class='kw'>graphProgress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>shades</span>(<span class='no'>color</span>, <span class='no'>n</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>Numerical vector containing data.</p></td>
+      <th>color</th>
+      <td><p>the name or idea of a R color</p></td>
     </tr>
     <tr>
-      <th>HDRlevel</th>
-      <td><p>HDR-level as defined in Hyndman (1996). Setting `HDRlevel'
-equal to p (0&lt;p&lt;1) corresponds to a probability of 1-p of inclusion in the
-highest density region.</p></td>
-    </tr>
-    <tr>
-      <th>gridsize</th>
-      <td><p>the number of equally spaced points used for binned kernel
-density estimation.</p></td>
-    </tr>
-    <tr>
-      <th>nMChdr</th>
-      <td><p>the size of the Monte Carlo sample used for density quantile
-approximation of the highest density region, as described in Hyndman (1996).</p></td>
-    </tr>
-    <tr>
-      <th>graphProgress</th>
-      <td><p>logical flag: if `TRUE' then plots showing the progress
-of the bandwidth selection algorithm are produced.</p></td>
+      <th>n</th>
+      <td><p>number or shades wanted</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A numerical vector of length 1.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>This is a plug-in rule for bandwidth selection tailored to highest density
-region estimation</p>
-    
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Hyndman, R.J. (1996). Computing and graphing highest density
-regions.  <em>The American Statistician</em>, <b>50</b>, 120-126.</p>
-<p>Samworth, R.J. and Wand, M.P. (2010). Asymptotics and optimal bandwidth
-selection for highest density region estimation.  <em>The Annals of
-Statistics</em>, <b>38</b>, 1767-1792.</p>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='no'>HDRlevelVal</span> <span class='kw'>&lt;-</span> <span class='fl'>0.55</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>faithful</span>$<span class='no'>eruptions</span>
-<span class='no'>hHDR</span> <span class='kw'>&lt;-</span> <span class='fu'>hdrbw</span>(<span class='no'>x</span>,<span class='no'>HDRlevelVal</span>)
-<span class='no'>HDRhat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='hdr.html'>hdr.den</a></span>(<span class='no'>x</span>,<span class='kw'>prob</span><span class='kw'>=</span><span class='fl'>100</span>*(<span class='fl'>1</span>-<span class='no'>HDRlevelVal</span>),<span class='kw'>h</span><span class='kw'>=</span><span class='no'>hHDR</span>)</div><div class='img'><img src='hdrbw-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
+                </ul>
 
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#references">References</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Matt Wand</p>
   </div>
 </div>
 
