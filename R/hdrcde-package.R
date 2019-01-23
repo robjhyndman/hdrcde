@@ -1,5 +1,5 @@
 #' @importFrom utils packageVersion
-#' @importFrom grDevices cm.colors gray n2mfrow
+#' @importFrom grDevices cm.colors gray n2mfrow rgb col2rgb
 #' @importFrom graphics .filled.contour Axis abline axis
 #' @importFrom graphics box contour lines matpoints mtext par
 #' @importFrom graphics persp plot plot.default plot.new plot.window
