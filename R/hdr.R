@@ -1,7 +1,6 @@
 #' Highest Density Regions
 #'
-#' Calculates and plots highest density regions in one dimension including the
-#' HDR boxplot.
+#' Calculates highest density regions in one dimension
 #'
 #' Either \code{x} or \code{den} must be provided. When \code{x} is provided,
 #' the density is estimated using kernel density estimation. A Box-Cox
@@ -11,14 +10,9 @@
 #' the algorithm of Samworth and Wand (2010).
 #'
 #' Hyndman's (1996) density quantile algorithm is used for calculation.
-#' \code{hdr.den} plots the density with the HDRs superimposed.
-#' \code{hdr.boxplot} displays a boxplot based on HDRs.
 #'
-#' @aliases hdr hdr.boxplot hdr.den
-#' @param x Numeric vector containing data. In \code{hdr} and \code{hdr.den},
-#' if \code{x} is missing then \code{den} must be provided, and the HDR is
-#' computed from the given density.  For \code{hdr.boxplot}, \code{x} can be a
-#' list containing several vectors.
+#' @param x Numeric vector containing data. If \code{x} is missing then
+#' \code{den} must be provided, and the HDR is computed from the given density.
 #' @param prob Probability coverage required for HDRs
 #' @param den Density of data as list with components \code{x} and \code{y}.
 #' If omitted, the density is estimated from \code{x} using
@@ -28,13 +22,11 @@
 #' 1}.
 #' @param nn Number of random numbers used in computing f-alpha quantiles.
 #' @param all.modes Return all local modes or just the global mode?
-#' @param \dots Other arguments passed to plot.
-#' @return \code{hdr.boxplot} retuns nothing. \code{hdr} and \code{hdr.den}
-#' return a list of three components: \item{hdr}{The endpoints of each interval
+#' @return A list of three components: \item{hdr}{The endpoints of each interval
 #' in each HDR} \item{mode}{The estimated mode of the density.}
 #' \item{falpha}{The value of the density at the boundaries of each HDR.}
 #' @author Rob J Hyndman
-#' @seealso \code{\link{hdr.boxplot.2d}}
+#' @seealso \code{\link{hdr.den}}, \code{\link{hdr.boxplot}}
 #' @references Hyndman, R.J. (1996) Computing and graphing highest density
 #' regions. \emph{American Statistician}, \bold{50}, 120-126.
 #'
@@ -45,27 +37,10 @@
 #' Wand, M.P., Marron, J S., Ruppert, D. (1991) Transformations in density
 #' estimation. \emph{Journal of the American Statistical Association},
 #' \bold{86}, 343-353.
-#' @keywords smooth distribution hplot
+#' @keywords smooth distribution
 #' @examples
-#'
 #' # Old faithful eruption duration times
 #' hdr(faithful$eruptions)
-#' hdr.boxplot(faithful$eruptions)
-#' hdr.den(faithful$eruptions)
-#'
-#' # Simple bimodal example
-#' x <- c(rnorm(100,0,1), rnorm(100,5,1))
-#' par(mfrow=c(1,2))
-#' boxplot(x)
-#' hdr.boxplot(x)
-#' par(mfrow=c(1,1))
-#' hdr.den(x)
-#'
-#' # Highly skewed example
-#' x <- exp(rnorm(100,0,1))
-#' par(mfrow=c(1,2))
-#' boxplot(x)
-#' hdr.boxplot(x,lambda=0)
 #'
 #' @export hdr
 hdr <- function(x=NULL, prob=c(50,95,99), den=NULL, h=hdrbw(BoxCox(x,lambda),mean(prob)), lambda=1, nn=5000, all.modes=FALSE)
@@ -163,18 +138,62 @@ function(den,falpha)
     return(list(falpha=falpha,hdr=intercept))
 }
 
-# Function to plot density with hdrs shown
-# Modifications suggested by Freuer Dennis
-
-#' @rdname hdr
-#' @param plot.lines If \code{TRUE}, will show how the HDRs are determined
-#' using lines.
-#' @param col Colours for regions of each box.
-#' @param bgcol Colours for the background behind the boxes. Default \code{"gray"}, if \code{NULL} no box is drawn.
-#' @param legend If \code{TRUE} add a legend on the right of the boxes.
+#' Density plot with Highest Density Regions
+#'
+#' Plots univariate density with highest density regions displayed
+#'
+#' Either \code{x} or \code{den} must be provided. When \code{x} is provided,
+#' the density is estimated using kernel density estimation. A Box-Cox
+#' transformation is used if \code{lambda!=1}, as described in Wand, Marron and
+#' Ruppert (1991). This allows the density estimate to be non-zero only on the
+#' positive real line. The default kernel bandwidth \code{h} is selected using
+#' the algorithm of Samworth and Wand (2010).
+#'
+#' Hyndman's (1996) density quantile algorithm is used for calculation.
+#'
+#' @param x Numeric vector containing data. If \code{x} is missing then
+#' \code{den} must be provided, and the HDR is computed from the given density.
+#' @param prob Probability coverage required for HDRs
+#' @param den Density of data as list with components \code{x} and \code{y}.
+#' If omitted, the density is estimated from \code{x} using
+#' \code{\link[stats]{density}}.
+#' @param h Optional bandwidth for calculation of density.
+#' @param lambda Box-Cox transformation parameter where \code{0 <= lambda <=
+#' 1}.
 #' @param xlab Label for x-axis.
 #' @param ylab Label for y-axis.
 #' @param ylim Limits for y-axis.
+#' @param plot.lines If \code{TRUE}, will show how the HDRs are determined
+#' using lines.
+#' @param col Colours for regions.
+#' @param bgcol Colours for the background behind the boxes. Default \code{"gray"}, if \code{NULL} no box is drawn.
+#' @param legend If \code{TRUE} add a legend on the right of the boxes.
+#' @param \dots Other arguments passed to plot.
+#' @return a list of three components: \item{hdr}{The endpoints of each interval
+#' in each HDR} \item{mode}{The estimated mode of the density.}
+#' \item{falpha}{The value of the density at the boundaries of each HDR.}
+#' @author Rob J Hyndman
+#' @seealso \code{\link{hdr}}, \code{\link{hdr.boxplot}}
+#' @references Hyndman, R.J. (1996) Computing and graphing highest density
+#' regions. \emph{American Statistician}, \bold{50}, 120-126.
+#'
+#' Samworth, R.J. and Wand, M.P. (2010). Asymptotics and optimal bandwidth
+#' selection for highest density region estimation.  \emph{The Annals of
+#' Statistics}, \bold{38}, 1767-1792.
+#'
+#' Wand, M.P., Marron, J S., Ruppert, D. (1991) Transformations in density
+#' estimation. \emph{Journal of the American Statistical Association},
+#' \bold{86}, 343-353.
+#' @keywords smooth distribution hplot
+#' @examples
+#'
+#' # Old faithful eruption duration times
+#' hdr.den(faithful$eruptions)
+#'
+#' # Simple bimodal example
+#' x <- c(rnorm(100,0,1), rnorm(100,5,1))
+#' hdr.den(x)
+#'
 #' @export hdr.den
 hdr.den <- function(x, prob=c(50,95,99), den, h=hdrbw(BoxCox(x,lambda),mean(prob)),
     lambda=1, xlab=NULL, ylab="Density", ylim=NULL, plot.lines=TRUE, col=2:8,bgcol="gray",legend=FALSE, ...)
@@ -233,13 +252,64 @@ hdr.den <- function(x, prob=c(50,95,99), den, h=hdrbw(BoxCox(x,lambda),mean(prob
   return(hd)
 }
 
-#' @rdname hdr
+#' Highest Density Region Boxplots
+#'
+#' Calculates and plots a univariate highest density regions boxplot.
+#'
+#' The density is estimated using kernel density estimation. A Box-Cox
+#' transformation is used if \code{lambda!=1}, as described in Wand, Marron and
+#' Ruppert (1991). This allows the density estimate to be non-zero only on the
+#' positive real line. The default kernel bandwidth \code{h} is selected using
+#' the algorithm of Samworth and Wand (2010).
+#'
+#' Hyndman's (1996) density quantile algorithm is used for calculation.
+#'
+#' @param x Numeric vector containing data or a list containing several vectors.
+#' @param prob Probability coverage required for HDRs
+#' \code{\link[stats]{density}}.
+#' @param h Optional bandwidth for calculation of density.
+#' @param lambda Box-Cox transformation parameter where \code{0 <= lambda <=
+#' 1}.
 #' @param boxlabels Label for each box plotted.
+#' @param col Colours for regions of each box.
+#' @param main Overall title for the plot.
+#' @param xlab Label for x-axis.
+#' @param ylab Label for y-axis.
+#' @param pch Plotting character.
 #' @param border Width of border of box.
 #' @param outline If not <code>TRUE</code>, the outliers are not drawn.
 #' @param space The space between each box, between 0 and 0.5.
-#' @param main Overall title for the plot.
-#' @param pch Plotting character.
+#' @param \dots Other arguments passed to plot.
+#' @return nothing.
+#' @author Rob J Hyndman
+#' @seealso \code{\link{hdr.boxplot.2d}}, \code{\link{hdr}}, \code{\link{hdr.den}}
+#' @references Hyndman, R.J. (1996) Computing and graphing highest density
+#' regions. \emph{American Statistician}, \bold{50}, 120-126.
+#'
+#' Samworth, R.J. and Wand, M.P. (2010). Asymptotics and optimal bandwidth
+#' selection for highest density region estimation.  \emph{The Annals of
+#' Statistics}, \bold{38}, 1767-1792.
+#'
+#' Wand, M.P., Marron, J S., Ruppert, D. (1991) Transformations in density
+#' estimation. \emph{Journal of the American Statistical Association},
+#' \bold{86}, 343-353.
+#' @keywords smooth distribution hplot
+#' @examples
+#' # Old faithful eruption duration times
+#' hdr.boxplot(faithful$eruptions)
+#'
+#' # Simple bimodal example
+#' x <- c(rnorm(100,0,1), rnorm(100,5,1))
+#' par(mfrow=c(1,2))
+#' boxplot(x)
+#' hdr.boxplot(x)
+#'
+#' # Highly skewed example
+#' x <- exp(rnorm(100,0,1))
+#' par(mfrow=c(1,2))
+#' boxplot(x)
+#' hdr.boxplot(x,lambda=0)
+#'
 #' @export hdr.boxplot
 hdr.boxplot <- function(x, prob=c(99,50), h=hdrbw(BoxCox(x,lambda),mean(prob)), lambda=1, boxlabels="", col= gray((9:1)/10),
     main = "", xlab="",ylab="", pch=1, border=1,outline=TRUE,space=.25,...)
