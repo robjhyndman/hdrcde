@@ -5,9 +5,23 @@
 \title{Calculate highest density regions continously over some conditioned
 variable.}
 \usage{
-hdr.cde(den, prob = c(50, 95, 99), plot = TRUE, plot.modes = TRUE,
-  mden = rep(1, length(den$x)), threshold = 0.05, nn = 1000, xlim,
-  ylim, xlab, ylab, border = TRUE, font = 1, cex = 1, ...)
+hdr.cde(
+  den,
+  prob = c(50, 95, 99),
+  plot = TRUE,
+  plot.modes = TRUE,
+  mden = rep(1, length(den$x)),
+  threshold = 0.05,
+  nn = 1000,
+  xlim,
+  ylim,
+  xlab,
+  ylab,
+  border = TRUE,
+  font = 1,
+  cex = 1,
+  ...
+)
 }
 \arguments{
 \item{den}{Conditional density in the same format as the output from

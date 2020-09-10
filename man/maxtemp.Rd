@@ -4,7 +4,9 @@
 \name{maxtemp}
 \alias{maxtemp}
 \title{Daily maximum temperatures in Melbourne, Australia}
-\format{Time series of frequency 365.}
+\format{
+Time series of frequency 365.
+}
 \source{
 Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
 "Estimating and visualizing conditional densities". \emph{Journal of

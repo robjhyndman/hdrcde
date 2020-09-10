@@ -5,12 +5,14 @@
 \alias{lane2}
 \alias{lane3}
 \title{Speed-Flow data for Californian Freeway}
-\format{Two data frames (\code{lane2} and \code{lane3}) each with 1318
+\format{
+Two data frames (\code{lane2} and \code{lane3}) each with 1318
 observations on the following two variables:
  \describe{
    \item{flow}{a numeric vector giving the traffic flow in vehicles per lane per hour.}
    \item{speed}{a numeric vector giving the speed in miles per hour.}
-}}
+}
+}
 \source{
 Petty, K.F., Noeimi, H., Sanwal, K., Rydzewski, D., Skabardonis, A.,
 Varaiya, P., and Al-Deek, H.  (1996). ``The Freeway Service Patrol

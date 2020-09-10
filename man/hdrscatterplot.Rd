@@ -4,8 +4,13 @@
 \alias{hdrscatterplot}
 \title{Scatterplot showing bivariate highest density regions}
 \usage{
-hdrscatterplot(x, y, levels = c(1, 50, 99), kde.package = c("ash",
-  "ks"), noutliers = NULL)
+hdrscatterplot(
+  x,
+  y,
+  levels = c(1, 50, 99),
+  kde.package = c("ash", "ks"),
+  noutliers = NULL
+)
 }
 \arguments{
 \item{x}{Numeric vector or matrix with 2 columns.}
