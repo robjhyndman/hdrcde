@@ -109,32 +109,28 @@ function(den,falpha)
     den$x <- den$x[!miss]
     den$y <- den$y[!miss]
     n <- length(den$x)
+    # falpha is above the density, so the HDR does not exist
     if(falpha > max(den$y))
         return(list(falpha=falpha,hdr=NA) )
-    dd <- den$y - falpha
-    dd <- dd[2:n]*dd[1:(n-1)]
-    index <- (1:(n-1))[dd<=0]
-    index <- index[!is.na(index)]
-    ni <- length(index)
-    intercept <- numeric(ni)
-    if(ni>0)
-    {
-        for(j in 1:ni)
-        {
-            idx <- c(index[j],index[j]+1)
-            intercept[j] <- approx(den$y[idx],den$x[idx],xout=falpha)$y
-        }
+    f <- function(x, den, falpha) {
+      approx(den$x, den$y-falpha, xout=x)$y
     }
-    #intercept <- sort(unique(intercept))
+    intercept <- all_roots(f, interval=range(den$x), den=den, falpha=falpha)
     ni <- length(intercept)
-    if(ni == 0)
-        intercept <- c(den$x[1],den$x[n])
-    x1 <- 0.5*(intercept[1] + den$x[1])
-    x2 <- 0.5*(intercept[ni] + den$x[n])
-    if(approx(den$x,den$y,xout=x1)$y > falpha)
-        intercept <- c(NA,intercept)
-    if(approx(den$x,den$y,xout=x2)$y > falpha)
-        intercept <- c(intercept,NA)
+    # No roots -- use the whole line
+    if(ni == 0L)
+      intercept <- c(den$x[1],den$x[n])
+    else {
+      # Check behaviour outside the smallest and largest intercepts
+      if(f(0.5*(head(intercept,1) + den$x[1]), den, falpha) > 0)
+        intercept <- c(den$x[1],intercept)
+      if(f(0.5*(tail(intercept,1) + den$x[n]), den, falpha) > 0)
+        intercept <- c(intercept,den$x[n])
+    }
+    # Check behaviour -- not sure if we need this now
+    if(length(intercept) %% 2)
+      warning("Some HDRs are incomplete")
+      #  intercept <- sort(unique(intercept))
     return(list(falpha=falpha,hdr=intercept))
 }
 
@@ -444,4 +440,17 @@ InvBoxCox <- function (x, lambda)
     if (lambda == 0)
         exp(x)
     else (x * lambda + 1)^(1/lambda)
+}
+
+all_roots <- function (f, interval,
+  lower = min(interval), upper = max(interval), n = 100L, ...)
+{
+  x <- seq(lower, upper, len = n + 1L)
+  fx <- f(x, ...)
+  roots <- x[which(fx == 0)]
+  fx2 <- fx[seq(n)] * fx[seq(2L,n+1L,by=1L)]
+  index <- which(fx2 < 0)
+  for (i in index)
+    roots <- c(roots, uniroot(f, lower = x[i], upper = x[i+1L], ...)$root)
+  return(roots)
 }
