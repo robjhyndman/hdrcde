@@ -125,7 +125,7 @@ function(den,falpha)
             intercept[j] <- approx(den$y[idx],den$x[idx],xout=falpha)$y
         }
     }
-    intercept <- sort(unique(intercept))
+    #intercept <- sort(unique(intercept))
     ni <- length(intercept)
     if(ni == 0)
         intercept <- c(den$x[1],den$x[n])
