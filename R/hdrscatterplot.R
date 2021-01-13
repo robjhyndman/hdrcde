@@ -19,6 +19,7 @@
 #' estimate when \code{den=NULL}.
 #' @param noutliers Number of outliers to be labelled. By default, all points
 #' outside the largest HDR are labelled.
+#' @param label Label of outliers of same length as \code{x} and \code{y}. By default, all outliers are labelled as the row index of the point \code{(x, y)}.
 #' @author Rob J Hyndman
 #' @seealso \code{\link{hdr.boxplot.2d}}
 #' @keywords smooth distribution hplot
@@ -27,8 +28,9 @@
 #' x <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))
 #' y <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))
 #' hdrscatterplot(x, y)
+#' hdrscatterplot(x, y, label = paste0("p", 1:length(x)))
 #' @export hdrscatterplot
-hdrscatterplot <- function(x, y, levels = c(1, 50, 99), kde.package = c("ash", "ks"), noutliers = NULL) {
+hdrscatterplot <- function(x, y, levels = c(1, 50, 99), kde.package = c("ash", "ks"), noutliers = NULL, label = NULL) {
   levels <- sort(levels)
   if (missing(y)) {
     data <- x
@@ -80,10 +82,16 @@ hdrscatterplot <- function(x, y, levels = c(1, 50, 99), kde.package = c("ash", "
   )
 
   # Show outliers
+  if (is.null(label)) {
+    label <- rownames(data)[outliers]
+  } else {
+    if (length(label) != nrow(data)) stop("The length of label is not the same as x and y!")
+    label <- label[ord[outliers]]
+  }
   if (noutliers > 0) {
     p <- p + ggplot2::annotate("text",
       x = data[outliers, 1] + xlim / 50, y = data[outliers, 2] + ylim / 50,
-      label = rownames(data)[outliers], col = "blue", cex = 2.5
+      label = label, col = "blue", cex = 2.5
     )
   }
   return(p)
