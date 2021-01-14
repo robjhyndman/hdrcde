@@ -5,9 +5,9 @@
 #' @importFrom graphics persp plot plot.default plot.new plot.window
 #' @importFrom graphics points polygon text title
 #' @importFrom stats approx density deviance dnorm fitted
-#' @importFrom stats ksmooth lm nlm pnorm predict qnorm
+#' @importFrom stats ksmooth lm nlm pnorm predict qnorm uniroot
 #' @importFrom stats quantile residuals rnorm runif sd var
-#' @importFrom utils head
+#' @importFrom utils head tail
 #'
 #' @useDynLib hdrcde, .registration = TRUE
 NULL
