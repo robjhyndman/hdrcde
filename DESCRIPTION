@@ -5,7 +5,9 @@ Version: 3.4
 Authors@R: c(
   person("Rob", "Hyndman", role=c("aut", "cre", "cph"), email="Rob.Hyndman@monash.edu"),
   person("Jochen", "Einbeck", role=c("ctb")),
-  person("Matthew", "Wand", role=c("ctb"))
+  person("Matthew", "Wand", role=c("ctb")),
+  person("Simon", "Carrigon", role="ctb"),
+  person("Fan", "Cheng", role='ctb')
   )
 BugReports: https://github.com/robjhyndman/hdrcde/issues
 Depends: R (>= 2.15)
