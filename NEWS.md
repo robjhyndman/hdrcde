@@ -1,3 +1,7 @@
+## Version 3.4
+  * Bug fixes and documentation updates
+  * Added labels to hdrscatterplot (thanks to Fan Cheng)
+
 ## Version 3.3
   * More options for hdr.boxplot (thanks to Simon Carrignon)
   * More flexible hdr.den plots (thanks to Simon Carrignon)
