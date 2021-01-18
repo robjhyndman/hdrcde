@@ -37,7 +37,6 @@ The data is examined in Einbeck and Tutz (2006), using a nonparametric
 approach to multi-valued regression based on conditional mean shift.
 }
 \examples{
-
 plot(lane2)
 plot(lane3)
 }

@@ -75,10 +75,8 @@ Details of the various algorithms are in Bashtannyk and Hyndman (2001) and
 Hyndman and Yao (2002).
 }
 \examples{
-
-    bands <- cde.bandwidths(faithful$waiting,faithful$eruptions,method=2)
-    plot(cde(faithful$waiting,faithful$eruptions,a=bands$a,b=bands$b))
-
+bands <- cde.bandwidths(faithful$waiting,faithful$eruptions,method=2)
+plot(cde(faithful$waiting,faithful$eruptions,a=bands$a,b=bands$b))
 }
 \references{
 Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)

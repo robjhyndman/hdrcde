@@ -97,9 +97,7 @@ This corresponds to the setting \code{method=1} in function
 supported.
 }
 \examples{
-
-  lane2.fit <- modalreg(lane2$flow, lane2$speed, xfix=(1:55)*40, a=100, b=4)
-
+lane2.fit <- modalreg(lane2$flow, lane2$speed, xfix=(1:55)*40, a=100, b=4)
 }
 \references{
 Einbeck, J., and Tutz, G. (2006) "Modelling beyond regression
@@ -110,10 +108,6 @@ Statistics)}, \bold{55}, 461-475.
 Bashtannyk, D.M., and Hyndman, R.J. (2001) "Bandwidth selection for kernel
 conditional density estimation". \emph{Computational Statistics and Data
 Analysis}, \bold{36}(3), 279-298.
-
-%Hyndman, R.J. and Yao, Q. (2002) "Nonparametric estimation and %symmetry
-tests for conditional density functions". \emph{Journal of %Nonparametric
-Statistics}, \bold{14}(3), 259-278.
 }
 \seealso{
 \code{\link{cde.bandwidths}}

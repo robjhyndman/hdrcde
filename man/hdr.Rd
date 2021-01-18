@@ -54,7 +54,6 @@ Hyndman's (1996) density quantile algorithm is used for calculation.
 \examples{
 # Old faithful eruption duration times
 hdr(faithful$eruptions)
-
 }
 \references{
 Hyndman, R.J. (1996) Computing and graphing highest density

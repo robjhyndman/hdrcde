@@ -21,6 +21,5 @@ days have been omitted.
 }
 \examples{
 plot(maxtemp)
-
 }
 \keyword{datasets}

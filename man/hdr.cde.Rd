@@ -68,10 +68,8 @@ Calculates and plots highest density regions for a conditional density
 estimate. Uses output from \code{\link{cde}}.
 }
 \examples{
-
 faithful.cde <- cde(faithful$waiting,faithful$eruptions)
 plot(faithful.cde,xlab="Waiting time",ylab="Duration time",plot.fn="hdr")
-
 }
 \references{
 Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)

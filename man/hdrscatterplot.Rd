@@ -40,7 +40,6 @@ compute the HDRs. The scatterplot of (x,y) is created where the points are
 coloured according to which HDR they fall. A ggplot object is returned.
 }
 \examples{
-
 x <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))
 y <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))
 hdrscatterplot(x, y)
