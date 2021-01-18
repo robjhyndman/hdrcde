@@ -46,7 +46,6 @@ NULL
 #' Transportation Studies, University of California, Berkeley.
 #' @keywords datasets
 #' @examples
-#'
 #' plot(lane2)
 #' plot(lane3)
 "lane2"
@@ -65,7 +64,6 @@ NULL
 #' @keywords datasets
 #' @examples
 #' plot(maxtemp)
-#'
 "maxtemp"
 
 

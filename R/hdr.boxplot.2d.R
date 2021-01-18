@@ -76,14 +76,12 @@ hdr.2d <- function(x, y, prob = c(50, 95, 99), den=NULL, kde.package=c("ash","ks
 #' regions \emph{American Statistician}, \bold{50}, 120-126.
 #' @keywords smooth distribution hplot
 #' @examples
-#'
 #' x <- c(rnorm(200,0,1),rnorm(200,4,1))
 #' y <- c(rnorm(200,0,1),rnorm(200,4,1))
 #' hdr.boxplot.2d(x,y)
 #'
 #' hdrinfo <- hdr.2d(x,y)
 #' plot(hdrinfo, pointcol="red", show.points=TRUE, pch=3)
-#'
 #' @export hdr.boxplot.2d
 hdr.boxplot.2d <- function(x, y, prob=c(50, 99), kde.package=c("ash","ks"), h=NULL,
   xextend=0.15, yextend=0.15, xlab="", ylab="",

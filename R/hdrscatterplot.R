@@ -24,7 +24,6 @@
 #' @seealso \code{\link{hdr.boxplot.2d}}
 #' @keywords smooth distribution hplot
 #' @examples
-#'
 #' x <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))
 #' y <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))
 #' hdrscatterplot(x, y)

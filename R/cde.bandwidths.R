@@ -50,10 +50,8 @@
 #' Statistics}, \bold{14}(3), 259-278.
 #' @keywords smooth distribution
 #' @examples
-#'
-#'     bands <- cde.bandwidths(faithful$waiting,faithful$eruptions,method=2)
-#'     plot(cde(faithful$waiting,faithful$eruptions,a=bands$a,b=bands$b))
-#'
+#' bands <- cde.bandwidths(faithful$waiting,faithful$eruptions,method=2)
+#' plot(cde(faithful$waiting,faithful$eruptions,a=bands$a,b=bands$b))
 #' @export cde.bandwidths
 cde.bandwidths <- function(x,y,deg=0,link="identity",method=1,y.margin,passes=2,
                    ngrid=8,min.a=NULL,ny=25,use.sample=FALSE,GCV=TRUE,b=NULL,...)

@@ -30,12 +30,10 @@
 #' Computational and Graphical Statistics}, \bold{5}, 315-336.
 #' @keywords smooth distribution hplot
 #' @examples
-#'
 #' faithful.cde <- cde(faithful$waiting,faithful$eruptions,
-#' 	x.name="Waiting time", y.name="Duration time")
+#' 	 x.name="Waiting time", y.name="Duration time")
 #' plot(faithful.cde)
 #' plot(faithful.cde,plot.fn="hdr")
-#'
 #' @name plot.cde
 #' @export
 plot.cde <- function(x, firstvar=1, mfrow=n2mfrow(dim(x$z)[firstvar]), plot.fn="stacked",x.name,margin=NULL,...)
@@ -225,10 +223,8 @@ stacked.plot <- function(den,mden=rep(1,length(den$x)),threshold=0.05,main="",xl
 #' Computational and Graphical Statistics}, \bold{5}, 315-336.
 #' @keywords smooth distribution hplot
 #' @examples
-#'
 #' faithful.cde <- cde(faithful$waiting,faithful$eruptions)
 #' plot(faithful.cde,xlab="Waiting time",ylab="Duration time",plot.fn="hdr")
-#'
 #' @export hdr.cde
 hdr.cde <- function(den,prob=c(50,95,99),plot=TRUE,plot.modes=TRUE,
             mden=rep(1,length(den$x)),threshold=0.05,nn=1000,

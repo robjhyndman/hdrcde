@@ -8,12 +8,12 @@
 
 
 #' Highest Density Region Bandwidth
-#' 
+#'
 #' Estimates the optimal bandwidth for 1-dimensional highest density regions
-#' 
+#'
 #' This is a plug-in rule for bandwidth selection tailored to highest density
 #' region estimation
-#' 
+#'
 #' @param x Numerical vector containing data.
 #' @param HDRlevel HDR-level as defined in Hyndman (1996). Setting `HDRlevel'
 #' equal to p (0<p<1) corresponds to a probability of 1-p of inclusion in the
@@ -28,18 +28,16 @@
 #' @author Matt Wand
 #' @references Hyndman, R.J. (1996). Computing and graphing highest density
 #' regions.  \emph{The American Statistician}, \bold{50}, 120-126.
-#' 
+#'
 #' Samworth, R.J. and Wand, M.P. (2010). Asymptotics and optimal bandwidth
 #' selection for highest density region estimation.  \emph{The Annals of
 #' Statistics}, \bold{38}, 1767-1792.
 #' @keywords smooth distribution
 #' @examples
-#' 
 #' HDRlevelVal <- 0.55
 #' x <- faithful$eruptions
 #' hHDR <- hdrbw(x,HDRlevelVal)
 #' HDRhat <- hdr.den(x,prob=100*(1-HDRlevelVal),h=hHDR)
-#' 
 #' @export hdrbw
 hdrbw <- function(x,HDRlevel,gridsize=801,nMChdr=1000000,
                   graphProgress=FALSE)
@@ -67,14 +65,14 @@ hdrbw <- function(x,HDRlevel,gridsize=801,nMChdr=1000000,
    fhatx <- approx(fhat$x,fhat$y,xHat,rule=2)$y
    fTauHat <- quantile(fhatx,HDRlevel)
    names(fTauHat) <- NULL
-   
+
    if (graphProgress)
    {
       par(mfrow=c(2,1))
       plot(fhat,type="l",bty="l",main=expression(paste("Pilot estimate of ",f[HDRlevel])),
            xlab="x",ylab="density estimate")
       lines(range(fhat$x),rep(fTauHat,2),col="red")
-   }  
+   }
 
    # Now use density estimate to approximate the "xcuts" vector:
 
@@ -84,8 +82,8 @@ hdrbw <- function(x,HDRlevel,gridsize=801,nMChdr=1000000,
    xcutsHat <- (fhat$x[xcutsInds] + fhat$x[xcutsInds-1])/2
 
    if (graphProgress)
-      points(xcutsHat,rep(fTauHat,length(xcutsHat)),col="green4") 
-           
+      points(xcutsHat,rep(fTauHat,length(xcutsHat)),col="green4")
+
    # Compute asymptotic approximation:
 
    fdxcutsHat <- rep(NA,length(xcutsHat))
@@ -94,7 +92,7 @@ hdrbw <- function(x,HDRlevel,gridsize=801,nMChdr=1000000,
    {
       fdxcutsHat[j] <- drvKDE(x,xcutsHat[j],hHat1,1)
       fddxcutsHat[j] <- drvKDE(x,xcutsHat[j],hHat2,2)
-   }   
+   }
    Bhats <- hdrBvals(fTauHat,fdxcutsHat,fddxcutsHat)
    B1hat <- Bhats$B1 ; B2hat <- Bhats$B2 ; B3hat <- Bhats$B3
 
@@ -119,7 +117,7 @@ hdrbw <- function(x,HDRlevel,gridsize=801,nMChdr=1000000,
    sLow <- sMid/5 ; sUpp <- 5*sMid
    rootCaptured <- FALSE
    while(!rootCaptured)
-   { 
+   {
       fdLow <- riskFuns(sLow,B1hat,B2hat,B3hat,1)
       fdUpp <- riskFuns(sUpp,B1hat,B2hat,B3hat,1)
       if (fdLow>0) sLow <- sLow/2
@@ -139,10 +137,10 @@ hdrbw <- function(x,HDRlevel,gridsize=801,nMChdr=1000000,
    s <- sMid
    maxit <- 100 ; tolerance <- 0.0000001
    finished <- FALSE
-   itnum <- 0 
+   itnum <- 0
 
    # Do some Newtown-Raphson updates:
-   
+
    while (!finished)
    {
       itnum <- itnum + 1
@@ -161,7 +159,7 @@ hdrbw <- function(x,HDRlevel,gridsize=801,nMChdr=1000000,
       if (relErr<tolerance) finished <- TRUE
       if (itnum>maxit)
          stop("Newton-Raphson failure (maximum number of iterations exceeded).")
-      s <- sNew 
+      s <- sNew
    }
 
    hHat <- (s^2)*n^(-1/5)
@@ -178,7 +176,7 @@ hdrbw <- function(x,HDRlevel,gridsize=801,nMChdr=1000000,
       plot(log(hgrid),AriskGrid,col="blue",type="l",bty="l",xlab="h",ylab="estimated risk")
       lines(rep(log(hHat),2),c(0,100),col="DarkOrange",lwd=2)
    }
-     
+
    return(hHat)
 }
 
@@ -200,7 +198,7 @@ hdrBvals <- function(fTau,fdxcuts,fddxcuts)
    rVal <- length(fdxcuts)/2
    EveInds <- seq(2,(2*rVal),by=2)
    OddInds <- seq(1,(2*rVal-1),by=2)
-  
+
    fdHarSum <- 1/sum(1/abs(fdxcuts))
 
    D1sum1 <- sum(fddxcuts/abs(fdxcuts))
@@ -234,7 +232,7 @@ drvKDE <- function(x,x0,bandwidth,drv)
 
    if (drv==(-1))
       return(sum(pnorm((x0-x)/h))/n)
-   
+
    if (drv==0)
       return(sum(dnorm((x0-x)/h))/(n*h))
 
@@ -258,7 +256,7 @@ densDPI <- function(x,drv=0,gridsize=401,range.x=range(x),
                     truncate=TRUE)
 {
    # Set preliminary values:
-    
+
    n <- length(x)
    a <- range.x[1]
    b <- range.x[2]
@@ -279,7 +277,7 @@ densDPI <- function(x,drv=0,gridsize=401,range.x=range(x),
                                    range.x=c(a,b),binned=TRUE)
       hHat <- (-1/(sqrt(pi)*psi2hat*n))^(1/3)
    }
-   
+
    if (drv==0)
    {
       alpha <- (2*(sqrt(2)*scalest)^9/(7*n))^(1/9)
@@ -312,7 +310,7 @@ densDPI <- function(x,drv=0,gridsize=401,range.x=range(x),
                                    range.x=c(a,b),binned=TRUE)
       hHat <- (15/(8*sqrt(pi)*psi8hat*n))^(1/9)
    }
-   
+
    return(hHat)
 }
 

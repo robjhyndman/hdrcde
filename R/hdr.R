@@ -41,7 +41,6 @@
 #' @examples
 #' # Old faithful eruption duration times
 #' hdr(faithful$eruptions)
-#'
 #' @export hdr
 hdr <- function(x=NULL, prob=c(50,95,99), den=NULL, h=hdrbw(BoxCox(x,lambda),mean(prob)), lambda=1, nn=5000, all.modes=FALSE)
 {
@@ -182,14 +181,12 @@ function(den,falpha)
 #' \bold{86}, 343-353.
 #' @keywords smooth distribution hplot
 #' @examples
-#'
 #' # Old faithful eruption duration times
 #' hdr.den(faithful$eruptions)
 #'
 #' # Simple bimodal example
 #' x <- c(rnorm(100,0,1), rnorm(100,5,1))
 #' hdr.den(x)
-#'
 #' @export hdr.den
 hdr.den <- function(x, prob=c(50,95,99), den, h=hdrbw(BoxCox(x,lambda),mean(prob)),
     lambda=1, xlab=NULL, ylab="Density", ylim=NULL, plot.lines=TRUE, col=2:8,bgcol="gray",legend=FALSE, ...)
