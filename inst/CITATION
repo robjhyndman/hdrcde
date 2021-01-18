@@ -11,7 +11,7 @@ citHeader("To cite the hdrcde package in publications, please use:")
 
 bibentry(bibtype = "Manual",
   title = "{hdrcde}: Highest Density Regions and Conditional Density Estimation",
-  author = "Rob J Hyndman",
+  author = "Rob J Hyndman and Jochen Einbeck and Matthew P Wand",
   year = year,
   note = vers,
-  url = "http://pkg.robjhyndman.com/hdrcde")
+  url = "https://pkg.robjhyndman.com/hdrcde/")
