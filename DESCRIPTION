@@ -4,8 +4,8 @@ Title: Highest Density Regions and Conditional Density Estimation
 Version: 3.4
 Authors@R: c(
   person("Rob", "Hyndman", email="Rob.Hyndman@monash.edu", role=c("aut", "cre", "cph"), comment = c(ORCID = "0000-0002-2140-5352")),
-  person("Jochen", "Einbeck", role=c("ctb"), comment = c(ORCID = "0000-0002-9457-2020")),
-  person("Matthew", "Wand", role=c("ctb"), comment = c(ORCID = "0000-0003-2555-896X")),
+  person("Jochen", "Einbeck", role=c("aut"), comment = c(ORCID = "0000-0002-9457-2020")),
+  person("Matthew", "Wand", role=c("aut"), comment = c(ORCID = "0000-0003-2555-896X")),
   person("Simon", "Carrignon", role="ctb", comment = c(ORCID = "0000-0002-4416-1389")),
   person("Fan", "Cheng", role="ctb", comment = c(ORCID = "0000-0003-0009-3262"))
   )
