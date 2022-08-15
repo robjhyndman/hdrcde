@@ -449,5 +449,5 @@ all_roots <- function (f, interval,
   index <- which(fx2 < 0)
   for (i in index)
     roots <- c(roots, uniroot(f, lower = x[i], upper = x[i+1L], ...)$root)
-  return(roots)
+  return(sort(roots))
 }
