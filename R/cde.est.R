@@ -226,7 +226,7 @@ cde <- function(x, y, deg=0, link="identity", a, b, mean=NULL,
                     kern="gauss",maxit=400,...)
             sum.coef <- sum(abs(junk$eva$coef))
             fits <- try(predict(junk,newdata=as.matrix(x.margin.grid)),silent=TRUE)
-            if(class(fits)!="try-error")
+            if("try-error" %in% class(fits))
             {
                 AIC[i] <- -2 * junk$dp["lk"] + 2 * junk$dp["df2"]
                 GCV[i] <- (-2 * n * junk$dp["lk"])/(n - junk$dp["df2"])^2
