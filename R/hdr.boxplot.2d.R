@@ -215,16 +215,18 @@ den.estimate.2d <- function(x, y, kde.package=c("ash","ks"), h=NULL, xextend=0.1
 
 
 
-#' Alpha
-#'
-#' A simple function to change the opacity of a color
-#' @param  color the name or idea of a R color
-#' @param  alpha a value in [0,1] defining the opacity wanted.
+# Alpha
+#
+# A simple function to change the opacity of a color
+# @param  color the name or idea of a R color
+# @param  alpha a value in [0,1] defining the opacity wanted.
+# @keywords internal
 alpha <- function(color,alpha) rgb(t(col2rgb(color)/255),alpha=alpha)
 
-#' Shades
-#'
-#' A simple function to genarte shade of one color by changing its opacity
-#' @param  color the name or idea of a R color
-#' @param  n number or shades wanted
+# Shades
+#
+# A simple function to genarte shade of one color by changing its opacity
+# @param  color the name or idea of a R color
+# @param  n number or shades wanted
+# @keywords internal
 shades<-function(color,n) sapply(seq(0,1,length.out=n+1),alpha,color=color)[2:(n+1)]
