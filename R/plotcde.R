@@ -4,11 +4,11 @@
 #' univariate density conditional on one covariate.
 #'
 #'
-#' @param x Output from \code{\link{cde}}.
+#' @param x Output from [cde()].
 #' @param firstvar If there is more than one conditioning variable,
-#' \code{firstvar} specifies which variable to fix first.
-#' @param mfrow If there is more than one conditioning variable, \code{mfrow}
-#' is passed to \code{\link[graphics]{par}} before plotting.
+#' `firstvar` specifies which variable to fix first.
+#' @param mfrow If there is more than one conditioning variable, `mfrow`
+#' is passed to [graphics::par()] before plotting.
 #' @param plot.fn Specifies which plotting function to use: "stacked" results
 #' in stacked conditional densities and "hdr" results in highest density
 #' regions.
@@ -17,17 +17,17 @@
 #' conditional densities corresponding to non-negligible marginal densities
 #' will be plotted.
 #' @param \dots Additional arguments to plot.
-#' @return If \code{plot.fn=="stacked"} and there is only one conditioning
+#' @return If `plot.fn=="stacked"` and there is only one conditioning
 #' variable, the function returns the output from
-#' \code{\link[graphics]{persp}}.  If \code{plot.fn=="hdr"} and there is only
+#' [graphics::persp()].  If `plot.fn=="hdr"` and there is only
 #' one conditioning variable, the function returns the output from
-#' \code{\link{hdr.cde}}. When there is more than one conditioning variable,
+#' [hdr.cde()]. When there is more than one conditioning variable,
 #' nothing is returned.
 #' @author Rob J Hyndman
-#' @seealso \code{\link{hdr.cde}}, \code{\link{cde}}, \code{\link{hdr}}
+#' @seealso [hdr.cde()], [cde()], [hdr()]
 #' @references Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
-#' "Estimating and visualizing conditional densities". \emph{Journal of
-#' Computational and Graphical Statistics}, \bold{5}, 315-336.
+#' "Estimating and visualizing conditional densities". *Journal of
+#' Computational and Graphical Statistics*, **5**, 315-336.
 #' @keywords smooth distribution hplot
 #' @examples
 #' faithful.cde <- cde(faithful$waiting,faithful$eruptions,
@@ -251,18 +251,18 @@ stacked.plot <- function(
 #' variable.
 #'
 #' Calculates and plots highest density regions for a conditional density
-#' estimate. Uses output from \code{\link{cde}}.
+#' estimate. Uses output from [cde()].
 #'
 #'
 #' @param den Conditional density in the same format as the output from
-#' \code{\link{cde}}.
+#' [cde()].
 #' @param prob Probability coverage level for HDRs
 #' @param plot Should HDRs be plotted? If FALSE, results are returned.
 #' @param plot.modes Should modes be plotted as well as HDRs?
-#' @param mden Marginal density in the \code{x} direction. When small, the HDRs
+#' @param mden Marginal density in the `x` direction. When small, the HDRs
 #' won't be plotted. Default is uniform so all HDRs are plotted.
 #' @param threshold Threshold for margin density. HDRs are not plotted if the
-#' margin density \code{mden} is lower than this value.
+#' margin density `mden` is lower than this value.
 #' @param nn Number of points to be sampled from each density when estimating
 #' the HDRs.
 #' @param xlim Limits for x-axis.
@@ -277,10 +277,10 @@ stacked.plot <- function(
 #' b gives the HDR endpoints and c gives the probability coverage.}
 #' \item{modes}{estimated mode of each conditional density}
 #' @author Rob J Hyndman
-#' @seealso \code{\link{cde}}, \code{\link{hdr}}
+#' @seealso [cde()], [hdr()]
 #' @references Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
-#' "Estimating and visualizing conditional densities". \emph{Journal of
-#' Computational and Graphical Statistics}, \bold{5}, 315-336.
+#' "Estimating and visualizing conditional densities". *Journal of
+#' Computational and Graphical Statistics*, **5**, 315-336.
 #' @keywords smooth distribution hplot
 #' @examples
 #' faithful.cde <- cde(faithful$waiting,faithful$eruptions)

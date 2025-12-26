@@ -10,7 +10,7 @@ Time series of frequency 365.
 \source{
 Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
 "Estimating and visualizing conditional densities". \emph{Journal of
-Computational and Graphical Statistics}, \bold{5}, 315-336.
+Computational and Graphical Statistics}, \strong{5}, 315-336.
 }
 \usage{
 maxtemp

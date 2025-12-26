@@ -70,15 +70,14 @@ depicted in the plot, otherwise omitted.}
 
 \item{pch}{Plotting character. The default corresponds to small bullets.}
 
-\item{\dots}{Other arguments passed to \code{\link{cde.bandwidths}}.}
+\item{\dots}{Other arguments passed to \code{\link[=cde.bandwidths]{cde.bandwidths()}}.}
 }
 \value{
 A list with the following components: \item{xfix}{Grid of predictor
 values at which the fitted values are calculated.} \item{fitted.values}{A
-\code{[P x length(xfix)]}- matrix with fitted j-th branch in the j-th row
+\code{P} x \code{length(xfix)} matrix with fitted j-th branch in the j-th row
 (\eqn{1 \le j \le P}{1 <=j <=P}) } \item{bandwidths}{A vector with
-bandwidths \code{a} and \code{b}.} \item{density}{A \code{[P x
-length(xfix)]}- matrix with estimated kernel densities. This will only be
+bandwidths \code{a} and \code{b}.} \item{density}{A \verb{[P x length(xfix)]}- matrix with estimated kernel densities. This will only be
 computed if \code{prun=TRUE}.} \item{threshold}{The pruning threshold.}
 }
 \description{
@@ -103,14 +102,14 @@ lane2.fit <- modalreg(lane2$flow, lane2$speed, xfix=(1:55)*40, a=100, b=4)
 Einbeck, J., and Tutz, G. (2006) "Modelling beyond regression
 functions: an application of multimodal regression to speed-flow data".
 \emph{Journal of the Royal Statistical Society, Series C (Applied
-Statistics)}, \bold{55}, 461-475.
+Statistics)}, \strong{55}, 461-475.
 
 Bashtannyk, D.M., and Hyndman, R.J. (2001) "Bandwidth selection for kernel
 conditional density estimation". \emph{Computational Statistics and Data
-Analysis}, \bold{36}(3), 279-298.
+Analysis}, \strong{36}(3), 279-298.
 }
 \seealso{
-\code{\link{cde.bandwidths}}
+\code{\link[=cde.bandwidths]{cde.bandwidths()}}
 }
 \author{
 Jochen Einbeck (2007)

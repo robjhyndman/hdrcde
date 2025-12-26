@@ -32,10 +32,10 @@ cde.bandwidths(
 possibility is "log" which is recommended if degree > 0.}
 
 \item{method}{\describe{
-    \item{method = 1:}{Hyndman-Yao algorithm if deg>0; Bashtannyk-Hyndman algorithm if deg=0;}
-    \item{method = 2:}{Normal reference rules;}
-    \item{method = 3:}{Bashtannyk-Hyndman regression method if deg=0;}
-    \item{method = 4:}{Bashtannyk-Hyndman bootstrap method if deg=0.}
+\item{method = 1:}{Hyndman-Yao algorithm if deg>0; Bashtannyk-Hyndman algorithm if deg=0;}
+\item{method = 2:}{Normal reference rules;}
+\item{method = 3:}{Bashtannyk-Hyndman regression method if deg=0;}
+\item{method = 4:}{Bashtannyk-Hyndman bootstrap method if deg=0.}
 }}
 
 \item{y.margin}{Values in y-space on which conditional density is
@@ -81,18 +81,18 @@ plot(cde(faithful$waiting,faithful$eruptions,a=bands$a,b=bands$b))
 \references{
 Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
 "Estimating and visualizing conditional densities". \emph{Journal of
-Computational and Graphical Statistics}, \bold{5}, 315-336.
+Computational and Graphical Statistics}, \strong{5}, 315-336.
 
 Bashtannyk, D.M., and Hyndman, R.J. (2001) "Bandwidth selection for kernel
 conditional density estimation". \emph{Computational statistics and data
-analysis}, \bold{36}(3), 279-298.
+analysis}, \strong{36}(3), 279-298.
 
 Hyndman, R.J. and Yao, Q. (2002) "Nonparametric estimation and symmetry
 tests for conditional density functions". \emph{Journal of Nonparametric
-Statistics}, \bold{14}(3), 259-278.
+Statistics}, \strong{14}(3), 259-278.
 }
 \seealso{
-\code{\link{cde}}
+\code{\link[=cde]{cde()}}
 }
 \author{
 Rob J Hyndman

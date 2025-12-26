@@ -19,27 +19,27 @@
 #' @param mean Estimated mean of y|x. If present, it will adjust conditional
 #' density to have this mean.
 #' @param x.margin Values in x-space on which conditional density is
-#' calculated. If not specified, an equi-spaced grid of \code{nxmargin} values
+#' calculated. If not specified, an equi-spaced grid of `nxmargin` values
 #' over the range of x is used.  If x is a matrix, x.margin should be a list of
 #' two numerical vectors.
 #' @param y.margin Values in y-space on which conditional density is
-#' calculated. If not specified, an equi-spaced grid of \code{nymargin} values
+#' calculated. If not specified, an equi-spaced grid of `nymargin` values
 #' over the range of y is used.
 #' @param x.name Optional name of x variable used in plots.
 #' @param y.name Optional name of y variable used in plots.
-#' @param use.locfit If TRUE, will use \code{\link[locfit]{locfit}} for
-#' estimation. Otherwise \code{\link[stats]{ksmooth}} is used.
-#' \code{\link[locfit]{locfit}} is used if degree>0 or link not the identity or
-#' the dimension of x is greater than 1 even if \code{use.locfit=FALSE}.
+#' @param use.locfit If TRUE, will use [locfit::locfit()] for
+#' estimation. Otherwise [stats::ksmooth()] is used.
+#' [locfit::locfit()] is used if degree>0 or link not the identity or
+#' the dimension of x is greater than 1 even if `use.locfit=FALSE`.
 #' @param fw If TRUE (default), will use fixed window width estimation.
 #' Otherwise nearest neighbourhood estimation is used. If the dimension of x is
 #' greater than 1, nearest neighbourhood must be used.
 #' @param rescale If TRUE (default), will rescale the conditional densities to
 #' integrate to one.
-#' @param nxmargin Number of values used in \code{x.margin} by default.
-#' @param nymargin Number of values used in \code{y.margin} by default.
+#' @param nxmargin Number of values used in `x.margin` by default.
+#' @param nymargin Number of values used in `y.margin` by default.
 #' @param a.nndefault Default nearest neighbour bandwidth (used only if
-#' \code{fw=FALSE} and \code{a} is missing.).
+#' `fw=FALSE` and `a` is missing.).
 #' @param \dots Additional arguments are passed to locfit.
 #' @return A list with the following components: \item{x}{grid in x direction
 #' on which density evaluated. Equal to x.margin if specified.} \item{y}{grid
@@ -49,18 +49,18 @@
 #' direction.} \item{x.name}{Name of x variable to be used in plots.}
 #' \item{y.name}{Name of y variable to be used in plots.}
 #' @author Rob J Hyndman
-#' @seealso \code{\link{cde.bandwidths}}
+#' @seealso [cde.bandwidths()]
 #' @references Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
-#' "Estimating and visualizing conditional densities". \emph{Journal of
-#' Computational and Graphical Statistics}, \bold{5}, 315-336.
+#' "Estimating and visualizing conditional densities". *Journal of
+#' Computational and Graphical Statistics*, **5**, 315-336.
 #'
 #' Bashtannyk, D.M., and Hyndman, R.J. (2001) "Bandwidth selection for kernel
-#' conditional density estimation". \emph{Computational statistics and data
-#' analysis}, \bold{36}(3), 279-298.
+#' conditional density estimation". *Computational statistics and data
+#' analysis*, **36**(3), 279-298.
 #'
 #' Hyndman, R.J. and Yao, Q. (2002) "Nonparametric estimation and symmetry
-#' tests for conditional density functions". \emph{Journal of Nonparametric
-#' Statistics}, \bold{14}(3), 259-278.
+#' tests for conditional density functions". *Journal of Nonparametric
+#' Statistics*, **14**(3), 259-278.
 #' @keywords smooth distribution hplot
 #' @examples
 #' # Old faithful data

@@ -25,7 +25,7 @@ NULL
 #'
 #' @aliases lane2 lane3
 #' @usage lane2; lane3
-#' @format Two data frames (\code{lane2} and \code{lane3}) each with 1318
+#' @format Two data frames (`lane2` and `lane3`) each with 1318
 #' observations on the following two variables:
 #'  \describe{
 #'    \item{flow}{a numeric vector giving the traffic flow in vehicles per lane per hour.}
@@ -33,12 +33,12 @@ NULL
 #' }
 #' @references Einbeck, J., and Tutz, G. (2006). ``Modelling beyond regression
 #' functions: an application of multimodal regression to speed-flow data''.
-#' \emph{Journal of the Royal Statistical Society, Series C (Applied
-#' Statistics)}, \bold{55}, 461-475.
+#' *Journal of the Royal Statistical Society, Series C (Applied
+#' Statistics)*, **55**, 461-475.
 #' @source Petty, K.F., Noeimi, H., Sanwal, K., Rydzewski, D., Skabardonis, A.,
 #' Varaiya, P., and Al-Deek, H.  (1996). ``The Freeway Service Patrol
 #' Evaluation Project: Database Support Programs, and Accessibility''.
-#' \emph{Transportation Research Part C: Emerging Technologies}, \bold{4},
+#' *Transportation Research Part C: Emerging Technologies*, **4**,
 #' 71-85.
 #'
 #' The data is provided by courtesy of CALIFORNIA PATH, Institute of
@@ -58,8 +58,8 @@ NULL
 #'
 #' @format Time series of frequency 365.
 #' @source Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
-#' "Estimating and visualizing conditional densities". \emph{Journal of
-#' Computational and Graphical Statistics}, \bold{5}, 315-336.
+#' "Estimating and visualizing conditional densities". *Journal of
+#' Computational and Graphical Statistics*, **5**, 315-336.
 #' @keywords datasets
 #' @examples
 #' plot(maxtemp)

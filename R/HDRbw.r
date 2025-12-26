@@ -25,11 +25,11 @@
 #' @return A numerical vector of length 1.
 #' @author Matt Wand
 #' @references Hyndman, R.J. (1996). Computing and graphing highest density
-#' regions.  \emph{The American Statistician}, \bold{50}, 120-126.
+#' regions.  *The American Statistician*, **50**, 120-126.
 #'
 #' Samworth, R.J. and Wand, M.P. (2010). Asymptotics and optimal bandwidth
-#' selection for highest density region estimation.  \emph{The Annals of
-#' Statistics}, \bold{38}, 1767-1792.
+#' selection for highest density region estimation.  *The Annals of
+#' Statistics*, **38**, 1767-1792.
 #' @keywords smooth distribution
 #' @examples
 #' HDRlevelVal <- 0.55

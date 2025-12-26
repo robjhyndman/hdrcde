@@ -24,7 +24,7 @@
 #' @param passes Number of passes through Bashtannyk-Hyndman algorithm.
 #' @param ngrid Number of values of smoothing parameter in grid.
 #' @param min.a Smallest value of a to consider if method=1.
-#' @param ny Number of values to use for y margin if \code{y.margin} is
+#' @param ny Number of values to use for y margin if `y.margin` is
 #' missing.
 #' @param use.sample Used when regression method (3) is chosen.
 #' @param GCV Generalized cross-validation. Used only if method=1 and deg>0. If
@@ -33,21 +33,21 @@
 #' @param b Value of b can be specified only if method=1 and deg>0. For deg=0
 #' or method>1, this argument is ignored.
 #' @param \dots Other arguments control details for individual methods.
-#' @return \item{a}{Window width in \code{x} direction.} \item{b}{Window width
-#' in \code{y} direction.}
+#' @return \item{a}{Window width in `x` direction.} \item{b}{Window width
+#' in `y` direction.}
 #' @author Rob J Hyndman
-#' @seealso \code{\link{cde}}
+#' @seealso [cde()]
 #' @references Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
-#' "Estimating and visualizing conditional densities". \emph{Journal of
-#' Computational and Graphical Statistics}, \bold{5}, 315-336.
+#' "Estimating and visualizing conditional densities". *Journal of
+#' Computational and Graphical Statistics*, **5**, 315-336.
 #'
 #' Bashtannyk, D.M., and Hyndman, R.J. (2001) "Bandwidth selection for kernel
-#' conditional density estimation". \emph{Computational statistics and data
-#' analysis}, \bold{36}(3), 279-298.
+#' conditional density estimation". *Computational statistics and data
+#' analysis*, **36**(3), 279-298.
 #'
 #' Hyndman, R.J. and Yao, Q. (2002) "Nonparametric estimation and symmetry
-#' tests for conditional density functions". \emph{Journal of Nonparametric
-#' Statistics}, \bold{14}(3), 259-278.
+#' tests for conditional density functions". *Journal of Nonparametric
+#' Statistics*, **14**(3), 259-278.
 #' @keywords smooth distribution
 #' @examples
 #' bands <- cde.bandwidths(faithful$waiting,faithful$eruptions,method=2)

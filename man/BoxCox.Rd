@@ -20,14 +20,14 @@ BoxCox() returns a transformation of the input variable using a Box-Cox
 transformation. InvBoxCox() reverses the transformation.
 }
 \details{
-The Box-Cox transformation is given by \deqn{f_\lambda(x) =\frac{x^\lambda -
-1}{\lambda}}{f(x;lambda) = (x^lambda - 1)/lambda} if
-\eqn{\lambda\ne0}{lambda is not equal to 0}. For \eqn{\lambda=0}{lambda=0},
+The Box-Cox transformation is given by
+\deqn{f_{\lambda}(x) =\frac{x^{\lambda} - 1}{\lambda}}{f(x;lambda) = (x^lambda - 1)/lambda}
+if \eqn{\lambda\ne0}{lambda is not equal to 0}. For \eqn{\lambda=0}{lambda=0},
 \deqn{f_0(x) = \log(x).}{f(x;0) = log(x).}
 }
 \references{
 Box, G. E. P. and Cox, D. R. (1964) An analysis of
-transformations. \emph{JRSS B} \bold{26} 211--246.
+transformations. \emph{JRSS B} \strong{26} 211--246.
 }
 \author{
 Rob J Hyndman

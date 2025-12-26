@@ -22,12 +22,11 @@ hdr(
 
 \item{den}{Density of data as list with components \code{x} and \code{y}.
 If omitted, the density is estimated from \code{x} using
-\code{\link[stats]{density}}.}
+\code{\link[stats:density]{stats::density()}}.}
 
 \item{h}{Optional bandwidth for calculation of density.}
 
-\item{lambda}{Box-Cox transformation parameter where \code{0 <= lambda <=
-1}.}
+\item{lambda}{Box-Cox transformation parameter where \eqn{0 \le \lambda \le 1}{0 <= lambda <= 1}.}
 
 \item{nn}{Number of random numbers used in computing f-alpha quantiles.}
 
@@ -57,18 +56,18 @@ hdr(faithful$eruptions)
 }
 \references{
 Hyndman, R.J. (1996) Computing and graphing highest density
-regions. \emph{American Statistician}, \bold{50}, 120-126.
+regions. \emph{American Statistician}, \strong{50}, 120-126.
 
 Samworth, R.J. and Wand, M.P. (2010). Asymptotics and optimal bandwidth
 selection for highest density region estimation.  \emph{The Annals of
-Statistics}, \bold{38}, 1767-1792.
+Statistics}, \strong{38}, 1767-1792.
 
 Wand, M.P., Marron, J S., Ruppert, D. (1991) Transformations in density
 estimation. \emph{Journal of the American Statistical Association},
-\bold{86}, 343-353.
+\strong{86}, 343-353.
 }
 \seealso{
-\code{\link{hdr.den}}, \code{\link{hdr.boxplot}}
+\code{\link[=hdr.den]{hdr.den()}}, \code{\link[=hdr.boxplot]{hdr.boxplot()}}
 }
 \author{
 Rob J Hyndman

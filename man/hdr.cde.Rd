@@ -25,7 +25,7 @@ hdr.cde(
 }
 \arguments{
 \item{den}{Conditional density in the same format as the output from
-\code{\link{cde}}.}
+\code{\link[=cde]{cde()}}.}
 
 \item{prob}{Probability coverage level for HDRs}
 
@@ -65,7 +65,7 @@ b gives the HDR endpoints and c gives the probability coverage.}
 }
 \description{
 Calculates and plots highest density regions for a conditional density
-estimate. Uses output from \code{\link{cde}}.
+estimate. Uses output from \code{\link[=cde]{cde()}}.
 }
 \examples{
 faithful.cde <- cde(faithful$waiting,faithful$eruptions)
@@ -74,10 +74,10 @@ plot(faithful.cde,xlab="Waiting time",ylab="Duration time",plot.fn="hdr")
 \references{
 Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
 "Estimating and visualizing conditional densities". \emph{Journal of
-Computational and Graphical Statistics}, \bold{5}, 315-336.
+Computational and Graphical Statistics}, \strong{5}, 315-336.
 }
 \seealso{
-\code{\link{cde}}, \code{\link{hdr}}
+\code{\link[=cde]{cde()}}, \code{\link[=hdr]{hdr()}}
 }
 \author{
 Rob J Hyndman

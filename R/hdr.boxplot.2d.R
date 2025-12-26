@@ -5,7 +5,7 @@
 #' @rdname hdr.boxplot.2d
 #' @param den Bivariate density estimate (a list with elements x, y and z where
 #' x and y are grid values and z is a matrix of density values). If
-#' \code{NULL}, the density is estimated.
+#' `NULL`, the density is estimated.
 #' @export
 hdr.2d <- function(
   x,
@@ -59,31 +59,31 @@ hdr.2d <- function(
 #' the bivariate HDR boxplot.
 #'
 #' The density is estimated using kernel density estimation. Either
-#' \code{\link[ash]{ash2}} or \code{\link[ks]{kde}} is used to do the
+#' [ash::ash2()] or [ks::kde()] is used to do the
 #' calculations. Then Hyndman's (1996) density quantile algorithm is used to
 #' compute the HDRs.
 #'
-#' \code{hdr.2d} returns an object of class \code{hdr2d} containing all the
+#' `hdr.2d` returns an object of class `hdr2d` containing all the
 #' information needed to compute the HDR contours. This object can be plotted
-#' using \code{plot.hdr2d}.
+#' using `plot.hdr2d`.
 #'
-#' \code{hdr.boxplot.2d} produces a bivariate HDR boxplot. This is a special
-#' case of applying \code{plot.hdr2d} to an object computed using
-#' \code{hdr.2d}.
+#' `hdr.boxplot.2d` produces a bivariate HDR boxplot. This is a special
+#' case of applying `plot.hdr2d` to an object computed using
+#' `hdr.2d`.
 #'
 #' @aliases hdr.boxplot.2d hdr.2d plot.hdr2d
 #' @param x Numeric vector
-#' @param y Numeric vector of same length as \code{x}.
+#' @param y Numeric vector of same length as `x`.
 #' @param prob Probability coverage required for HDRs
 #' @param kde.package Package to be used in calculating the kernel density
-#' estimate when \code{den=NULL}.
-#' @param h Pair of bandwidths passed to either \code{\link[ash]{ash2}} or
-#' \code{\link[ks]{kde}}. If NULL, a reasonable default is used. Ignored if
-#' \code{den} is not \code{NULL}.
-#' @param xextend Proportion of range of \code{x}. The density is estimated on
-#' a grid extended by \code{xextend} beyond the range of \code{x}.
-#' @param yextend Proportion of range of \code{y}. The density is estimated on
-#' a grid extended by \code{yextend} beyond the range of \code{y}.
+#' estimate when `den=NULL`.
+#' @param h Pair of bandwidths passed to either [ash::ash2()] or
+#' [ks::kde()]. If NULL, a reasonable default is used. Ignored if
+#' `den` is not `NULL`.
+#' @param xextend Proportion of range of `x`. The density is estimated on
+#' a grid extended by `xextend` beyond the range of `x`.
+#' @param yextend Proportion of range of `y`. The density is estimated on
+#' a grid extended by `yextend` beyond the range of `y`.
 #' @param xlab Label for x-axis.
 #' @param ylab Label for y-axis.
 #' @param shadecols Colors for shaded regions
@@ -91,9 +91,9 @@ hdr.2d <- function(
 #' @param \dots Other arguments to be passed to plot.
 #' @return Some information about the HDRs is returned. See code for details.
 #' @author Rob J Hyndman
-#' @seealso \code{\link{hdr.boxplot}}
+#' @seealso [hdr.boxplot()]
 #' @references Hyndman, R.J. (1996) Computing and graphing highest density
-#' regions \emph{American Statistician}, \bold{50}, 120-126.
+#' regions *American Statistician*, **50**, 120-126.
 #' @keywords smooth distribution hplot
 #' @examples
 #' x <- c(rnorm(200,0,1),rnorm(200,4,1))
@@ -142,10 +142,10 @@ hdr.boxplot.2d <- function(
   )
 }
 
-#' @param shaded If \code{TRUE}, the HDR contours are shown as shaded regions.
-#' @param show.points If \code{TRUE}, the observations are plotted over the top
+#' @param shaded If `TRUE`, the HDR contours are shown as shaded regions.
+#' @param show.points If `TRUE`, the observations are plotted over the top
 #' of the HDR contours.
-#' @param outside.points If \code{TRUE}, the observations lying outside the
+#' @param outside.points If `TRUE`, the observations lying outside the
 #' largest HDR are shown.
 #' @param pch The plotting character used for observations.
 #' @rdname hdr.boxplot.2d

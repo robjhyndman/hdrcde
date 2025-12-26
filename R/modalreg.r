@@ -6,11 +6,11 @@
 #' Computes multi-modal nonparametric regression curves based on the maxima of
 #' conditional density estimates. The tool for the estimation is the
 #' conditional mean shift as outlined in Einbeck and Tutz (2006).  Estimates of
-#' the conditional modes might fluctuate highly if \code{deg=1}.  Hence,
-#' \code{deg=0} is recommended. For bandwidth selection, the hybrid rule
-#' introduced by Bashtannyk and Hyndman (2001) is employed if \code{deg=0}.
-#' This corresponds to the setting \code{method=1} in function
-#' \code{cde.bandwidths}. For \code{deg=1} automatic bandwidth selection is not
+#' the conditional modes might fluctuate highly if `deg=1`.  Hence,
+#' `deg=0` is recommended. For bandwidth selection, the hybrid rule
+#' introduced by Bashtannyk and Hyndman (2001) is employed if `deg=0`.
+#' This corresponds to the setting `method=1` in function
+#' `cde.bandwidths`. For `deg=1` automatic bandwidth selection is not
 #' supported.
 #'
 #' @param x Numerical vector: the conditioning variable.
@@ -24,21 +24,21 @@
 #' point and branch.
 #' @param P Maximal number of branches.
 #' @param start Character determining how the starting points are selected.
-#' \code{"q"}: proportional to quantiles; \code{"e"}: equidistant; \code{"r"}:
-#' random.  All, \code{"q"}, \code{"e"}, and \code{"r"}, give starting points
-#' which are constant over \code{x}.  As an alternative, the choice \code{"v"}
-#' gives variable starting points, which are equal to \code{"q"} for the
-#' smallest \code{x}, and equal to the previously fitted values for all
-#' subsequent \code{x}.
+#' `"q"`: proportional to quantiles; `"e"`: equidistant; `"r"`:
+#' random.  All, `"q"`, `"e"`, and `"r"`, give starting points
+#' which are constant over `x`.  As an alternative, the choice `"v"`
+#' gives variable starting points, which are equal to `"q"` for the
+#' smallest `x`, and equal to the previously fitted values for all
+#' subsequent `x`.
 #' @param prun Boolean. If TRUE, parts of branches are dismissed (in the
 #' plotted output) where their associated kernel density value falls below the
-#' threshold \code{1/(prun.const*(max(x)-min(x))*(max(y)-min(y)))}.
+#' threshold `1/(prun.const*(max(x)-min(x))*(max(y)-min(y)))`.
 #' @param prun.const Numerical value giving the constant used above (the
 #' higher, the less pruning)
 #' @param plot.type Vector with two elements. The first one is
-#' character-valued, with possible values \code{"p"}, \code{"l"}, and
-#' \code{"n"}.  If equal to \code{"n"}, no plotted output is given at all. If
-#' equal to \code{"p"}, fitted curves are symbolized as points in the graphical
+#' character-valued, with possible values `"p"`, `"l"`, and
+#' `"n"`.  If equal to `"n"`, no plotted output is given at all. If
+#' equal to `"p"`, fitted curves are symbolized as points in the graphical
 #' output, otherwise as lines.  The second vector component is a numerical
 #' value either being 0 or 1. If 1, the position of the starting points is
 #' depicted in the plot, otherwise omitted.
@@ -46,24 +46,24 @@
 #' "main" title of the graphical output, the second one is the label of the
 #' \eqn{x} axis, and the third one the label of the \eqn{y} axis.
 #' @param pch Plotting character. The default corresponds to small bullets.
-#' @param \dots Other arguments passed to \code{\link{cde.bandwidths}}.
+#' @param \dots Other arguments passed to [cde.bandwidths()].
 #' @return A list with the following components: \item{xfix}{Grid of predictor
 #' values at which the fitted values are calculated.} \item{fitted.values}{A
-#' \code{[P x length(xfix)]}- matrix with fitted j-th branch in the j-th row
+#' `P` x `length(xfix)` matrix with fitted j-th branch in the j-th row
 #' (\eqn{1 \le j \le P}{1 <=j <=P}) } \item{bandwidths}{A vector with
-#' bandwidths \code{a} and \code{b}.} \item{density}{A \code{[P x
-#' length(xfix)]}- matrix with estimated kernel densities. This will only be
-#' computed if \code{prun=TRUE}.} \item{threshold}{The pruning threshold.}
+#' bandwidths `a` and `b`.} \item{density}{A `[P x
+#' length(xfix)]`- matrix with estimated kernel densities. This will only be
+#' computed if `prun=TRUE`.} \item{threshold}{The pruning threshold.}
 #' @author Jochen Einbeck (2007)
-#' @seealso \code{\link{cde.bandwidths}}
+#' @seealso [cde.bandwidths()]
 #' @references Einbeck, J., and Tutz, G. (2006) "Modelling beyond regression
 #' functions: an application of multimodal regression to speed-flow data".
-#' \emph{Journal of the Royal Statistical Society, Series C (Applied
-#' Statistics)}, \bold{55}, 461-475.
+#' *Journal of the Royal Statistical Society, Series C (Applied
+#' Statistics)*, **55**, 461-475.
 #'
 #' Bashtannyk, D.M., and Hyndman, R.J. (2001) "Bandwidth selection for kernel
-#' conditional density estimation". \emph{Computational Statistics and Data
-#' Analysis}, \bold{36}(3), 279-298.
+#' conditional density estimation". *Computational Statistics and Data
+#' Analysis*, **36**(3), 279-298.
 #'
 #' @keywords regression nonparametric
 #' @examples

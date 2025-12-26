@@ -4,19 +4,19 @@
 #'
 #'
 #' @param x Numeric vector containing data.
-#' @param den Density of data as list with components \code{x} and \code{y}.
+#' @param den Density of data as list with components `x` and `y`.
 #' @param prob Probability coverage for for HDRs.
 #' @param conf Confidence for limits on HDR.
-#' @return \code{hdrconf} returns list containing the following components:
+#' @return `hdrconf` returns list containing the following components:
 #' \item{hdr}{Highest density regions} \item{hdr.lo}{Highest density regions
 #' corresponding to lower confidence limit.} \item{hdr.hi}{Highest density
 #' regions corresponding to upper confidence limit.} \item{falpha}{Values of
 #' \eqn{f_\alpha}{f[alpha]} corresponding to HDRs.} \item{falpha.ci}{Values of
 #' \eqn{f_\alpha}{f[alpha]} corresponding to lower and upper limits.}
 #' @author Rob J Hyndman
-#' @seealso \code{\link{hdr}}, \code{\link{plot.hdrconf}}
+#' @seealso [hdr()], [plot.hdrconf()]
 #' @references Hyndman, R.J. (1996) Computing and graphing highest density
-#' regions \emph{American Statistician}, \bold{50}, 120-126.
+#' regions *American Statistician*, **50**, 120-126.
 #' @keywords smooth distribution
 #' @examples
 #' x <- c(rnorm(100,0,1),rnorm(100,4,1))

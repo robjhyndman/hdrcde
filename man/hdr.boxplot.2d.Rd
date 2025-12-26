@@ -58,8 +58,8 @@ x and y are grid values and z is a matrix of density values). If
 \item{kde.package}{Package to be used in calculating the kernel density
 estimate when \code{den=NULL}.}
 
-\item{h}{Pair of bandwidths passed to either \code{\link[ash]{ash2}} or
-\code{\link[ks]{kde}}. If NULL, a reasonable default is used. Ignored if
+\item{h}{Pair of bandwidths passed to either \code{\link[ash:ash2]{ash::ash2()}} or
+\code{\link[ks:kde]{ks::kde()}}. If NULL, a reasonable default is used. Ignored if
 \code{den} is not \code{NULL}.}
 
 \item{xextend}{Proportion of range of \code{x}. The density is estimated on
@@ -97,7 +97,7 @@ the bivariate HDR boxplot.
 }
 \details{
 The density is estimated using kernel density estimation. Either
-\code{\link[ash]{ash2}} or \code{\link[ks]{kde}} is used to do the
+\code{\link[ash:ash2]{ash::ash2()}} or \code{\link[ks:kde]{ks::kde()}} is used to do the
 calculations. Then Hyndman's (1996) density quantile algorithm is used to
 compute the HDRs.
 
@@ -119,10 +119,10 @@ plot(hdrinfo, pointcol="red", show.points=TRUE, pch=3)
 }
 \references{
 Hyndman, R.J. (1996) Computing and graphing highest density
-regions \emph{American Statistician}, \bold{50}, 120-126.
+regions \emph{American Statistician}, \strong{50}, 120-126.
 }
 \seealso{
-\code{\link{hdr.boxplot}}
+\code{\link[=hdr.boxplot]{hdr.boxplot()}}
 }
 \author{
 Rob J Hyndman

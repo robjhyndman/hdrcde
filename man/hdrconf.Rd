@@ -44,10 +44,10 @@ for(conf in c(50,95))
 }
 \references{
 Hyndman, R.J. (1996) Computing and graphing highest density
-regions \emph{American Statistician}, \bold{50}, 120-126.
+regions \emph{American Statistician}, \strong{50}, 120-126.
 }
 \seealso{
-\code{\link{hdr}}, \code{\link{plot.hdrconf}}
+\code{\link[=hdr]{hdr()}}, \code{\link[=plot.hdrconf]{plot.hdrconf()}}
 }
 \author{
 Rob J Hyndman

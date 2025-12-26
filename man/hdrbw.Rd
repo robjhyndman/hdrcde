@@ -40,11 +40,11 @@ HDRhat <- hdr.den(x,prob=100*(1-HDRlevelVal),h=hHDR)
 }
 \references{
 Hyndman, R.J. (1996). Computing and graphing highest density
-regions.  \emph{The American Statistician}, \bold{50}, 120-126.
+regions.  \emph{The American Statistician}, \strong{50}, 120-126.
 
 Samworth, R.J. and Wand, M.P. (2010). Asymptotics and optimal bandwidth
 selection for highest density region estimation.  \emph{The Annals of
-Statistics}, \bold{38}, 1767-1792.
+Statistics}, \strong{38}, 1767-1792.
 }
 \author{
 Matt Wand

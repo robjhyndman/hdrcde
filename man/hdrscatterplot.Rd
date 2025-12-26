@@ -26,7 +26,7 @@ estimate when \code{den=NULL}.}
 \item{noutliers}{Number of outliers to be labelled. By default, all points
 outside the largest HDR are labelled.}
 
-\item{label}{Label of outliers of same length as \code{x} and \code{y}. By default, all outliers are labelled as the row index of the point \code{(x, y)}.}
+\item{label}{Label of outliers of same length as \code{x} and \code{y}. By default, all outliers are labelled as the row index of the point \verb{(x, y)}.}
 }
 \description{
 Produces a scatterplot where the points are coloured according to the
@@ -34,7 +34,7 @@ bivariate HDRs in which they fall.
 }
 \details{
 The bivariate density is estimated using kernel density estimation. Either
-\code{\link[ash]{ash2}} or \code{\link[ks]{kde}} is used to do the
+\code{\link[ash:ash2]{ash::ash2()}} or \code{\link[ks:kde]{ks::kde()}} is used to do the
 calculations. Then Hyndman's (1996) density quantile algorithm is used to
 compute the HDRs. The scatterplot of (x,y) is created where the points are
 coloured according to which HDR they fall. A ggplot object is returned.
@@ -46,7 +46,7 @@ hdrscatterplot(x, y)
 hdrscatterplot(x, y, label = paste0("p", 1:length(x)))
 }
 \seealso{
-\code{\link{hdr.boxplot.2d}}
+\code{\link[=hdr.boxplot.2d]{hdr.boxplot.2d()}}
 }
 \author{
 Rob J Hyndman

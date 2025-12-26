@@ -6,21 +6,21 @@
 #' bivariate HDRs in which they fall.
 #'
 #' The bivariate density is estimated using kernel density estimation. Either
-#' \code{\link[ash]{ash2}} or \code{\link[ks]{kde}} is used to do the
+#' [ash::ash2()] or [ks::kde()] is used to do the
 #' calculations. Then Hyndman's (1996) density quantile algorithm is used to
 #' compute the HDRs. The scatterplot of (x,y) is created where the points are
 #' coloured according to which HDR they fall. A ggplot object is returned.
 #'
 #' @param x Numeric vector or matrix with 2 columns.
-#' @param y Numeric vector of same length as \code{x}.
+#' @param y Numeric vector of same length as `x`.
 #' @param levels Percentage coverage for HDRs
 #' @param kde.package Package to be used in calculating the kernel density
-#' estimate when \code{den=NULL}.
+#' estimate when `den=NULL`.
 #' @param noutliers Number of outliers to be labelled. By default, all points
 #' outside the largest HDR are labelled.
-#' @param label Label of outliers of same length as \code{x} and \code{y}. By default, all outliers are labelled as the row index of the point \code{(x, y)}.
+#' @param label Label of outliers of same length as `x` and `y`. By default, all outliers are labelled as the row index of the point `(x, y)`.
 #' @author Rob J Hyndman
-#' @seealso \code{\link{hdr.boxplot.2d}}
+#' @seealso [hdr.boxplot.2d()]
 #' @keywords smooth distribution hplot
 #' @examples
 #' x <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))

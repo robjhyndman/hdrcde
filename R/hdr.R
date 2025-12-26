@@ -2,41 +2,40 @@
 #'
 #' Calculates highest density regions in one dimension
 #'
-#' Either \code{x} or \code{den} must be provided. When \code{x} is provided,
+#' Either `x` or `den` must be provided. When `x` is provided,
 #' the density is estimated using kernel density estimation. A Box-Cox
-#' transformation is used if \code{lambda!=1}, as described in Wand, Marron and
+#' transformation is used if `lambda!=1`, as described in Wand, Marron and
 #' Ruppert (1991). This allows the density estimate to be non-zero only on the
-#' positive real line. The default kernel bandwidth \code{h} is selected using
+#' positive real line. The default kernel bandwidth `h` is selected using
 #' the algorithm of Samworth and Wand (2010).
 #'
 #' Hyndman's (1996) density quantile algorithm is used for calculation.
 #'
-#' @param x Numeric vector containing data. If \code{x} is missing then
-#' \code{den} must be provided, and the HDR is computed from the given density.
+#' @param x Numeric vector containing data. If `x` is missing then
+#' `den` must be provided, and the HDR is computed from the given density.
 #' @param prob Probability coverage required for HDRs
-#' @param den Density of data as list with components \code{x} and \code{y}.
-#' If omitted, the density is estimated from \code{x} using
-#' \code{\link[stats]{density}}.
+#' @param den Density of data as list with components `x` and `y`.
+#' If omitted, the density is estimated from `x` using
+#' [stats::density()].
 #' @param h Optional bandwidth for calculation of density.
-#' @param lambda Box-Cox transformation parameter where \code{0 <= lambda <=
-#' 1}.
+#' @param lambda Box-Cox transformation parameter where \eqn{0 \le \lambda \le 1}{0 <= lambda <= 1}.
 #' @param nn Number of random numbers used in computing f-alpha quantiles.
 #' @param all.modes Return all local modes or just the global mode?
 #' @return A list of three components: \item{hdr}{The endpoints of each interval
 #' in each HDR} \item{mode}{The estimated mode of the density.}
 #' \item{falpha}{The value of the density at the boundaries of each HDR.}
 #' @author Rob J Hyndman
-#' @seealso \code{\link{hdr.den}}, \code{\link{hdr.boxplot}}
+#' @seealso [hdr.den()], [hdr.boxplot()]
 #' @references Hyndman, R.J. (1996) Computing and graphing highest density
-#' regions. \emph{American Statistician}, \bold{50}, 120-126.
+#' regions. *American Statistician*, **50**, 120-126.
 #'
 #' Samworth, R.J. and Wand, M.P. (2010). Asymptotics and optimal bandwidth
-#' selection for highest density region estimation.  \emph{The Annals of
-#' Statistics}, \bold{38}, 1767-1792.
+#' selection for highest density region estimation.  *The Annals of
+#' Statistics*, **38**, 1767-1792.
 #'
 #' Wand, M.P., Marron, J S., Ruppert, D. (1991) Transformations in density
-#' estimation. \emph{Journal of the American Statistical Association},
-#' \bold{86}, 343-353.
+#' estimation. *Journal of the American Statistical Association*,
+#' **86**, 343-353.
 #' @keywords smooth distribution
 #' @examples
 #' # Old faithful eruption duration times
@@ -153,48 +152,47 @@ hdr <- function(
 #'
 #' Plots univariate density with highest density regions displayed
 #'
-#' Either \code{x} or \code{den} must be provided. When \code{x} is provided,
+#' Either `x` or `den` must be provided. When `x` is provided,
 #' the density is estimated using kernel density estimation. A Box-Cox
-#' transformation is used if \code{lambda!=1}, as described in Wand, Marron and
+#' transformation is used if `lambda!=1`, as described in Wand, Marron and
 #' Ruppert (1991). This allows the density estimate to be non-zero only on the
-#' positive real line. The default kernel bandwidth \code{h} is selected using
+#' positive real line. The default kernel bandwidth `h` is selected using
 #' the algorithm of Samworth and Wand (2010).
 #'
 #' Hyndman's (1996) density quantile algorithm is used for calculation.
 #'
-#' @param x Numeric vector containing data. If \code{x} is missing then
-#' \code{den} must be provided, and the HDR is computed from the given density.
+#' @param x Numeric vector containing data. If `x` is missing then
+#' `den` must be provided, and the HDR is computed from the given density.
 #' @param prob Probability coverage required for HDRs
-#' @param den Density of data as list with components \code{x} and \code{y}.
-#' If omitted, the density is estimated from \code{x} using
-#' \code{\link[stats]{density}}.
+#' @param den Density of data as list with components `x` and `y`.
+#' If omitted, the density is estimated from `x` using
+#' [stats::density()].
 #' @param h Optional bandwidth for calculation of density.
-#' @param lambda Box-Cox transformation parameter where \code{0 <= lambda <=
-#' 1}.
+#' @param lambda Box-Cox transformation parameter where \eqn{0 \le \lambda \le 1}{0 <= lambda <= 1}.
 #' @param xlab Label for x-axis.
 #' @param ylab Label for y-axis.
 #' @param ylim Limits for y-axis.
-#' @param plot.lines If \code{TRUE}, will show how the HDRs are determined
+#' @param plot.lines If `TRUE`, will show how the HDRs are determined
 #' using lines.
 #' @param col Colours for regions.
-#' @param bgcol Colours for the background behind the boxes. Default \code{"gray"}, if \code{NULL} no box is drawn.
-#' @param legend If \code{TRUE} add a legend on the right of the boxes.
+#' @param bgcol Colours for the background behind the boxes. Default `"gray"`, if `NULL` no box is drawn.
+#' @param legend If `TRUE` add a legend on the right of the boxes.
 #' @param \dots Other arguments passed to plot.
 #' @return a list of three components: \item{hdr}{The endpoints of each interval
 #' in each HDR} \item{mode}{The estimated mode of the density.}
 #' \item{falpha}{The value of the density at the boundaries of each HDR.}
 #' @author Rob J Hyndman
-#' @seealso \code{\link{hdr}}, \code{\link{hdr.boxplot}}
+#' @seealso [hdr()], [hdr.boxplot()]
 #' @references Hyndman, R.J. (1996) Computing and graphing highest density
-#' regions. \emph{American Statistician}, \bold{50}, 120-126.
+#' regions. *American Statistician*, **50**, 120-126.
 #'
 #' Samworth, R.J. and Wand, M.P. (2010). Asymptotics and optimal bandwidth
-#' selection for highest density region estimation.  \emph{The Annals of
-#' Statistics}, \bold{38}, 1767-1792.
+#' selection for highest density region estimation.  *The Annals of
+#' Statistics*, **38**, 1767-1792.
 #'
 #' Wand, M.P., Marron, J S., Ruppert, D. (1991) Transformations in density
-#' estimation. \emph{Journal of the American Statistical Association},
-#' \bold{86}, 343-353.
+#' estimation. *Journal of the American Statistical Association*,
+#' **86**, 343-353.
 #' @keywords smooth distribution hplot
 #' @examples
 #' # Old faithful eruption duration times
@@ -315,19 +313,18 @@ hdr.den <- function(
 #' Calculates and plots a univariate highest density regions boxplot.
 #'
 #' The density is estimated using kernel density estimation. A Box-Cox
-#' transformation is used if \code{lambda!=1}, as described in Wand, Marron and
+#' transformation is used if `lambda!=1`, as described in Wand, Marron and
 #' Ruppert (1991). This allows the density estimate to be non-zero only on the
-#' positive real line. The default kernel bandwidth \code{h} is selected using
+#' positive real line. The default kernel bandwidth `h` is selected using
 #' the algorithm of Samworth and Wand (2010).
 #'
 #' Hyndman's (1996) density quantile algorithm is used for calculation.
 #'
 #' @param x Numeric vector containing data or a list containing several vectors.
 #' @param prob Probability coverage required for HDRs
-#' \code{\link[stats]{density}}.
+#' [stats::density()].
 #' @param h Optional bandwidth for calculation of density.
-#' @param lambda Box-Cox transformation parameter where \code{0 <= lambda <=
-#' 1}.
+#' @param lambda Box-Cox transformation parameter where \eqn{0 \le \lambda \le 1}{0 <= lambda <= 1}.
 #' @param boxlabels Label for each box plotted.
 #' @param col Colours for regions of each box.
 #' @param main Overall title for the plot.
@@ -335,22 +332,22 @@ hdr.den <- function(
 #' @param ylab Label for y-axis.
 #' @param pch Plotting character.
 #' @param border Width of border of box.
-#' @param outline If not <code>TRUE</code>, the outliers are not drawn.
+#' @param outline If not `TRUE`, the outliers are not drawn.
 #' @param space The space between each box, between 0 and 0.5.
 #' @param \dots Other arguments passed to plot.
 #' @return nothing.
 #' @author Rob J Hyndman
-#' @seealso \code{\link{hdr.boxplot.2d}}, \code{\link{hdr}}, \code{\link{hdr.den}}
+#' @seealso [hdr.boxplot.2d()], [hdr()], [hdr.den()]
 #' @references Hyndman, R.J. (1996) Computing and graphing highest density
-#' regions. \emph{American Statistician}, \bold{50}, 120-126.
+#' regions. *American Statistician*, **50**, 120-126.
 #'
 #' Samworth, R.J. and Wand, M.P. (2010). Asymptotics and optimal bandwidth
-#' selection for highest density region estimation.  \emph{The Annals of
-#' Statistics}, \bold{38}, 1767-1792.
+#' selection for highest density region estimation.  *The Annals of
+#' Statistics*, **38**, 1767-1792.
 #'
 #' Wand, M.P., Marron, J S., Ruppert, D. (1991) Transformations in density
-#' estimation. \emph{Journal of the American Statistical Association},
-#' \bold{86}, 343-353.
+#' estimation. *Journal of the American Statistical Association*,
+#' **86**, 343-353.
 #' @keywords smooth distribution hplot
 #' @examples
 #' # Old faithful eruption duration times
@@ -505,9 +502,9 @@ tdensity <- function(x, bw = "SJ", lambda = 1) {
 #' BoxCox() returns a transformation of the input variable using a Box-Cox
 #' transformation. InvBoxCox() reverses the transformation.
 #'
-#' The Box-Cox transformation is given by \deqn{f_\lambda(x) =\frac{x^\lambda -
-#' 1}{\lambda}}{f(x;lambda) = (x^lambda - 1)/lambda} if
-#' \eqn{\lambda\ne0}{lambda is not equal to 0}. For \eqn{\lambda=0}{lambda=0},
+#' The Box-Cox transformation is given by 
+#' \deqn{f_{\lambda}(x) =\frac{x^{\lambda} - 1}{\lambda}}{f(x;lambda) = (x^lambda - 1)/lambda} 
+#' if \eqn{\lambda\ne0}{lambda is not equal to 0}. For \eqn{\lambda=0}{lambda=0},
 #' \deqn{f_0(x) = \log(x).}{f(x;0) = log(x).}
 #'
 #' @aliases BoxCox InvBoxCox
@@ -516,7 +513,7 @@ tdensity <- function(x, bw = "SJ", lambda = 1) {
 #' @return a numeric vector of the same length as x.
 #' @author Rob J Hyndman
 #' @references Box, G. E. P. and Cox, D. R. (1964) An analysis of
-#' transformations. \emph{JRSS B} \bold{26} 211--246.
+#' transformations. *JRSS B* **26** 211--246.
 #' @keywords math
 #' @export BoxCox
 BoxCox <- function(x, lambda) {

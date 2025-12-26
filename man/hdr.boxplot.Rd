@@ -25,12 +25,11 @@ hdr.boxplot(
 \item{x}{Numeric vector containing data or a list containing several vectors.}
 
 \item{prob}{Probability coverage required for HDRs
-\code{\link[stats]{density}}.}
+\code{\link[stats:density]{stats::density()}}.}
 
 \item{h}{Optional bandwidth for calculation of density.}
 
-\item{lambda}{Box-Cox transformation parameter where \code{0 <= lambda <=
-1}.}
+\item{lambda}{Box-Cox transformation parameter where \eqn{0 \le \lambda \le 1}{0 <= lambda <= 1}.}
 
 \item{boxlabels}{Label for each box plotted.}
 
@@ -46,7 +45,7 @@ hdr.boxplot(
 
 \item{border}{Width of border of box.}
 
-\item{outline}{If not <code>TRUE</code>, the outliers are not drawn.}
+\item{outline}{If not \code{TRUE}, the outliers are not drawn.}
 
 \item{space}{The space between each box, between 0 and 0.5.}
 
@@ -86,18 +85,18 @@ hdr.boxplot(x,lambda=0)
 }
 \references{
 Hyndman, R.J. (1996) Computing and graphing highest density
-regions. \emph{American Statistician}, \bold{50}, 120-126.
+regions. \emph{American Statistician}, \strong{50}, 120-126.
 
 Samworth, R.J. and Wand, M.P. (2010). Asymptotics and optimal bandwidth
 selection for highest density region estimation.  \emph{The Annals of
-Statistics}, \bold{38}, 1767-1792.
+Statistics}, \strong{38}, 1767-1792.
 
 Wand, M.P., Marron, J S., Ruppert, D. (1991) Transformations in density
 estimation. \emph{Journal of the American Statistical Association},
-\bold{86}, 343-353.
+\strong{86}, 343-353.
 }
 \seealso{
-\code{\link{hdr.boxplot.2d}}, \code{\link{hdr}}, \code{\link{hdr.den}}
+\code{\link[=hdr.boxplot.2d]{hdr.boxplot.2d()}}, \code{\link[=hdr]{hdr()}}, \code{\link[=hdr.den]{hdr.den()}}
 }
 \author{
 Rob J Hyndman

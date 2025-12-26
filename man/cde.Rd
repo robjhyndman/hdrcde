@@ -55,9 +55,9 @@ over the range of y is used.}
 
 \item{y.name}{Optional name of y variable used in plots.}
 
-\item{use.locfit}{If TRUE, will use \code{\link[locfit]{locfit}} for
-estimation. Otherwise \code{\link[stats]{ksmooth}} is used.
-\code{\link[locfit]{locfit}} is used if degree>0 or link not the identity or
+\item{use.locfit}{If TRUE, will use \code{\link[locfit:locfit]{locfit::locfit()}} for
+estimation. Otherwise \code{\link[stats:ksmooth]{stats::ksmooth()}} is used.
+\code{\link[locfit:locfit]{locfit::locfit()}} is used if degree>0 or link not the identity or
 the dimension of x is greater than 1 even if \code{use.locfit=FALSE}.}
 
 \item{fw}{If TRUE (default), will use fixed window width estimation.
@@ -118,18 +118,18 @@ plot(maxtemp.cde)
 \references{
 Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
 "Estimating and visualizing conditional densities". \emph{Journal of
-Computational and Graphical Statistics}, \bold{5}, 315-336.
+Computational and Graphical Statistics}, \strong{5}, 315-336.
 
 Bashtannyk, D.M., and Hyndman, R.J. (2001) "Bandwidth selection for kernel
 conditional density estimation". \emph{Computational statistics and data
-analysis}, \bold{36}(3), 279-298.
+analysis}, \strong{36}(3), 279-298.
 
 Hyndman, R.J. and Yao, Q. (2002) "Nonparametric estimation and symmetry
 tests for conditional density functions". \emph{Journal of Nonparametric
-Statistics}, \bold{14}(3), 259-278.
+Statistics}, \strong{14}(3), 259-278.
 }
 \seealso{
-\code{\link{cde.bandwidths}}
+\code{\link[=cde.bandwidths]{cde.bandwidths()}}
 }
 \author{
 Rob J Hyndman

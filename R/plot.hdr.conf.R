@@ -3,14 +3,14 @@
 #' Plots Highest Density Regions with confidence intervals.
 #'
 #'
-#' @param x Output from \code{hdrconf}.
-#' @param den Density of data as list with components \code{x} and \code{y}.
+#' @param x Output from `hdrconf`.
+#' @param den Density of data as list with components `x` and `y`.
 #' @param \dots Other arguments are passed to plot.
 #' @return None
 #' @author Rob J Hyndman
-#' @seealso \code{\link{hdrconf}}
+#' @seealso [hdrconf()]
 #' @references Hyndman, R.J. (1996) Computing and graphing highest density
-#' regions \emph{American Statistician}, \bold{50}, 120-126.
+#' regions *American Statistician*, **50**, 120-126.
 #' @keywords smooth distribution hplot
 #' @examples
 #' x <- c(rnorm(100,0,1),rnorm(100,4,1))

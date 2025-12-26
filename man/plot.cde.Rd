@@ -15,13 +15,13 @@
 )
 }
 \arguments{
-\item{x}{Output from \code{\link{cde}}.}
+\item{x}{Output from \code{\link[=cde]{cde()}}.}
 
 \item{firstvar}{If there is more than one conditioning variable,
 \code{firstvar} specifies which variable to fix first.}
 
 \item{mfrow}{If there is more than one conditioning variable, \code{mfrow}
-is passed to \code{\link[graphics]{par}} before plotting.}
+is passed to \code{\link[graphics:par]{graphics::par()}} before plotting.}
 
 \item{plot.fn}{Specifies which plotting function to use: "stacked" results
 in stacked conditional densities and "hdr" results in highest density
@@ -38,9 +38,9 @@ will be plotted.}
 \value{
 If \code{plot.fn=="stacked"} and there is only one conditioning
 variable, the function returns the output from
-\code{\link[graphics]{persp}}.  If \code{plot.fn=="hdr"} and there is only
+\code{\link[graphics:persp]{graphics::persp()}}.  If \code{plot.fn=="hdr"} and there is only
 one conditioning variable, the function returns the output from
-\code{\link{hdr.cde}}. When there is more than one conditioning variable,
+\code{\link[=hdr.cde]{hdr.cde()}}. When there is more than one conditioning variable,
 nothing is returned.
 }
 \description{
@@ -56,10 +56,10 @@ plot(faithful.cde,plot.fn="hdr")
 \references{
 Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
 "Estimating and visualizing conditional densities". \emph{Journal of
-Computational and Graphical Statistics}, \bold{5}, 315-336.
+Computational and Graphical Statistics}, \strong{5}, 315-336.
 }
 \seealso{
-\code{\link{hdr.cde}}, \code{\link{cde}}, \code{\link{hdr}}
+\code{\link[=hdr.cde]{hdr.cde()}}, \code{\link[=cde]{cde()}}, \code{\link[=hdr]{hdr()}}
 }
 \author{
 Rob J Hyndman
