@@ -79,7 +79,7 @@ function (x, y, xfix = seq(min(x), max(x), l = 50), a, b, deg = 0,
     if (missing(a) || missing(b)){
         if (deg==0){
            if (!missing(a) || !missing(b)){
-              cat("Warning: If either a or b is missing for deg=0, then both bandwidths are selected automatically. \n")
+              warning("If either a or b is missing for deg=0, then both bandwidths are selected automatically.")
            }
            h <- cde.bandwidths(x, y, method = 1, deg = 0, ...)
         }
