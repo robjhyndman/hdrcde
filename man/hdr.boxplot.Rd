@@ -6,11 +6,11 @@
 \usage{
 hdr.boxplot(
   x,
-  prob = c(99, 50),
+  prob = c(0.99, 0.5),
   h = hdrbw(BoxCox(x, lambda), mean(prob)),
   lambda = 1,
   boxlabels = "",
-  col = gray((9:1)/10),
+  col = rev(gray(seq(9)/10)),
   main = "",
   xlab = "",
   ylab = "",

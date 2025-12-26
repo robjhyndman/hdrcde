@@ -6,7 +6,7 @@
 \usage{
 hdr(
   x = NULL,
-  prob = c(50, 95, 99),
+  prob = c(0.5, 0.95, 0.99),
   den = NULL,
   h = hdrbw(BoxCox(x, lambda), mean(prob)),
   lambda = 1,
