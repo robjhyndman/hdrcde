@@ -82,7 +82,10 @@ hdr <- function(
   } else {
     mode <- falpha$mode
   }
-  return(list(hdr = hdr.store, mode = mode, falpha = falpha$falpha))
+  return(structure(
+    list(hdr = hdr.store, mode = mode, falpha = falpha$falpha, level = rev(prob)),
+    class = "hdr"
+  ))
 }
 
 calc.falpha <- function(x = NULL, den, alpha, nn = 5000) {
@@ -552,4 +555,21 @@ all_roots <- function(
     roots <- c(roots, uniroot(f, lower = x[i], upper = x[i + 1L], ...)$root)
   }
   return(sort(roots))
+}
+
+#' @export
+print.hdr <- function(x, ...) {
+  cat("Highest Density Regions\n")
+  for(i in rev(seq_len(nrow(x$hdr)))) {
+    cat(paste0("  ", x$level[i], "%:"))
+    intervals <- matrix(na.omit(x$hdr[i, ]), ncol = 2, byrow = TRUE)
+    for(j in seq_len(nrow(intervals))) {
+      cat(sprintf(" [%.4f, %.4f]", intervals[j, 1], intervals[j, 2]))
+      cat(ifelse(j < nrow(intervals), ",", "\n"))
+    }
+  }
+  cat("\nf-alpha values: ")
+  cat(sprintf("%.4f", x$falpha))
+  cat("\nMode: ")
+  cat(sprintf("%.4f", x$mode))
 }
