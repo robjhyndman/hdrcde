@@ -74,7 +74,6 @@ cde.bandwidths <- function(x,y,deg=0,link="identity",method=1,y.margin,passes=2,
         bands <- cdeband.rules(x,y,deg=deg,link=link,...)
         if(!is.null(b))
             bands$b <- b
-        print(paste("Initial values: a=",round(bands$a,3),"  b=",round(bands$b,3)),sep="")
         if(is.null(min.a))
             min.a <- 0.2*bands$a
         a.grid <- bands$a*seq(min.a/bands$a,2,l=ngrid)
@@ -103,7 +102,6 @@ function(x,y,method=1,y.margin,sdlinear=FALSE,xden="normal",penalty=4,
     else
     {
         firstbands <- bands <- cdeband.rules0(x,y,sdlinear=sdlinear,xden=xden,modified=modified,k=k)
-        print(paste("Initial values: a=",round(bands$a,3),"  b=",round(bands$b,3)),sep="")
 
         for(i in 1:passes)
         {
@@ -369,17 +367,14 @@ CDEband.Mbh <- function(x,y,a.grid,b,y.margin,deg=deg,link=link,GCV=TRUE)
 {
     na <- length(a.grid)
     q <- numeric(na)
-    cat("\n Trying a=")
     for(i in 1:na)
     {
-        cat(round(a.grid[i],3)," ")
         junk <- cde(x,y,a=a.grid[i],b=b,x.margin=0,y.margin=y.margin,deg=deg,link=link)
         if(GCV)
             q[i] <- junk$GCV
         else
             q[i] <- junk$AIC
     }
-    cat("\n")
     idx <- (1:na)[q==min(q,na.rm=TRUE)]
     idx <- idx[!is.na(idx)]
     if(idx==1 | idx==na)
@@ -421,7 +416,7 @@ CDEband.Mbh <- function(x,y,a.grid,b,y.margin,deg=deg,link=link,GCV=TRUE)
     }
     else
         x.margin <- sort(sample(x,nx))
-    fit.grid <- approx(x,fits,xout=x.margin,rule=2)$y  # Quicker than predict and works when constant model used.
+    fit.grid <- suppressWarnings(approx(x,fits,xout=x.margin,rule=2)$y)  # Quicker than predict and works when constant model used.
     truecde <- list(x=x.margin,y=y.margin,z=matrix(NA,nx,ny))
     for(i in 1:nx)
         truecde$z[i,] <- dnorm(y.margin,fit.grid[i],rse)
@@ -448,8 +443,7 @@ CDEband.Mbh <- function(x,y,a.grid,b,y.margin,deg=deg,link=link,GCV=TRUE)
     nb <- length(b.grid)
     delta <- y.margin[2]-y.margin[1]
     imse <- matrix(NA,na,nb)
-    cat("\n Trying (a,b)=")
-
+    
     ## First pass
 
     for(i in 1:na)
@@ -458,7 +452,6 @@ CDEband.Mbh <- function(x,y,a.grid,b,y.margin,deg=deg,link=link,GCV=TRUE)
         for(j in 1:nb)
         {
             b <- b.grid[j]
-            cat("(",round(a,3),",",round(b,3),") ",sep="")
             for(k in 1:3)
             {
                 bootcde <- cde(x,bootsamples[,k],deg=0,link="identity",a=a,b=b,x.margin=x.margin,y.margin=y.margin)
@@ -467,7 +460,7 @@ CDEband.Mbh <- function(x,y,a.grid,b,y.margin,deg=deg,link=link,GCV=TRUE)
             imse[i,j] <- mean(diff.cde[1:3])
         }
     }
-    cat("\n")
+    
 
     ## Second pass near minimum
 
@@ -483,7 +476,6 @@ CDEband.Mbh <- function(x,y,a.grid,b,y.margin,deg=deg,link=link,GCV=TRUE)
         for(j in idx.b)
         {
             b <- b.grid[j]
-            cat("(",round(a,3),",",round(b,3),") ",sep="")
             for(k in 4:m)
             {
                 bootcde <- cde(x,bootsamples[,k],deg=0,link="identity",a=a,b=b,x.margin=x.margin,y.margin=y.margin)
@@ -492,7 +484,7 @@ CDEband.Mbh <- function(x,y,a.grid,b,y.margin,deg=deg,link=link,GCV=TRUE)
             imse[i,j] <- (3*imse[i,j] + (m-3)*mean(diff.cde[4:m]))/m
         }
     }
-    cat("\n")
+    
 
     # Find minimum on grid
     idx <- (imse==min(imse))
@@ -560,10 +552,8 @@ CDEband.regress <- function(x, y, a.grid, b, y.margin, penalty=4, tol=0.999)
     v <- Kernel(y,y.margin,b)
     na <- length(a.grid)
     q <- numeric(na)
-    cat("\n Trying a=")
     for(i in 1:na)
     {
-        cat(round(a.grid[i],3)," ")
         w <- Kernel(x,x,a.grid[i])
         row.sum <- apply(w,1,sum)
         w <- w  / matrix(rep(row.sum,n),ncol=n)
@@ -580,7 +570,6 @@ CDEband.regress <- function(x, y, a.grid, b, y.margin, penalty=4, tol=0.999)
 #            q[i] <- mean(apply(junk,1,sum)*pen)
 #        }
     }
-    cat("\n")
     idx <- (1:na)[q==min(q)]
     if(idx==1 | idx==na)
     {

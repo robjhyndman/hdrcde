@@ -139,10 +139,7 @@ function (x, y, xfix = seq(min(x), max(x), l = 50), a, b, deg = 0,
               }
             save.regression[p, i] <- current.regression
         }
-        if (i%%10 == 0)
-            cat(i, "..")
     }
-    cat("\n")
 
     # Pruning
     span.area <- (max(x) - min(x)) * (max(y) - min(y))
