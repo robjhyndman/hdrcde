@@ -43,7 +43,7 @@
 #' @export hdr
 hdr <- function(
   x = NULL,
-  prob = c(50, 95, 99),
+  prob = c(0.50, 0.95, 0.99),
   den = NULL,
   h = hdrbw(BoxCox(x, lambda), mean(prob)),
   lambda = 1,
@@ -56,16 +56,19 @@ hdr <- function(
       stop("Insufficient data")
     }
   }
+  if (all(prob > 1)) {
+    prob <- prob / 100
+  }
   if (is.null(den)) {
     den <- tdensity(x, bw = h, lambda = lambda)
   }
-  alpha <- sort(1 - prob / 100)
+  alpha <- sort(1 - prob)
   falpha <- calc.falpha(x, den, alpha, nn = nn)
   hdr.store <- matrix(NA, length(alpha), 100)
-  for (i in 1:length(alpha)) {
+  for (i in seq_along(alpha)) {
     junk <- hdr.ends(den, falpha$falpha[i])$hdr
     if (length(junk) > 100) {
-      junk <- junk[1:100]
+      junk <- junk[seq(100)]
       warning("Too many sub-intervals. Only the first 50 returned.")
     }
     hdr.store[i, ] <- c(junk, rep(NA, 100 - length(junk)))
@@ -76,6 +79,9 @@ hdr <- function(
   if (all.modes) {
     y <- c(0, den$y, 0)
     n <- length(y)
+    if (n < 3) {
+      stop("Not enough density values to compute modes")
+    }
     idx <- ((y[2:(n - 1)] > y[1:(n - 2)]) & (y[2:(n - 1)] > y[3:n])) |
       (den$y == max(den$y))
     mode <- den$x[idx]
@@ -205,7 +211,7 @@ hdr.ends <- function(den, falpha) {
 #' @export hdr.den
 hdr.den <- function(
   x,
-  prob = c(50, 95, 99),
+  prob = c(0.50, 0.95, 0.99),
   den,
   h = hdrbw(BoxCox(x, lambda), mean(prob)),
   lambda = 1,
@@ -218,6 +224,9 @@ hdr.den <- function(
   legend = FALSE,
   ...
 ) {
+  if (all(prob > 1)) {
+    prob <- prob / 100
+  }
   if (missing(den)) {
     den <- tdensity(x, bw = h, lambda = lambda)
   } else if (missing(x)) {
@@ -275,9 +284,9 @@ hdr.den <- function(
   }
 
   if (plot.lines) {
-    for (i in 1:nregions) {
+    for (i in seq(nregions)) {
       abline(h = hd$falpha[i], col = col[i], lty = 2)
-      for (j in 1:length(hd$hdr[i, ])) {
+      for (j in seq_along(hd$hdr[i, ])) {
         lines(
           rep(hd$hdr[i, j], 2),
           c(stepy * (i - nregions), hd$falpha[i]),
@@ -287,7 +296,7 @@ hdr.den <- function(
       }
     }
   }
-  for (i in 1:nregions) {
+  for (i in seq(nregions)) {
     add.hdr(
       hd$hdr[i, ],
       (i - nregions - 0.5) * stepy,
@@ -300,7 +309,7 @@ hdr.den <- function(
     rightlim = apply(hd$hdr, 1, function(i) i[length(i[!is.na(i)])])
     text(
       rightlim,
-      ((1:nregions) - nregions - 0.5) * stepy,
+      (seq(nregions) - nregions - 0.5) * stepy,
       label = paste0(rownames(hd$hdr), " HDR"),
       cex = .8,
       pos = 4
@@ -369,11 +378,11 @@ hdr.den <- function(
 #' @export hdr.boxplot
 hdr.boxplot <- function(
   x,
-  prob = c(99, 50),
+  prob = c(0.99, 0.50),
   h = hdrbw(BoxCox(x, lambda), mean(prob)),
   lambda = 1,
   boxlabels = "",
-  col = gray((9:1) / 10),
+  col = rev(gray(seq(9) / 10)),
   main = "",
   xlab = "",
   ylab = "",
@@ -385,6 +394,9 @@ hdr.boxplot <- function(
 ) {
   if (!is.list(x)) {
     x <- list(x)
+  }
+  if (all(prob > 1)) {
+    prob <- prob / 100
   }
   prob <- -sort(-prob)
   nplots <- length(x)
@@ -448,18 +460,20 @@ hdr.boxplot <- function(
 }
 
 
-hdr.box <- function(x, prob = c(99, 50), h, lambda, ...) {
+hdr.box <- function(x, prob = c(0.99, 0.50), h, lambda, ...) {
   # Does all the calculations for an HDR boxplot of x and returns
   # the endpoints of the HDR sub-intervals and the mode in a list.
   # Called by hdr.boxplot().
-
+  if (all(prob > 1)) {
+    prob <- prob / 100
+  }
   r <- diff(range(x))
   if (r > 0) {
     den <- tdensity(x, bw = h, lambda)
-    info <- calc.falpha(x, den, 1 - prob / 100)
+    info <- calc.falpha(x, den, 1 - prob)
   }
   hdrlist <- list()
-  for (i in 1:length(prob)) {
+  for (i in seq_along(prob)) {
     if (r > 0) {
       hdrlist[[i]] <- hdr.ends(den, info$falpha[i])$hdr
     } else {
@@ -503,8 +517,8 @@ tdensity <- function(x, bw = "SJ", lambda = 1) {
 #' BoxCox() returns a transformation of the input variable using a Box-Cox
 #' transformation. InvBoxCox() reverses the transformation.
 #'
-#' The Box-Cox transformation is given by 
-#' \deqn{f_{\lambda}(x) =\frac{x^{\lambda} - 1}{\lambda}}{f(x;lambda) = (x^lambda - 1)/lambda} 
+#' The Box-Cox transformation is given by
+#' \deqn{f_{\lambda}(x) =\frac{x^{\lambda} - 1}{\lambda}}{f(x;lambda) = (x^lambda - 1)/lambda}
 #' if \eqn{\lambda\ne0}{lambda is not equal to 0}. For \eqn{\lambda=0}{lambda=0},
 #' \deqn{f_0(x) = \log(x).}{f(x;0) = log(x).}
 #'
