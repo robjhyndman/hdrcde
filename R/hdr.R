@@ -581,7 +581,7 @@ print.hdr <- function(x, ...) {
   cat("Highest Density Regions\n")
   for (i in rev(seq_len(nrow(x$hdr)))) {
     cat(paste0("  ", x$level[i], "%:"))
-    intervals <- matrix(na.omit(x$hdr[i, ]), ncol = 2, byrow = TRUE)
+    intervals <- matrix(stats::na.omit(x$hdr[i, ]), ncol = 2, byrow = TRUE)
     for (j in seq_len(nrow(intervals))) {
       cat(sprintf(" [%.4f, %.4f]", intervals[j, 1], intervals[j, 2]))
       cat(ifelse(j < nrow(intervals), ",", "\n"))
