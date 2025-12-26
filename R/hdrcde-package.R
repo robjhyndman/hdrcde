@@ -13,7 +13,6 @@
 NULL
 
 
-
 #' Speed-Flow data for Californian Freeway
 #'
 #' These are two data sets collected in 1993 on two individual lanes (lane 2
@@ -65,6 +64,3 @@ NULL
 #' @examples
 #' plot(maxtemp)
 "maxtemp"
-
-
-

@@ -1,6 +1,5 @@
 # Scatterplots coloured by HDR regions
 
-
 #' Scatterplot showing bivariate highest density regions
 #'
 #' Produces a scatterplot where the points are coloured according to the
@@ -29,7 +28,14 @@
 #' hdrscatterplot(x, y)
 #' hdrscatterplot(x, y, label = paste0("p", 1:length(x)))
 #' @export hdrscatterplot
-hdrscatterplot <- function(x, y, levels = c(1, 50, 99), kde.package = c("ash", "ks"), noutliers = NULL, label = NULL) {
+hdrscatterplot <- function(
+  x,
+  y,
+  levels = c(1, 50, 99),
+  kde.package = c("ash", "ks"),
+  noutliers = NULL,
+  label = NULL
+) {
   levels <- sort(levels)
   if (missing(y)) {
     data <- x
@@ -43,14 +49,14 @@ hdrscatterplot <- function(x, y, levels = c(1, 50, 99), kde.package = c("ash", "
   den <- hdr.2d(data[, 1], data[, 2], prob = levels, kde.package = kde.package)
 
   region <- numeric(NROW(data)) + 100
-  for (i in seq_along(levels))
+  for (i in seq_along(levels)) {
     region[den$fxy > den$falpha[i]] <- 100 - levels[i]
+  }
   if (is.null(noutliers)) {
     noutliers <- sum(region > max(levels))
   }
 
   noutliers <- min(noutliers, NROW(data))
-
 
   xlim <- diff(range(data[, 1]))
   ylim <- diff(range(data[, 2]))
@@ -58,7 +64,8 @@ hdrscatterplot <- function(x, y, levels = c(1, 50, 99), kde.package = c("ash", "
   # Construct region factor
   levels <- sort(unique(region[region < 100]), decreasing = TRUE)
   levels <- c(levels, 100)
-  data$Region <- factor(region,
+  data$Region <- factor(
+    region,
     levels = levels,
     labels = c(paste(head(levels, -1)), ">99")
   )
@@ -74,24 +81,35 @@ hdrscatterplot <- function(x, y, levels = c(1, 50, 99), kde.package = c("ash", "
 
   p <- ggplot2::ggplot(data, ggplot2::aes_string(vnames[1], vnames[2])) +
     ggplot2::geom_point(ggplot2::aes_string(col = "Region"))
-  p <- p + ggplot2::scale_colour_manual(
-    name = "HDRs",
-    breaks = c(paste(head(sort(levels), -1)), ">99"),
-    values = c(RColorBrewer::brewer.pal(length(levels), "YlOrRd")[-1], "#000000")
-  )
+  p <- p +
+    ggplot2::scale_colour_manual(
+      name = "HDRs",
+      breaks = c(paste(head(sort(levels), -1)), ">99"),
+      values = c(
+        RColorBrewer::brewer.pal(length(levels), "YlOrRd")[-1],
+        "#000000"
+      )
+    )
 
   # Show outliers
   if (is.null(label)) {
     label <- rownames(data)[outliers]
   } else {
-    if (length(label) != nrow(data)) stop("The length of label is not the same as x and y!")
+    if (length(label) != nrow(data)) {
+      stop("The length of label is not the same as x and y!")
+    }
     label <- label[ord[outliers]]
   }
   if (noutliers > 0) {
-    p <- p + ggplot2::annotate("text",
-      x = data[outliers, 1] + xlim / 50, y = data[outliers, 2] + ylim / 50,
-      label = label, col = "blue", cex = 2.5
-    )
+    p <- p +
+      ggplot2::annotate(
+        "text",
+        x = data[outliers, 1] + xlim / 50,
+        y = data[outliers, 2] + ylim / 50,
+        label = label,
+        col = "blue",
+        cex = 2.5
+      )
   }
   return(p)
 }
