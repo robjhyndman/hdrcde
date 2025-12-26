@@ -89,71 +89,76 @@ hdr <- function(
     mode <- falpha$mode
   }
   return(structure(
-    list(hdr = hdr.store, mode = mode, falpha = falpha$falpha, level = rev(prob)),
+    list(
+      hdr = hdr.store,
+      mode = mode,
+      falpha = falpha$falpha,
+      level = rev(prob)
+    ),
     class = "hdr"
   ))
 }
 
 calc.falpha <- function(x = NULL, den, alpha, nn = 5000) {
-    # Calculates falpha needed to compute HDR of density den.
-    # Also finds approximate mode.
-    # Input: den = density on grid.
-    #          x = independent observations on den
-    #      alpha = level of HDR
-    # Called by hdr.box and hdr.conf
+  # Calculates falpha needed to compute HDR of density den.
+  # Also finds approximate mode.
+  # Input: den = density on grid.
+  #          x = independent observations on den
+  #      alpha = level of HDR
+  # Called by hdr.box and hdr.conf
 
-    if (is.null(x)) {
-      calc.falpha(
-        x = sample(den$x, nn, replace = TRUE, prob = den$y),
-        den,
-        alpha
-      )
-    } else {
-      fx <- approx(den$x, den$y, xout = x, rule = 2)$y
-      falpha <- quantile(sort(fx), alpha)
-      mode <- den$x[den$y == max(den$y)]
-      return(list(falpha = falpha, mode = mode, fx = fx))
-    }
+  if (is.null(x)) {
+    calc.falpha(
+      x = sample(den$x, nn, replace = TRUE, prob = den$y),
+      den,
+      alpha
+    )
+  } else {
+    fx <- approx(den$x, den$y, xout = x, rule = 2)$y
+    falpha <- quantile(sort(fx), alpha)
+    mode <- den$x[den$y == max(den$y)]
+    return(list(falpha = falpha, mode = mode, fx = fx))
   }
+}
 
 hdr.ends <- function(den, falpha) {
-    miss <- is.na(den$x) # | is.na(den$y)
-    den$x <- den$x[!miss]
-    den$y <- den$y[!miss]
-    n <- length(den$x)
-    # falpha is above the density, so the HDR does not exist
-    if (falpha > max(den$y)) {
-      return(list(falpha = falpha, hdr = NA))
-    }
-    f <- function(x, den, falpha) {
-      approx(den$x, den$y - falpha, xout = x)$y
-    }
-    intercept <- all_roots(
-      f,
-      interval = range(den$x),
-      den = den,
-      falpha = falpha
-    )
-    ni <- length(intercept)
-    # No roots -- use the whole line
-    if (ni == 0L) {
-      intercept <- c(den$x[1], den$x[n])
-    } else {
-      # Check behaviour outside the smallest and largest intercepts
-      if (f(0.5 * (head(intercept, 1) + den$x[1]), den, falpha) > 0) {
-        intercept <- c(den$x[1], intercept)
-      }
-      if (f(0.5 * (tail(intercept, 1) + den$x[n]), den, falpha) > 0) {
-        intercept <- c(intercept, den$x[n])
-      }
-    }
-    # Check behaviour -- not sure if we need this now
-    if (length(intercept) %% 2) {
-      warning("Some HDRs are incomplete")
-    }
-    #  intercept <- sort(unique(intercept))
-    return(list(falpha = falpha, hdr = intercept))
+  miss <- is.na(den$x) # | is.na(den$y)
+  den$x <- den$x[!miss]
+  den$y <- den$y[!miss]
+  n <- length(den$x)
+  # falpha is above the density, so the HDR does not exist
+  if (falpha > max(den$y)) {
+    return(list(falpha = falpha, hdr = NA))
   }
+  f <- function(x, den, falpha) {
+    approx(den$x, den$y - falpha, xout = x)$y
+  }
+  intercept <- all_roots(
+    f,
+    interval = range(den$x),
+    den = den,
+    falpha = falpha
+  )
+  ni <- length(intercept)
+  # No roots -- use the whole line
+  if (ni == 0L) {
+    intercept <- c(den$x[1], den$x[n])
+  } else {
+    # Check behaviour outside the smallest and largest intercepts
+    if (f(0.5 * (head(intercept, 1) + den$x[1]), den, falpha) > 0) {
+      intercept <- c(den$x[1], intercept)
+    }
+    if (f(0.5 * (tail(intercept, 1) + den$x[n]), den, falpha) > 0) {
+      intercept <- c(intercept, den$x[n])
+    }
+  }
+  # Check behaviour -- not sure if we need this now
+  if (length(intercept) %% 2) {
+    warning("Some HDRs are incomplete")
+  }
+  #  intercept <- sort(unique(intercept))
+  return(list(falpha = falpha, hdr = intercept))
+}
 
 #' Density plot with Highest Density Regions
 #'
@@ -574,10 +579,10 @@ all_roots <- function(
 #' @export
 print.hdr <- function(x, ...) {
   cat("Highest Density Regions\n")
-  for(i in rev(seq_len(nrow(x$hdr)))) {
+  for (i in rev(seq_len(nrow(x$hdr)))) {
     cat(paste0("  ", x$level[i], "%:"))
     intervals <- matrix(na.omit(x$hdr[i, ]), ncol = 2, byrow = TRUE)
-    for(j in seq_len(nrow(intervals))) {
+    for (j in seq_len(nrow(intervals))) {
       cat(sprintf(" [%.4f, %.4f]", intervals[j, 1], intervals[j, 2]))
       cat(ifelse(j < nrow(intervals), ",", "\n"))
     }
