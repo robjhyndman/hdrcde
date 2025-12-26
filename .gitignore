@@ -15,3 +15,5 @@ revdep/checks.noindex
 revdep/library.noindex
 revdep/data.sqlite
 revdep/checks.rds
+
+docs
