@@ -231,7 +231,7 @@ hdrcde.filled.contour <- function(
 }
 
 
-"interp.2d" <- function(x, y, z, x0, y0) {
+interp.2d <- function(x, y, z, x0, y0) {
   # Bilinear interpolation of function (x,y,z) onto (x0,y0).
   # Taken from Numerical Recipies (second edition) section 3.6.
   # Called by hdr.2d

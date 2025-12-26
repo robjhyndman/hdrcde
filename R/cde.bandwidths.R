@@ -128,8 +128,7 @@ cde.bandwidths <- function(
 }
 
 
-"cde.bandwidths0" <-
-  function(
+cde.bandwidths0 <- function(
     x,
     y,
     method = 1,
@@ -241,7 +240,7 @@ cde.bandwidths <- function(
     }
   }
 
-"cdeband.rules0" <- function(
+cdeband.rules0 <- function(
   x,
   y,
   sdlinear = FALSE,
@@ -313,7 +312,7 @@ cde.bandwidths <- function(
   return(list(a = a, b = b, p = p, d = d, pl = pl, q = qx))
 }
 
-"cdeband.rules" <- function(x, y, deg, link, mean.order, ...) {
+cdeband.rules <- function(x, y, deg, link, mean.order, ...) {
   if (missing(mean.order)) {
     if (deg == 1) {
       mean.order <- 2
@@ -549,7 +548,7 @@ CDEband.Mbh <- function(
   return(list(a = a, a.grid = a.grid, q = q))
 }
 
-"cdeband.bootstrap" <- function(
+cdeband.bootstrap <- function(
   x,
   y,
   a.grid,
@@ -925,7 +924,7 @@ cdeband.regress <- function(
   return(list(a = a, b = b, a.grid = fulla.grid, q = fullq))
 }
 
-"Lsquare" <- function(x, y, sdlinear = TRUE) {
+Lsquare <- function(x, y, sdlinear = TRUE) {
   # Fits linear model.
   # If sdlinear=TRUE, allows heteroskedastic errors.
 

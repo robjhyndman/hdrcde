@@ -65,7 +65,7 @@ plot.hdrconf <- function(x, den, ...) {
   )
 }
 
-"add.hdr" <- function(hdr, pos, width, col = 2, horiz = FALSE, border = TRUE) {
+add.hdr <- function(hdr, pos, width, col = 2, horiz = FALSE, border = TRUE) {
   ## Routine to add a single HDR on a graph
   ## Called by plot.hdr.conf().
 

@@ -85,8 +85,7 @@ hdr <- function(
   return(list(hdr = hdr.store, mode = mode, falpha = falpha$falpha))
 }
 
-"calc.falpha" <-
-  function(x = NULL, den, alpha, nn = 5000) {
+calc.falpha <- function(x = NULL, den, alpha, nn = 5000) {
     # Calculates falpha needed to compute HDR of density den.
     # Also finds approximate mode.
     # Input: den = density on grid.
@@ -108,8 +107,7 @@ hdr <- function(
     }
   }
 
-"hdr.ends" <-
-  function(den, falpha) {
+hdr.ends <- function(den, falpha) {
     miss <- is.na(den$x) # | is.na(den$y)
     den$x <- den$x[!miss]
     den$y <- den$y[!miss]
@@ -447,7 +445,7 @@ hdr.boxplot <- function(
 }
 
 
-"hdr.box" <- function(x, prob = c(99, 50), h, lambda, ...) {
+hdr.box <- function(x, prob = c(99, 50), h, lambda, ...) {
   # Does all the calculations for an HDR boxplot of x and returns
   # the endpoints of the HDR sub-intervals and the mode in a list.
   # Called by hdr.boxplot().

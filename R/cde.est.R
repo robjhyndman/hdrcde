@@ -347,7 +347,7 @@ Kernel <- function(y, y0, b, type = "epanech") {
   t(K(sweep(matrix(y0, nrow = length(y0), ncol = length(y)), 2, y), 0, b))
 }
 
-"epanech" <- function(x, a, h) {
+epanech <- function(x, a, h) {
   xx <- (x - a) / h
   0.75 * (1 - xx^2) * as.numeric(abs(xx) < 1)
 }
