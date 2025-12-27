@@ -134,7 +134,7 @@ Statistics*, **14**(3), 259-278.
 
 ## See also
 
-[`cde`](https://pkg.robjhyndman.com/hdrcde/reference/cde.md)
+[`cde()`](https://pkg.robjhyndman.com/hdrcde/reference/cde.md)
 
 ## Author
 

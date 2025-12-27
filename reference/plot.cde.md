@@ -23,7 +23,7 @@ plot(
 - x:
 
   Output from
-  [`cde`](https://pkg.robjhyndman.com/hdrcde/reference/cde.md).
+  [`cde()`](https://pkg.robjhyndman.com/hdrcde/reference/cde.md).
 
 - firstvar:
 
@@ -33,7 +33,8 @@ plot(
 - mfrow:
 
   If there is more than one conditioning variable, `mfrow` is passed to
-  [`par`](https://rdrr.io/r/graphics/par.html) before plotting.
+  [`graphics::par()`](https://rdrr.io/r/graphics/par.html) before
+  plotting.
 
 - plot.fn:
 
@@ -58,10 +59,10 @@ plot(
 
 If `plot.fn=="stacked"` and there is only one conditioning variable, the
 function returns the output from
-[`persp`](https://rdrr.io/r/graphics/persp.html). If `plot.fn=="hdr"`
-and there is only one conditioning variable, the function returns the
-output from
-[`hdr.cde`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.cde.md).
+[`graphics::persp()`](https://rdrr.io/r/graphics/persp.html). If
+`plot.fn=="hdr"` and there is only one conditioning variable, the
+function returns the output from
+[`hdr.cde()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.cde.md).
 When there is more than one conditioning variable, nothing is returned.
 
 ## References
@@ -72,9 +73,9 @@ Graphical Statistics*, **5**, 315-336.
 
 ## See also
 
-[`hdr.cde`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.cde.md),
-[`cde`](https://pkg.robjhyndman.com/hdrcde/reference/cde.md),
-[`hdr`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.md)
+[`hdr.cde()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.cde.md),
+[`cde()`](https://pkg.robjhyndman.com/hdrcde/reference/cde.md),
+[`hdr()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.md)
 
 ## Author
 

@@ -34,7 +34,7 @@ Hyndman, R.J. (1996) Computing and graphing highest density regions
 
 ## See also
 
-[`hdrconf`](https://pkg.robjhyndman.com/hdrcde/reference/hdrconf.md)
+[`hdrconf()`](https://pkg.robjhyndman.com/hdrcde/reference/hdrconf.md)
 
 ## Author
 

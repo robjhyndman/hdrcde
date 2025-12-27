@@ -74,9 +74,9 @@ plot(
 - h:
 
   Pair of bandwidths passed to either
-  [`ash2`](https://rdrr.io/pkg/ash/man/ash2.html) or
-  [`kde`](https://rdrr.io/pkg/ks/man/kde.html). If NULL, a reasonable
-  default is used. Ignored if `den` is not `NULL`.
+  [`ash::ash2()`](https://rdrr.io/pkg/ash/man/ash2.html) or
+  [`ks::kde()`](https://rdrr.io/pkg/ks/man/kde.html). If NULL, a
+  reasonable default is used. Ignored if `den` is not `NULL`.
 
 - xextend:
 
@@ -132,8 +132,8 @@ Some information about the HDRs is returned. See code for details.
 ## Details
 
 The density is estimated using kernel density estimation. Either
-[`ash2`](https://rdrr.io/pkg/ash/man/ash2.html) or
-[`kde`](https://rdrr.io/pkg/ks/man/kde.html) is used to do the
+[`ash::ash2()`](https://rdrr.io/pkg/ash/man/ash2.html) or
+[`ks::kde()`](https://rdrr.io/pkg/ks/man/kde.html) is used to do the
 calculations. Then Hyndman's (1996) density quantile algorithm is used
 to compute the HDRs.
 
@@ -151,7 +151,7 @@ Hyndman, R.J. (1996) Computing and graphing highest density regions
 
 ## See also
 
-[`hdr.boxplot`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.boxplot.md)
+[`hdr.boxplot()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.boxplot.md)
 
 ## Author
 

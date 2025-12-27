@@ -1,6 +1,6 @@
 # hdrcde: Highest Density Regions and Conditional Density Estimation
 
-[![R-CMD-check](https://github.com/robjhyndman/hdrcde/actions/workflows/R-CMD-check.yaml/badge.svghttps://github.com/robjhyndman/hdrcde/actions/workflows/R-CMD-check.yaml/badge.svghttps://github.com/robjhyndman/hdrcde/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/robjhyndman/hdrcde/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/robjhyndman/hdrcde/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/robjhyndman/hdrcde/actions/workflows/R-CMD-check.yaml)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/hdrcde)](https://cran.r-project.org/package=hdrcde)
 [![Downloads](http://cranlogs.r-pkg.org/badges/hdrcde)](https://cran.r-project.org/package=hdrcde)
 [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
@@ -49,8 +49,7 @@ You can install the **development** version from
 [Github](https://github.com/robjhyndman/hdrcde)
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("robjhyndman/hdrcde")
+pak::pak("robjhyndman/hdrcde")
 ```
 
 ## License

@@ -7,7 +7,7 @@ Calculates highest density regions in one dimension
 ``` r
 hdr(
   x = NULL,
-  prob = c(50, 95, 99),
+  prob = c(0.5, 0.95, 0.99),
   den = NULL,
   h = hdrbw(BoxCox(x, lambda), mean(prob)),
   lambda = 1,
@@ -31,7 +31,7 @@ hdr(
 
   Density of data as list with components `x` and `y`. If omitted, the
   density is estimated from `x` using
-  [`density`](https://rdrr.io/r/stats/density.html).
+  [`stats::density()`](https://rdrr.io/r/stats/density.html).
 
 - h:
 
@@ -39,7 +39,7 @@ hdr(
 
 - lambda:
 
-  Box-Cox transformation parameter where `0 <= lambda <= 1`.
+  Box-Cox transformation parameter where \\0 \le \lambda \le 1\\.
 
 - nn:
 
@@ -91,8 +91,8 @@ estimation. *Journal of the American Statistical Association*, **86**,
 
 ## See also
 
-[`hdr.den`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.den.md),
-[`hdr.boxplot`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.boxplot.md)
+[`hdr.den()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.den.md),
+[`hdr.boxplot()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.boxplot.md)
 
 ## Author
 
@@ -103,17 +103,11 @@ Rob J Hyndman
 ``` r
 # Old faithful eruption duration times
 hdr(faithful$eruptions)
-#> $hdr
-#>         [,1]     [,2]     [,3]     [,4]
-#> 99% 1.323900 2.819340 3.152073 5.282024
-#> 95% 1.500703 2.520814 3.499998 5.091590
-#> 50% 1.923499 2.024626 3.942343 4.772129
+#> Highest Density Regions
+#>   50%: [1.9235, 2.0246], [3.9423, 4.7721]
+#>   95%: [1.5007, 2.5208], [3.5000, 5.0916]
+#>   99%: [1.3239, 2.8193], [3.1521, 5.2820]
 #> 
-#> $mode
-#> [1] 4.377859
-#> 
-#> $falpha
-#>         1%         5%        50% 
-#> 0.06747107 0.15294868 0.36095127 
-#> 
+#> f-alpha values: 0.3610 0.1529 0.0675
+#> Mode: 4.3779
 ```

@@ -7,7 +7,7 @@ Plots univariate density with highest density regions displayed
 ``` r
 hdr.den(
   x,
-  prob = c(50, 95, 99),
+  prob = c(0.5, 0.95, 0.99),
   den,
   h = hdrbw(BoxCox(x, lambda), mean(prob)),
   lambda = 1,
@@ -37,7 +37,7 @@ hdr.den(
 
   Density of data as list with components `x` and `y`. If omitted, the
   density is estimated from `x` using
-  [`density`](https://rdrr.io/r/stats/density.html).
+  [`stats::density()`](https://rdrr.io/r/stats/density.html).
 
 - h:
 
@@ -45,7 +45,7 @@ hdr.den(
 
 - lambda:
 
-  Box-Cox transformation parameter where `0 <= lambda <= 1`.
+  Box-Cox transformation parameter where \\0 \le \lambda \le 1\\.
 
 - xlab:
 
@@ -122,8 +122,8 @@ estimation. *Journal of the American Statistical Association*, **86**,
 
 ## See also
 
-[`hdr`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.md),
-[`hdr.boxplot`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.boxplot.md)
+[`hdr()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.md),
+[`hdr.boxplot()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.boxplot.md)
 
 ## Author
 
@@ -135,35 +135,23 @@ Rob J Hyndman
 # Old faithful eruption duration times
 hdr.den(faithful$eruptions)
 
-#> $hdr
-#>         [,1]     [,2]     [,3]     [,4]
-#> 99% 1.324490 2.819318 3.151221 5.281620
-#> 95% 1.500907 2.520597 3.499998 5.091225
-#> 50% 1.923120 2.024131 3.944441 4.770834
+#> Highest Density Regions
+#>   50%: [1.9231, 2.0241], [3.9444, 4.7708]
+#>   95%: [1.5009, 2.5206], [3.5000, 5.0912]
+#>   99%: [1.3245, 2.8193], [3.1512, 5.2816]
 #> 
-#> $mode
-#> [1] 4.381316
-#> 
-#> $falpha
-#>         1%         5%        50% 
-#> 0.06701714 0.15263754 0.36215988 
-#> 
+#> f-alpha values: 0.3622 0.1526 0.0670
+#> Mode: 4.3813
 
 # Simple bimodal example
 x <- c(rnorm(100,0,1), rnorm(100,5,1))
 hdr.den(x)
 
-#> $hdr
-#>           [,1]     [,2]     [,3]     [,4]
-#> 99% -2.2258674 7.392098       NA       NA
-#> 95% -1.5177624 6.710389       NA       NA
-#> 50% -0.4300996 1.090166 4.339578 5.606155
+#> Highest Density Regions
+#>   50%: [-0.4301, 1.0902], [4.3396, 5.6062]
+#>   95%: [-1.5178, 6.7104], [NA, NA]
+#>   99%: [-2.2259, 7.3921], [NA, NA]
 #> 
-#> $mode
-#> [1] 0.2941976
-#> 
-#> $falpha
-#>         1%         5%        50% 
-#> 0.04932224 0.07409836 0.10574658 
-#> 
+#> f-alpha values: 0.1057 0.0741 0.0493
+#> Mode: 0.2942
 ```

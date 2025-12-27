@@ -25,8 +25,8 @@ a numeric vector of the same length as x.
 
 ## Details
 
-The Box-Cox transformation is given by \$\$f\_\lambda(x)
-=\frac{x^\lambda - 1}{\lambda}\$\$ if \\\lambda\ne0\\. For
+The Box-Cox transformation is given by \$\$f\_{\lambda}(x)
+=\frac{x^{\lambda} - 1}{\lambda}\$\$ if \\\lambda\ne0\\. For
 \\\lambda=0\\, \$\$f_0(x) = \log(x).\$\$
 
 ## References

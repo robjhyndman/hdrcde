@@ -5,7 +5,7 @@ Calculates Highest Density Regions with confidence intervals.
 ## Usage
 
 ``` r
-hdrconf(x, den, prob = 95, conf = 95)
+hdrconf(x, den, prob = 0.9, conf = 0.95)
 ```
 
 ## Arguments
@@ -57,8 +57,8 @@ Hyndman, R.J. (1996) Computing and graphing highest density regions
 
 ## See also
 
-[`hdr`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.md),
-[`plot.hdrconf`](https://pkg.robjhyndman.com/hdrcde/reference/plot.hdrconf.md)
+[`hdr()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.md),
+[`plot.hdrconf()`](https://pkg.robjhyndman.com/hdrcde/reference/plot.hdrconf.md)
 
 ## Author
 

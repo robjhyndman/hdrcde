@@ -2,7 +2,7 @@
 
 Calculates and plots highest density regions for a conditional density
 estimate. Uses output from
-[`cde`](https://pkg.robjhyndman.com/hdrcde/reference/cde.md).
+[`cde()`](https://pkg.robjhyndman.com/hdrcde/reference/cde.md).
 
 ## Usage
 
@@ -31,7 +31,7 @@ hdr.cde(
 - den:
 
   Conditional density in the same format as the output from
-  [`cde`](https://pkg.robjhyndman.com/hdrcde/reference/cde.md).
+  [`cde()`](https://pkg.robjhyndman.com/hdrcde/reference/cde.md).
 
 - prob:
 
@@ -111,8 +111,8 @@ Graphical Statistics*, **5**, 315-336.
 
 ## See also
 
-[`cde`](https://pkg.robjhyndman.com/hdrcde/reference/cde.md),
-[`hdr`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.md)
+[`cde()`](https://pkg.robjhyndman.com/hdrcde/reference/cde.md),
+[`hdr()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.md)
 
 ## Author
 

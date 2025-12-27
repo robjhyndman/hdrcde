@@ -104,7 +104,7 @@ modalreg(
 - ...:
 
   Other arguments passed to
-  [`cde.bandwidths`](https://pkg.robjhyndman.com/hdrcde/reference/cde.bandwidths.md).
+  [`cde.bandwidths()`](https://pkg.robjhyndman.com/hdrcde/reference/cde.bandwidths.md).
 
 ## Value
 
@@ -116,7 +116,7 @@ A list with the following components:
 
 - fitted.values:
 
-  A `[P x length(xfix)]`- matrix with fitted j-th branch in the j-th row
+  A `P` x `length(xfix)` matrix with fitted j-th branch in the j-th row
   (\\1 \le j \le P\\)
 
 - bandwidths:
@@ -156,7 +156,7 @@ Data Analysis*, **36**(3), 279-298.
 
 ## See also
 
-[`cde.bandwidths`](https://pkg.robjhyndman.com/hdrcde/reference/cde.bandwidths.md)
+[`cde.bandwidths()`](https://pkg.robjhyndman.com/hdrcde/reference/cde.bandwidths.md)
 
 ## Author
 

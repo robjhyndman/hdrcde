@@ -84,11 +84,12 @@ cde(
 - use.locfit:
 
   If TRUE, will use
-  [`locfit`](https://rdrr.io/pkg/locfit/man/locfit.html) for estimation.
-  Otherwise [`ksmooth`](https://rdrr.io/r/stats/ksmooth.html) is used.
-  [`locfit`](https://rdrr.io/pkg/locfit/man/locfit.html) is used if
-  degree\>0 or link not the identity or the dimension of x is greater
-  than 1 even if `use.locfit=FALSE`.
+  [`locfit::locfit()`](https://rdrr.io/pkg/locfit/man/locfit.html) for
+  estimation. Otherwise
+  [`stats::ksmooth()`](https://rdrr.io/r/stats/ksmooth.html) is used.
+  [`locfit::locfit()`](https://rdrr.io/pkg/locfit/man/locfit.html) is
+  used if degree\>0 or link not the identity or the dimension of x is
+  greater than 1 even if `use.locfit=FALSE`.
 
 - fw:
 
@@ -176,7 +177,7 @@ Statistics*, **14**(3), 259-278.
 
 ## See also
 
-[`cde.bandwidths`](https://pkg.robjhyndman.com/hdrcde/reference/cde.bandwidths.md)
+[`cde.bandwidths()`](https://pkg.robjhyndman.com/hdrcde/reference/cde.bandwidths.md)
 
 ## Author
 

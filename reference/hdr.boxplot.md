@@ -7,11 +7,11 @@ Calculates and plots a univariate highest density regions boxplot.
 ``` r
 hdr.boxplot(
   x,
-  prob = c(99, 50),
+  prob = c(0.99, 0.5),
   h = hdrbw(BoxCox(x, lambda), mean(prob)),
   lambda = 1,
   boxlabels = "",
-  col = gray((9:1)/10),
+  col = rev(gray(seq(9)/10)),
   main = "",
   xlab = "",
   ylab = "",
@@ -32,7 +32,7 @@ hdr.boxplot(
 - prob:
 
   Probability coverage required for HDRs
-  [`density`](https://rdrr.io/r/stats/density.html).
+  [`stats::density()`](https://rdrr.io/r/stats/density.html).
 
 - h:
 
@@ -40,7 +40,7 @@ hdr.boxplot(
 
 - lambda:
 
-  Box-Cox transformation parameter where `0 <= lambda <= 1`.
+  Box-Cox transformation parameter where \\0 \le \lambda \le 1\\.
 
 - boxlabels:
 
@@ -72,7 +72,7 @@ hdr.boxplot(
 
 - outline:
 
-  If not \<code\>TRUE\</code\>, the outliers are not drawn.
+  If not `TRUE`, the outliers are not drawn.
 
 - space:
 
@@ -111,9 +111,9 @@ estimation. *Journal of the American Statistical Association*, **86**,
 
 ## See also
 
-[`hdr.boxplot.2d`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.boxplot.2d.md),
-[`hdr`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.md),
-[`hdr.den`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.den.md)
+[`hdr.boxplot.2d()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.boxplot.2d.md),
+[`hdr()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.md),
+[`hdr.den()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.den.md)
 
 ## Author
 

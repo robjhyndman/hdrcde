@@ -48,8 +48,8 @@ hdrscatterplot(
 ## Details
 
 The bivariate density is estimated using kernel density estimation.
-Either [`ash2`](https://rdrr.io/pkg/ash/man/ash2.html) or
-[`kde`](https://rdrr.io/pkg/ks/man/kde.html) is used to do the
+Either [`ash::ash2()`](https://rdrr.io/pkg/ash/man/ash2.html) or
+[`ks::kde()`](https://rdrr.io/pkg/ks/man/kde.html) is used to do the
 calculations. Then Hyndman's (1996) density quantile algorithm is used
 to compute the HDRs. The scatterplot of (x,y) is created where the
 points are coloured according to which HDR they fall. A ggplot object is
@@ -57,7 +57,7 @@ returned.
 
 ## See also
 
-[`hdr.boxplot.2d`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.boxplot.2d.md)
+[`hdr.boxplot.2d()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.boxplot.2d.md)
 
 ## Author
 
