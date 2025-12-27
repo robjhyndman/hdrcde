@@ -324,3 +324,16 @@ alpha <- function(color, alpha) rgb(t(col2rgb(color) / 255), alpha = alpha)
 shades <- function(color, n) {
   sapply(seq(0, 1, length.out = n + 1), alpha, color = color)[2:(n + 1)]
 }
+
+#' @export
+print.hdr2d <- function(x, ...) {
+  cat("Bivariate Highest Density Regions:\n")
+  for (i in rev(seq_along(x$alpha))) {
+    cat(paste0("  ", (1 - x$alpha[i]) * 100, "% HDR at f-alpha = "))
+    cat(sprintf("%.4f", x$falpha[i]), "\n")
+  }
+  cat("Mode at (")
+  cat(paste0(sprintf("%.4f", x$mode[1]), ", "))
+  cat(paste0(sprintf("%.4f", x$mode[2]), ")\n"))
+  invisible(x)
+}

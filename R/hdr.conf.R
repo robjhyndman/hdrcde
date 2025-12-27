@@ -34,11 +34,16 @@
 #'   plot(m,den,main=paste(conf,"% HDR from empirical density\n(n=200)"))
 #' }
 #' @export hdrconf
-hdrconf <- function(x, den, prob = 95, conf = 95) {
+hdrconf <- function(x, den, prob = 0.9, conf = 0.95) {
   # Returns hdr with confidence limits
   # Assumes x is a sorted sample from the density den.
-
-  alpha <- 1 - conf / 100
+  if(any(prob > 1)) {
+    prob <- prob / 100
+  }
+  if(any(conf > 1)) {
+    conf <- conf / 100
+  }
+  alpha <- 1 - prob
   info <- calc.falpha(x, den, alpha)
   hdr <- hdr.ends(den, info$falpha)$hdr
   nint <- length(hdr)
@@ -47,7 +52,7 @@ hdrconf <- function(x, den, prob = 95, conf = 95) {
   fprime <- (f2 - info$falpha) / delta
   g <- info$falpha * sum(abs(1 / fprime))
   var.falpha <- alpha * (1 - alpha) / (length(x) * g * g)
-  z <- abs(qnorm(0.5 - conf / 200))
+  z <- abs(qnorm(0.5 - conf / 2))
   falpha.ci <- z * sqrt(var.falpha)
   falpha.ci <- info$falpha + c(-falpha.ci, falpha.ci)
   if (falpha.ci[1] < 0) {
@@ -66,8 +71,32 @@ hdrconf <- function(x, den, prob = 95, conf = 95) {
       hdr.lo = hdr1,
       hdr.hi = hdr2,
       falpha = info$falpha,
-      falpha.ci = falpha.ci
+      falpha.ci = falpha.ci,
+      prob = prob,
+      conf = conf
     ),
     class = "hdrconf"
   ))
+}
+
+#' @export
+print.hdrconf <- function(x, ...) {
+  cat(paste0(x$prob * 100, "%"), "Highest Density Region:")
+  print_intervals(x$hdr)
+  cat(paste0("           ",x$conf * 100, "%"), "Lower Limit:")
+  print_intervals(x$hdr.lo)
+  cat(paste0("           ",x$conf * 100, "%"), "Upper Limit:")
+  print_intervals(x$hdr.hi)
+  cat("\nf-alpha value: ")
+  cat(sprintf("%.4f", x$falpha))
+  cat(paste0("   ", x$conf*100, "% CI: "))
+  print_intervals(x$falpha.ci)
+}
+
+print_intervals <- function(x) {
+  intervals <- matrix(x, ncol = 2, byrow = TRUE)
+  for (j in seq_len(nrow(intervals))) {
+    cat(sprintf(" [%.4f, %.4f]", intervals[j, 1], intervals[j, 2]))
+    cat(ifelse(j < nrow(intervals), ",", "\n"))
+  }
 }

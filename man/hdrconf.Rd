@@ -4,7 +4,7 @@
 \alias{hdrconf}
 \title{HDRs with confidence intervals}
 \usage{
-hdrconf(x, den, prob = 95, conf = 95)
+hdrconf(x, den, prob = 0.9, conf = 0.95)
 }
 \arguments{
 \item{x}{Numeric vector containing data.}

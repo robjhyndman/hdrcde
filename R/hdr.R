@@ -56,7 +56,7 @@ hdr <- function(
       stop("Insufficient data")
     }
   }
-  if (all(prob > 1)) {
+  if (any(prob > 1)) {
     prob <- prob / 100
   }
   if (is.null(den)) {
@@ -229,7 +229,7 @@ hdr.den <- function(
   legend = FALSE,
   ...
 ) {
-  if (all(prob > 1)) {
+  if (any(prob > 1)) {
     prob <- prob / 100
   }
   if (missing(den)) {
@@ -400,7 +400,7 @@ hdr.boxplot <- function(
   if (!is.list(x)) {
     x <- list(x)
   }
-  if (all(prob > 1)) {
+  if (any(prob > 1)) {
     prob <- prob / 100
   }
   prob <- -sort(-prob)
@@ -469,7 +469,7 @@ hdr.box <- function(x, prob = c(0.99, 0.50), h, lambda, ...) {
   # Does all the calculations for an HDR boxplot of x and returns
   # the endpoints of the HDR sub-intervals and the mode in a list.
   # Called by hdr.boxplot().
-  if (all(prob > 1)) {
+  if (any(prob > 1)) {
     prob <- prob / 100
   }
   r <- diff(range(x))
@@ -580,15 +580,11 @@ all_roots <- function(
 print.hdr <- function(x, ...) {
   cat("Highest Density Regions\n")
   for (i in rev(seq_len(nrow(x$hdr)))) {
-    cat(paste0("  ", x$level[i], "%:"))
-    intervals <- matrix(stats::na.omit(x$hdr[i, ]), ncol = 2, byrow = TRUE)
-    for (j in seq_len(nrow(intervals))) {
-      cat(sprintf(" [%.4f, %.4f]", intervals[j, 1], intervals[j, 2]))
-      cat(ifelse(j < nrow(intervals), ",", "\n"))
-    }
+    cat(paste0("  ", x$level[i]*100, "%:"))
+    print_intervals(x$hdr[i,])
   }
   cat("\nf-alpha values: ")
-  cat(sprintf("%.4f", x$falpha))
+  cat(sprintf("%.4f", rev(x$falpha)))
   cat("\nMode: ")
   cat(sprintf("%.4f", x$mode))
 }
