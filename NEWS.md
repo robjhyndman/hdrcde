@@ -38,10 +38,10 @@
   * Updated references for hdrbw().
 
 # hdrcde 2.13
-	* Added color options to hdr.boxplot.2d().
+  * Added color options to hdr.boxplot.2d().
 
 # hdrcde 2.12
-	* Modified hdr(), hdr.boxplot() and hdr.den() to allow a Box-Cox transformation to be used when computing the density. This allows the density estimate to be non-zero only on the positive real line.
+  * Modified hdr(), hdr.boxplot() and hdr.den() to allow a Box-Cox transformation to be used when computing the density. This allows the density estimate to be non-zero only on the positive real line.
 
 # hdrcde 2.11
   * Added hdrbw() from Matt Wand to compute better bandwidths for hdr(), hdr.den() and hdr.boxplot().
