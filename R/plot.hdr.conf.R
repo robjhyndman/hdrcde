@@ -2,7 +2,6 @@
 #'
 #' Plots Highest Density Regions with confidence intervals.
 #'
-#'
 #' @param x Output from `hdrconf`.
 #' @param den Density of data as list with components `x` and `y`.
 #' @param \dots Other arguments are passed to plot.
@@ -17,14 +16,12 @@
 #' den <- density(x,bw=bw.SJ(x))
 #' trueden <- den
 #' trueden$y <- 0.5*(exp(-0.5*(den$x*den$x)) + exp(-0.5*(den$x-4)^2))/sqrt(2*pi)
-#' sortx <- sort(x)
 #'
 #' par(mfcol=c(2,2))
-#' for(conf in c(50,95))
-#' {
-#'   m <- hdrconf(sortx,trueden,conf=conf)
+#' for(conf in c(50,95)) {
+#'   m <- hdrconf(x,trueden,conf=conf)
 #'   plot(m,trueden,main=paste(conf,"% HDR from true density"))
-#'   m <- hdrconf(sortx,den,conf=conf)
+#'   m <- hdrconf(x,den,conf=conf)
 #'   plot(m,den,main=paste(conf,"% HDR from empirical density\n(n=200)"))
 #' }
 #' @name plot.hdrconf

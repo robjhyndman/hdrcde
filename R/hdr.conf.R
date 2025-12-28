@@ -21,18 +21,8 @@
 #' @examples
 #' x <- c(rnorm(100,0,1),rnorm(100,4,1))
 #' den <- density(x,bw=hdrbw(x,50))
-#' trueden <- den
-#' trueden$y <- 0.5*(exp(-0.5*(den$x*den$x)) + exp(-0.5*(den$x-4)^2))/sqrt(2*pi)
-#' sortx <- sort(x)
-#'
-#' par(mfcol=c(2,2))
-#' for(conf in c(50,95))
-#' {
-#'   m <- hdrconf(sortx,trueden,conf=conf)
-#'   plot(m,trueden,main=paste(conf,"% HDR from true density"))
-#'   m <- hdrconf(sortx,den,conf=conf)
-#'   plot(m,den,main=paste(conf,"% HDR from empirical density\n(n=200)"))
-#' }
+#' hdrconf(x, den)
+#' hdrconf(x, den) |> plot(den, main = "50% HDR with 95% CI")
 #' @export hdrconf
 hdrconf <- function(x, den, prob = 0.9, conf = 0.95) {
   # Returns hdr with confidence limits
@@ -89,6 +79,6 @@ print.hdrconf <- function(x, ...) {
   print_intervals(x$hdr.hi)
   cat("\nf-alpha value: ")
   cat(show4(x$falpha))
-  cat(paste0("   ", x$conf*100, "% CI: "))
+  cat(paste0("   ", x$conf*100, "% CI:"))
   print_intervals(x$falpha.ci)
 }
