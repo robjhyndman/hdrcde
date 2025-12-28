@@ -10,11 +10,13 @@ test_that("BoxCox and InvBoxCox are inverses", {
 
 test_that("hdrbw returns positive numeric for faithful data (quick check)", {
   # use a smaller Monte Carlo sample to keep test fast
+  set.seed(1967)
   h <- hdrbw(faithful$eruptions, 0.55)
   expect_equal(h, 0.2155, tolerance = 5e-3)
 })
 
 test_that("hdr and hdr.den return expected structure", {
+  set.seed(1967)
   hd <- hdr(faithful$eruptions, prob = 50)
   expect_type(hd, "list")
   expect_true(all(c("hdr", "mode", "falpha") %in% names(hd)))
@@ -39,6 +41,7 @@ test_that("hdr and hdr.den return expected structure", {
 })
 
 test_that("hdrconf returns hdrconf structure", {
+  set.seed(1967)
   den <- density(
     faithful$eruptions,
     bw = hdrbw(faithful$eruptions, 50, nMChdr = 5000)
