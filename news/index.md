@@ -70,17 +70,15 @@ CRAN release: 2010-04-20
 
 CRAN release: 2010-01-26
 
-``` R
-* Added color options to hdr.boxplot.2d().
-```
+- Added color options to hdr.boxplot.2d().
 
 ## hdrcde 2.12
 
 CRAN release: 2009-10-13
 
-``` R
-* Modified hdr(), hdr.boxplot() and hdr.den() to allow a Box-Cox transformation to be used when computing the density. This allows the density estimate to be non-zero only on the positive real line.
-```
+- Modified hdr(), hdr.boxplot() and hdr.den() to allow a Box-Cox
+  transformation to be used when computing the density. This allows the
+  density estimate to be non-zero only on the positive real line.
 
 ## hdrcde 2.11
 
