@@ -48,10 +48,11 @@ Produces stacked density plots or highest density region plots for a
 univariate density conditional on one covariate.
 }
 \examples{
-faithful.cde <- cde(faithful$waiting,faithful$eruptions,
-	 x.name="Waiting time", y.name="Duration time")
+faithful.cde <- cde(faithful$waiting, faithful$eruptions,
+  x.name = "Waiting time", y.name = "Duration time"
+)
 plot(faithful.cde)
-plot(faithful.cde,plot.fn="hdr")
+plot(faithful.cde, plot.fn = "hdr")
 }
 \references{
 Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)

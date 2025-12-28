@@ -27,10 +27,10 @@ regions corresponding to upper confidence limit.} \item{falpha}{Values of
 Calculates Highest Density Regions with confidence intervals.
 }
 \examples{
-x <- c(rnorm(100,0,1),rnorm(100,4,1))
-den <- density(x,bw=hdrbw(x,50))
-hdrconf(x, den)
-hdrconf(x, den) |> plot(den, main = "50\% HDR with 95\% CI")
+x <- c(rnorm(100, 0, 1), rnorm(100, 4, 1))
+den <- density(x, bw = hdrbw(x, 50))
+hdr_conf <- hdrconf(x, den)
+plot(hdr_conf, den, main = "50\% HDR with 95\% CI")
 }
 \references{
 Hyndman, R.J. (1996) Computing and graphing highest density

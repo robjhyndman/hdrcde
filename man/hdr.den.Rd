@@ -74,7 +74,7 @@ Hyndman's (1996) density quantile algorithm is used for calculation.
 hdr.den(faithful$eruptions)
 
 # Simple bimodal example
-x <- c(rnorm(100,0,1), rnorm(100,5,1))
+x <- c(rnorm(100, 0, 1), rnorm(100, 5, 1))
 hdr.den(x)
 }
 \references{

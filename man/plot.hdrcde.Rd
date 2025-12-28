@@ -53,9 +53,9 @@ None.
 Plots highest density regions continously over some conditioned variable.
 }
 \examples{
-faithful.cde <- cde(faithful$waiting,faithful$eruptions)
-faithful.hdr <- hdr.cde(faithful.cde, prob=c(0.50,0.95), plot = FALSE)
-plot(faithful.hdr,xlab="Waiting time",ylab="Duration time")
+faithful.cde <- cde(faithful$waiting, faithful$eruptions)
+faithful.hdr <- hdr.cde(faithful.cde, prob = c(0.50, 0.95), plot = FALSE)
+plot(faithful.hdr, xlab = "Waiting time", ylab = "Duration time")
 }
 \references{
 Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)

@@ -21,8 +21,8 @@
 #' @examples
 #' x <- c(rnorm(100, 0, 1), rnorm(100, 4, 1))
 #' den <- density(x, bw = hdrbw(x, 50))
-#' hdrconf(x, den)
-#' hdrconf(x, den) |> plot(den, main = "50% HDR with 95% CI")
+#' hdr_conf <- hdrconf(x, den)
+#' plot(hdr_conf, den, main = "50% HDR with 95% CI")
 #' @export hdrconf
 hdrconf <- function(x, den, prob = 0.9, conf = 0.95) {
   # Returns hdr with confidence limits

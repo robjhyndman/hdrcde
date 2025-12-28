@@ -110,12 +110,12 @@ case of applying \code{plot.hdr2d} to an object computed using
 \code{hdr.2d}.
 }
 \examples{
-x <- c(rnorm(200,0,1),rnorm(200,4,1))
-y <- c(rnorm(200,0,1),rnorm(200,4,1))
-hdr.boxplot.2d(x,y)
+x <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))
+y <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))
+hdr.boxplot.2d(x, y)
 
-hdrinfo <- hdr.2d(x,y)
-plot(hdrinfo, pointcol="red", show.points=TRUE, pch=3)
+hdrinfo <- hdr.2d(x, y)
+plot(hdrinfo, pointcol = "red", show.points = TRUE, pch = 3)
 }
 \references{
 Hyndman, R.J. (1996) Computing and graphing highest density
