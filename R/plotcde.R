@@ -246,25 +246,81 @@ stacked.plot <- function(
   invisible(junk)
 }
 
-
 #' Calculate highest density regions continously over some conditioned
 #' variable.
 #'
 #' Calculates and plots highest density regions for a conditional density
 #' estimate. Uses output from [cde()].
 #'
-#'
 #' @param den Conditional density in the same format as the output from
 #' [cde()].
 #' @param prob Probability coverage level for HDRs
 #' @param plot Should HDRs be plotted? If FALSE, results are returned.
+#' @param nn Number of points to be sampled from each density when estimating the HDRs.
+#' @param \dots Other arguments passed to [plot.hdrcde()].
+#' @return \item{hdr}{array (a,b,c) where where a specifies conditioning value,
+#' b gives the HDR endpoints and c gives the probability coverage.}
+#' \item{modes}{estimated mode of each conditional density}
+#' The result is returned invisibly if `plot=TRUE`.
+#' @author Rob J Hyndman
+#' @seealso [plot.hdrcde()], [cde()], 
+#' @references Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
+#' "Estimating and visualizing conditional densities". *Journal of
+#' Computational and Graphical Statistics*, **5**, 315-336.
+#' @keywords smooth distribution hplot
+#' @examples
+#' faithful.cde <- cde(faithful$waiting,faithful$eruptions)
+#' faithful.hdr <- hdr.cde(faithful.cde, prob=c(0.50,0.95))
+#' faithful.hdr
+#' plot(faithful.hdr,xlab="Waiting time",ylab="Duration time")
+#' @export hdr.cde
+hdr.cde <- function(den, prob = c(0.50, 0.95, 0.99), plot = TRUE, nn = 1000, ...) {
+  nx <- nrow(den$z)
+  na <- length(prob)
+  hdrs <- list()
+  modes <- matrix(NA, nx, 4)
+  for (i in seq(nx)) {
+    sumz <- sum(den$z[i, ], na.rm = TRUE)
+    if (!is.na(sumz)) {
+      if (sumz > 0) {
+        hdrs[[i]] <- hdr(
+          den = list(x = den$y, y = den$z[i, ]),
+          prob = prob,
+          nn = nn
+        )
+        hdrs[[i]]$x <- den$x[i]
+      }
+    }
+  }
+  names(hdrs) <- paste("x = ", show4(den$x))
+  hdrs <- structure(hdrs, class = "hdrcde")
+  attributes(hdrs)$xname <- den$xname
+  attributes(hdrs)$yname <- den$yname
+  if (plot) {
+    plot.hdrcde(hdrs, ...)
+    invisible(hdrs)
+  } else {
+    return(hdrs)
+  }
+}
+
+#' @export
+print.hdrcde <- function(x, ...) {
+  cat("HDRs for conditional density estimate\n")
+  cond_x <- show4(unlist(lapply(x, function(z) z$x)))
+  cat("Conditioning values:", paste(cond_x, collapse = ", "), "\n")
+  cat("Levels: ", paste0(sort(100 * x[[1]]$level), "%", collapse = ", "), "\n")
+  invisible(x)
+}
+
+#' Plots highest density regions continously over some conditioned variable.
+#'
+#' @param x Output from [hdr.cde()].
 #' @param plot.modes Should modes be plotted as well as HDRs?
 #' @param mden Marginal density in the `x` direction. When small, the HDRs
 #' won't be plotted. Default is uniform so all HDRs are plotted.
 #' @param threshold Threshold for margin density. HDRs are not plotted if the
 #' margin density `mden` is lower than this value.
-#' @param nn Number of points to be sampled from each density when estimating
-#' the HDRs.
 #' @param xlim Limits for x-axis.
 #' @param ylim Limits for y-axis.
 #' @param xlab Label for x-axis.
@@ -273,27 +329,23 @@ stacked.plot <- function(
 #' @param font Font to be used in plot.
 #' @param cex Size of characters.
 #' @param \dots Other arguments passed to plotting functions.
-#' @return \item{hdr}{array (a,b,c) where where a specifies conditioning value,
-#' b gives the HDR endpoints and c gives the probability coverage.}
-#' \item{modes}{estimated mode of each conditional density}
+#' @return None.
 #' @author Rob J Hyndman
-#' @seealso [cde()], [hdr()]
+#' @seealso [hdr.cde()], [cde()], 
 #' @references Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
 #' "Estimating and visualizing conditional densities". *Journal of
 #' Computational and Graphical Statistics*, **5**, 315-336.
 #' @keywords smooth distribution hplot
 #' @examples
 #' faithful.cde <- cde(faithful$waiting,faithful$eruptions)
-#' plot(faithful.cde,xlab="Waiting time",ylab="Duration time",plot.fn="hdr")
-#' @export hdr.cde
-hdr.cde <- function(
-  den,
-  prob = c(50, 95, 99),
-  plot = TRUE,
+#' faithful.hdr <- hdr.cde(faithful.cde, prob=c(0.50,0.95), plot = FALSE)
+#' plot(faithful.hdr,xlab="Waiting time",ylab="Duration time")
+#' @export
+plot.hdrcde <- function(
+  x,
   plot.modes = TRUE,
-  mden = rep(1, length(den$x)),
+  mden,
   threshold = 0.05,
-  nn = 1000,
   xlim,
   ylim,
   xlab,
@@ -303,35 +355,21 @@ hdr.cde <- function(
   cex = 1,
   ...
 ) {
-  if (missing(ylab)) {
-    ylab <- den$y.name
-  }
   if (missing(xlab)) {
-    xlab <- den$x.name
+    xlab <- attributes(x)$xname
   }
-  if (missing(cex)) {
-    cex = 1
+  if (missing(ylab)) {
+    ylab <- attributes(x)$yname
   }
-  nx <- nrow(den$z)
-  na <- length(prob)
-  hdrr <- list()
-  modes <- matrix(NA, nx, 4)
-  for (i in 1:nx) {
-    sumz <- sum(den$z[i, ], na.rm = TRUE)
-    if (!is.na(sumz)) {
-      if (sumz > 0) {
-        info <- hdr(den = list(x = den$y, y = den$z[i, ]), prob = prob, nn = nn)
-        hdrr[[i]] <- t(info$hdr)
-        modes[i, ] <- c(info$mode, rep(NA, 4 - length(info$mode)))
-      }
-    }
-  }
-  if (!plot) {
-    return(list(hdr = hdrr, modes = modes))
-  }
+  modes <- lapply(x, function(u) c(u$mode, rep(NA, 4 - length(u$mode))))
+  modes <- matrix(unlist(modes), ncol = 4, byrow = TRUE)
+  hdrr <- lapply(x, function(u) t(u$hdr))
   nalpha <- ncol(hdrr[[1]])
   nint <- length(hdrr)
-  x.margin <- den$x
+  x.margin <- unlist(lapply(x, function(z) z$x))
+  if (missing(mden)) {
+    mden <- rep(1, length(x.margin))
+  }
   if (missing(ylim)) {
     ylim <- range(unlist(hdrr), na.rm = TRUE)
   }
@@ -390,5 +428,5 @@ hdr.cde <- function(
       pch = 19
     )
   }
-  invisible(return(list(hdr = hdrr, modes = modes)))
+  invisible()
 }

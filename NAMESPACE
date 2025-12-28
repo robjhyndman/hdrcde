@@ -2,10 +2,12 @@
 
 S3method(plot,cde)
 S3method(plot,hdr2d)
+S3method(plot,hdrcde)
 S3method(plot,hdrconf)
 S3method(print,cde)
 S3method(print,hdr)
 S3method(print,hdr2d)
+S3method(print,hdrcde)
 S3method(print,hdrconf)
 export(BoxCox)
 export(cde)
