@@ -23,8 +23,12 @@ h3,
   color: #ffb81c !important;
 }
 
-.text-muted {
+.nav-text {
   color: #ffb81c !important;
+}
+
+.text-muted:not(.nav-text) {
+  color: #777777 !important;
 }
 
 .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
