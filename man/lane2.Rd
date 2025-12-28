@@ -15,8 +15,8 @@ observations on the following two variables:
 }
 \source{
 Petty, K.F., Noeimi, H., Sanwal, K., Rydzewski, D., Skabardonis, A.,
-Varaiya, P., and Al-Deek, H.  (1996). ``The Freeway Service Patrol
-Evaluation Project: Database Support Programs, and Accessibility''.
+Varaiya, P., and Al-Deek, H.  (1996). "The Freeway Service Patrol
+Evaluation Project: Database Support Programs, and Accessibility".
 \emph{Transportation Research Part C: Emerging Technologies}, \strong{4},
 71-85.
 
@@ -41,8 +41,8 @@ plot(lane2)
 plot(lane3)
 }
 \references{
-Einbeck, J., and Tutz, G. (2006). ``Modelling beyond regression
-functions: an application of multimodal regression to speed-flow data''.
+Einbeck, J., and Tutz, G. (2006). "Modelling beyond regression
+functions: an application of multimodal regression to speed-flow data".
 \emph{Journal of the Royal Statistical Society, Series C (Applied
 Statistics)}, \strong{55}, 461-475.
 }

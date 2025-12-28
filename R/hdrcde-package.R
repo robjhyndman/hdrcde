@@ -31,13 +31,13 @@ NULL
 #'    \item{flow}{a numeric vector giving the traffic flow in vehicles per lane per hour.}
 #'    \item{speed}{a numeric vector giving the speed in miles per hour.}
 #' }
-#' @references Einbeck, J., and Tutz, G. (2006). ``Modelling beyond regression
-#' functions: an application of multimodal regression to speed-flow data''.
+#' @references Einbeck, J., and Tutz, G. (2006). "Modelling beyond regression
+#' functions: an application of multimodal regression to speed-flow data".
 #' *Journal of the Royal Statistical Society, Series C (Applied
 #' Statistics)*, **55**, 461-475.
 #' @source Petty, K.F., Noeimi, H., Sanwal, K., Rydzewski, D., Skabardonis, A.,
-#' Varaiya, P., and Al-Deek, H.  (1996). ``The Freeway Service Patrol
-#' Evaluation Project: Database Support Programs, and Accessibility''.
+#' Varaiya, P., and Al-Deek, H.  (1996). "The Freeway Service Patrol
+#' Evaluation Project: Database Support Programs, and Accessibility".
 #' *Transportation Research Part C: Emerging Technologies*, **4**,
 #' 71-85.
 #'
