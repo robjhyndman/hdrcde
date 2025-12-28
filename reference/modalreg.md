@@ -165,5 +165,5 @@ Jochen Einbeck (2007)
 ## Examples
 
 ``` r
-lane2.fit <- modalreg(lane2$flow, lane2$speed, xfix = (1:55) * 40, a = 100, b = 4)
+lane2.fit <- modalreg(lane2$flow, lane2$speed, xfix = seq(55) * 40, a = 100, b = 4)
 ```

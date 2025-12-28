@@ -40,7 +40,7 @@ plot(
   show.points = FALSE,
   outside.points = FALSE,
   pch = 20,
-  shadecols = gray((length(x$alpha):1)/(length(x$alpha) + 1)),
+  shadecols = gray(rev(seq_along(x$alpha))/(length(x$alpha) + 1)),
   pointcol = 1,
   ...
 )

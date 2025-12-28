@@ -1,6 +1,6 @@
-# Plots highest density regions continously over some conditioned variable.
+# Plots highest density regions continuously over some conditioned variable.
 
-Plots highest density regions continously over some conditioned
+Plots highest density regions continuously over some conditioned
 variable.
 
 ## Usage

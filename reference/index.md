@@ -13,7 +13,7 @@ Functions for estimating and plotting highest density regions
 - [`hdr.boxplot()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.boxplot.md)
   : Highest Density Region Boxplots
 - [`hdr.cde()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.cde.md)
-  : Calculate highest density regions continously over some conditioned
+  : Calculate highest density regions continuously over some conditioned
   variable.
 - [`hdr.den()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.den.md)
   : Density plot with Highest Density Regions
@@ -24,7 +24,7 @@ Functions for estimating and plotting highest density regions
 - [`hdrscatterplot()`](https://pkg.robjhyndman.com/hdrcde/reference/hdrscatterplot.md)
   : Scatterplot showing bivariate highest density regions
 - [`plot(`*`<hdrcde>`*`)`](https://pkg.robjhyndman.com/hdrcde/reference/plot.hdrcde.md)
-  : Plots highest density regions continously over some conditioned
+  : Plots highest density regions continuously over some conditioned
   variable.
 - [`plot(`*`<hdrconf>`*`)`](https://pkg.robjhyndman.com/hdrcde/reference/plot.hdrconf.md)
   : Plot HDRs with confidence intervals
@@ -38,12 +38,12 @@ Functions for estimating and plotting conditional density estimates
 - [`cde.bandwidths()`](https://pkg.robjhyndman.com/hdrcde/reference/cde.bandwidths.md)
   : Bandwidth calculation for conditional density estimation
 - [`hdr.cde()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.cde.md)
-  : Calculate highest density regions continously over some conditioned
+  : Calculate highest density regions continuously over some conditioned
   variable.
 - [`plot(`*`<cde>`*`)`](https://pkg.robjhyndman.com/hdrcde/reference/plot.cde.md)
   : Plots conditional densities
 - [`plot(`*`<hdrcde>`*`)`](https://pkg.robjhyndman.com/hdrcde/reference/plot.hdrcde.md)
-  : Plots highest density regions continously over some conditioned
+  : Plots highest density regions continuously over some conditioned
   variable.
 - [`modalreg()`](https://pkg.robjhyndman.com/hdrcde/reference/modalreg.md)
   : Nonparametric Multimodal Regression

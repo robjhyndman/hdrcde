@@ -1,4 +1,4 @@
-# Calculate highest density regions continously over some conditioned variable.
+# Calculate highest density regions continuously over some conditioned variable.
 
 Calculates and plots highest density regions for a conditional density
 estimate. Uses output from
