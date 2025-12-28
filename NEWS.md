@@ -1,4 +1,9 @@
 # hdrcde (development version)
+  * Added print methods for hdr2d, hdrconf and hdrcde
+  * Added plot method for hdrcde
+  * Improved docs
+  * Added unit tests
+  * Bug fixes and documentation updates
 
 ## Version 3.4
   * Bug fixes and documentation updates
