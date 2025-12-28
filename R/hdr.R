@@ -407,7 +407,7 @@ hdr.boxplot <- function(
   nplots <- length(x)
   junk <- unlist(x)
   ends.list <- list()
-  for (j in 1:nplots) {
+  for (j in seq_len(nplots)) {
     ends.list[[j]] <- hdr.box(x[[j]], prob, h = h, lambda = lambda)
   }
   plot(
@@ -428,17 +428,17 @@ hdr.boxplot <- function(
       boxlabels <- junk
     }
   }
-  axis(1, at = c(1:nplots), labels = boxlabels, tick = FALSE, ...)
+  axis(1, at = seq_len(nplots), labels = boxlabels, tick = FALSE, ...)
 
   sp <- 0.5 - min(max(space, 0), 0.5)
   nint <- length(prob)
   cols <- rep(col, 5)
-  for (j in 1:nplots) {
+  for (j in seq_len(nplots)) {
     xx <- x[[j]]
     ends <- ends.list[[j]]
-    for (i in 1:nint) {
+    for (i in seq_len(nint)) {
       endsi <- ends[[i]]
-      for (k in 1:(length(endsi) / 2)) {
+      for (k in seq_len(length(endsi) / 2)) {
         polygon(
           c(j - sp, j - sp, j + sp, j + sp, j - sp),
           c(
@@ -453,7 +453,7 @@ hdr.boxplot <- function(
         )
       }
     }
-    for (k in 1:length(ends$mode)) {
+    for (k in seq_along(ends$mode)) {
       lines(c(j - 0.35, j + 0.35), rep(ends$mode[k], 2), lty = 1)
     }
     if (outline) {
@@ -463,7 +463,6 @@ hdr.boxplot <- function(
   }
   invisible()
 }
-
 
 hdr.box <- function(x, prob = c(0.99, 0.50), h, lambda, ...) {
   # Does all the calculations for an HDR boxplot of x and returns
@@ -492,7 +491,6 @@ hdr.box <- function(x, prob = c(0.99, 0.50), h, lambda, ...) {
   }
   return(hdrlist)
 }
-
 
 #' @export
 print.hdr <- function(x, ...) {

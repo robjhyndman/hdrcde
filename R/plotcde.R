@@ -81,7 +81,7 @@ plot.cde <- function(
   } else if (max(xlabels) - min(xlabels) > 0.3) {
     xlabels <- round(xlabels, 2)
   }
-  for (i in 1:dimz[firstvar]) {
+  for (i in seq_len(dimz[firstvar])) {
     if (firstvar == 1) {
       small.den$z <- x$z[i, , ]
     } else {
@@ -127,7 +127,7 @@ stacked.plot <- function(
     den$z <- matrix(den$z, nrow = 1)
   }
   nz <- dim(den$z)
-  miss <- (1:length(den$y))[is.na(apply(den$z, length(nz), sum))]
+  miss <- seq_along(den$y)[is.na(apply(den$z, length(nz), sum))]
   if (length(miss) > 0) {
     den$y <- den$y[-miss]
     if (length(nz) == 2) {
@@ -222,11 +222,11 @@ stacked.plot <- function(
   )
   n <- length(den$x)
   if (view[1] > 0) {
-    index <- n:1
+    index <- rev(seq_len(n))
   } else {
-    index <- 1:n
+    index <- seq_len(n)
   }
-  cols <- rep(col, n)[1:n]
+  cols <- rep(col, n)[seq_len(n)]
   maxden <- max(mden)
   for (i in index) {
     if (
@@ -247,7 +247,7 @@ stacked.plot <- function(
   invisible(junk)
 }
 
-#' Calculate highest density regions continously over some conditioned
+#' Calculate highest density regions continuously over some conditioned
 #' variable.
 #'
 #' Calculates and plots highest density regions for a conditional density
@@ -320,7 +320,7 @@ print.hdrcde <- function(x, ...) {
   invisible(x)
 }
 
-#' Plots highest density regions continously over some conditioned variable.
+#' Plots highest density regions continuously over some conditioned variable.
 #'
 #' @param x Output from [hdr.cde()].
 #' @param plot.modes Should modes be plotted as well as HDRs?
@@ -411,10 +411,10 @@ plot.hdrcde <- function(
   cols <- gray((9:1) / 10)
   maxden <- max(mden)
   index <- rep(FALSE, nint)
-  for (j in 1:nint) {
+  for (j in seq_len(nint)) {
     # test if density high enough to plot HDR
     if (mden[j] > threshold * maxden) {
-      for (k in 1:nalpha) {
+      for (k in seq_len(nalpha)) {
         add.hdr(
           hdrr[[j]][, k],
           x.margin[1] + (j - 1) * xwidth,

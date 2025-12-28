@@ -12,7 +12,6 @@
 #' @useDynLib hdrcde, .registration = TRUE
 NULL
 
-
 #' Speed-Flow data for Californian Freeway
 #'
 #' These are two data sets collected in 1993 on two individual lanes (lane 2
@@ -48,7 +47,6 @@ NULL
 #' plot(lane2)
 #' plot(lane3)
 "lane2"
-
 
 #' Daily maximum temperatures in Melbourne, Australia
 #'

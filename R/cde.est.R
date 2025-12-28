@@ -134,7 +134,7 @@ cde <- function(
     if (nx == 1) {
       x.name <- xname
     } else {
-      x.name <- paste(xname, "[,", 1:nx, "]")
+      x.name <- paste(xname, "[,", seq_len(nx), "]")
     }
   } else if (length(x.name) != nx) {
     stop("x.name has wrong length")
@@ -191,12 +191,12 @@ cde <- function(
     x.margin <- NULL
   } else if (is.matrix(x.margin)) {
     # turn it into a list
-    x.margin <- split(c(x.margin), rep(1:nx, rep(nrow(x.margin), nx)))
+    x.margin <- split(c(x.margin), rep(seq_len(nx), rep(nrow(x.margin), nx)))
   } else if (!is.list(x.margin)) {
     # so is a vector
     x.margin <- list(x.margin)
   }
-  for (i in 1:nx) {
+  for (i in seq_len(nx)) {
     if (miss.xmargin) {
       xrange <- range(x[, i])
       x.margin <- c(x.margin, list(seq(xrange[1], xrange[2], l = nxmargin)))
@@ -229,7 +229,7 @@ cde <- function(
   ##### Do the calculations
   oldwarn <- options(warn = -1)
   xrange <- range(x[, 1]) # How to handle multiple x??
-  for (i in 1:dim.cde[1]) {
+  for (i in seq_len(dim.cde[1])) {
     newy <- Kernel(y, y.margin[i], b, type = "normal")
     if (max(abs(newy)) < 1e-20) {
       cde <- c(cde, rep(0, length(x.margin[[1]])))
@@ -282,15 +282,15 @@ cde <- function(
   if (rescale) {
     delta <- y.margin[2] - y.margin[1]
     if (nx == 1) {
-      for (i in 1:dim.cde[2]) {
+      for (i in seq_len(dim.cde[2])) {
         sumz <- sum(z[i, ], na.rm = TRUE)
         if (sumz > 0) {
           z[i, ] <- z[i, ] / sum(z[i, ], na.rm = TRUE)
         }
       }
     } else if (nx == 2) {
-      for (i in 1:dim.cde[2]) {
-        for (j in 1:dim.cde[3]) {
+      for (i in seq_len(dim.cde[2])) {
+        for (j in seq_len(dim.cde[3])) {
           z[i, j, ] <- z[i, j, ] / sum(z[i, j, ], na.rm = TRUE)
         }
       }
@@ -305,7 +305,7 @@ cde <- function(
     oldwarn <- options(warn = -1)
     approx.mean <- approx(mean$x, mean$y, xout = x.margin[[1]], rule = 2)$y
     options(warn = oldwarn$warn)
-    for (i in 1:dim.cde[2]) {
+    for (i in seq_len(dim.cde[2])) {
       amean <- approx.mean[i] -
         sum(z[i, ] * y.margin) * (y.margin[2] - y.margin[1])
       z[i, ] <- approx(y.margin + amean, z[i, ], xout = y.margin + ymean)$y
@@ -341,7 +341,6 @@ cde <- function(
   ))
 }
 
-
 Kernel <- function(y, y0, b, type = "epanech") {
   if (type == "epanech") {
     K <- epanech
@@ -355,7 +354,6 @@ epanech <- function(x, a, h) {
   xx <- (x - a) / h
   0.75 * (1 - xx^2) * as.numeric(abs(xx) < 1)
 }
-
 
 #' @export
 print.cde <- function(x, ...) {

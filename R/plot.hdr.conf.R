@@ -71,7 +71,7 @@ add.hdr <- function(hdr, pos, width, col = 2, horiz = FALSE, border = TRUE) {
     return(invisible())
   }
 
-  for (i in 1:nint) {
+  for (i in seq_len(nint)) {
     l <- i * 2 - 1 # lower
     tempx <- pos + c(-0.5, -0.5, 0.5, 0.5) * width
     tempy <- c(hdr[l], hdr[l + 1], hdr[l + 1], hdr[l])

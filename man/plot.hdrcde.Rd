@@ -2,7 +2,7 @@
 % Please edit documentation in R/plotcde.R
 \name{plot.hdrcde}
 \alias{plot.hdrcde}
-\title{Plots highest density regions continously over some conditioned variable.}
+\title{Plots highest density regions continuously over some conditioned variable.}
 \usage{
 \method{plot}{hdrcde}(
   x,
@@ -50,7 +50,7 @@ margin density \code{mden} is lower than this value.}
 None.
 }
 \description{
-Plots highest density regions continously over some conditioned variable.
+Plots highest density regions continuously over some conditioned variable.
 }
 \examples{
 faithful.cde <- cde(faithful$waiting, faithful$eruptions)

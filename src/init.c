@@ -11,7 +11,6 @@ static const R_FortranMethodDef FortEntries[] = {
     {NULL, NULL, 0}
 };
 
-
 void R_init_KernSmooth(DllInfo *dll)
 {
     R_registerRoutines(dll, NULL, NULL, FortEntries, NULL);

@@ -2,7 +2,7 @@
 % Please edit documentation in R/plotcde.R
 \name{hdr.cde}
 \alias{hdr.cde}
-\title{Calculate highest density regions continously over some conditioned
+\title{Calculate highest density regions continuously over some conditioned
 variable.}
 \usage{
 hdr.cde(den, prob = c(0.5, 0.95, 0.99), plot = TRUE, nn = 1000, ...)

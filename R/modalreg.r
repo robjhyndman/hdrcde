@@ -67,7 +67,7 @@
 #'
 #' @keywords regression nonparametric
 #' @examples
-#' lane2.fit <- modalreg(lane2$flow, lane2$speed, xfix = (1:55) * 40, a = 100, b = 4)
+#' lane2.fit <- modalreg(lane2$flow, lane2$speed, xfix = seq(55) * 40, a = 100, b = 4)
 #' @export
 modalreg <- function(
   x,
@@ -135,20 +135,20 @@ modalreg <- function(
       col = "grey"
     )
     if (plot.type[2] == 1) {
-      points(rep(min(x), P), ynull, col = 2:(P + 1), pch = Alphabet[1:P])
+      points(rep(min(x), P), ynull, col = 2:(P + 1), pch = Alphabet[seq_len(P)])
     }
   }
 
   # Multifunction fitting through conditional mean shift
-  for (i in 1:length(xfix)) {
-    for (p in 1:P) {
+  for (i in seq_along(xfix)) {
+    for (p in seq_len(P)) {
       if (start != "v" || i == 1) {
         current.regression <- ynull[p]
       } else {
         current.regression <- save.regression[p, i - 1]
       }
       old.regression <- -1000
-      for (j in 1:iter) {
+      for (j in seq_len(iter)) {
         old.regression <- current.regression
         if (deg == 1) {
           current.regression <- cond.linear.meanshift(
@@ -186,8 +186,8 @@ modalreg <- function(
   Threshold <- -1
   if (prun == TRUE) {
     Threshold <- 1 / (prun.const * span.area)
-    for (i in 1:length(xfix)) {
-      for (p in 1:P) {
+    for (i in seq_along(xfix)) {
+      for (p in seq_len(P)) {
         kde[p, i] <- kde2d.point(x, y, xfix[i], save.regression[p, i], a, b)
       }
     }
@@ -195,7 +195,7 @@ modalreg <- function(
 
   # Plotting of pruned fitted curves
   if (plot.type[1] != "n") {
-    for (p in 1:P) {
+    for (p in seq_len(P)) {
       if (plot.type[1] == "p") {
         points(
           xfix[kde[p, ] > Threshold],

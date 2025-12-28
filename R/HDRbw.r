@@ -61,7 +61,7 @@ hdrbw <- function(
   # and use this to estimate the "fTau" value:
 
   n <- length(x)
-  Ivec <- sample(1:n, nMChdr, replace = TRUE)
+  Ivec <- sample(seq_len(n), nMChdr, replace = TRUE)
   xHat <- x[Ivec] + hHat0 * rnorm(nMChdr)
   fhat <- KernSmooth::bkde(
     x,
@@ -90,7 +90,7 @@ hdrbw <- function(
 
   discrim <- diff(sign(c(fhat$y - fTauHat)))
   discrim <- c(0, discrim)
-  xcutsInds <- (1:length(fhat$x))[discrim != 0]
+  xcutsInds <- seq_along(fhat$x)[discrim != 0]
   xcutsHat <- (fhat$x[xcutsInds] + fhat$x[xcutsInds - 1]) / 2
 
   if (graphProgress) {
@@ -101,7 +101,7 @@ hdrbw <- function(
 
   fdxcutsHat <- rep(NA, length(xcutsHat))
   fddxcutsHat <- rep(NA, length(xcutsHat))
-  for (j in 1:length(xcutsHat)) {
+  for (j in seq_along(xcutsHat)) {
     fdxcutsHat[j] <- drvKDE(x, xcutsHat[j], hHat1, 1)
     fddxcutsHat[j] <- drvKDE(x, xcutsHat[j], hHat2, 2)
   }
@@ -156,7 +156,7 @@ hdrbw <- function(
     if ((fdLow < 0) & (fdUpp > 0)) rootCaptured <- TRUE
   }
   numBisect <- 100
-  for (ib in 1:numBisect) {
+  for (ib in seq_len(numBisect)) {
     sMid <- (sLow + sUpp) / 2
     fdLow <- riskFuns(sLow, B1hat, B2hat, B3hat, 1)
     fdUpp <- riskFuns(sUpp, B1hat, B2hat, B3hat, 1)
@@ -216,7 +216,7 @@ hdrbw <- function(
   if (graphProgress) {
     hgrid <- exp(seq(log(hHat / 5), log(5 * hHat), length = 101))
     AriskGrid <- rep(0, length(hgrid))
-    for (j in 1:length(B1hat)) {
+    for (j in seq_along(B1hat)) {
       AriskGrid <- AriskGrid +
         B1hat[j] * dnorm(B2hat[j] * sqrt(n * hgrid^5)) / sqrt(n * hgrid)
       AriskGrid <- AriskGrid +

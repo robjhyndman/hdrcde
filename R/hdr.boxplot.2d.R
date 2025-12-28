@@ -55,7 +55,6 @@ hdr.2d <- function(
   ))
 }
 
-
 #' Bivariate Highest Density Regions
 #'
 #' Calculates and plots highest density regions in two dimensions, including
@@ -163,7 +162,7 @@ plot.hdr2d <- function(
   show.points = FALSE,
   outside.points = FALSE,
   pch = 20,
-  shadecols = gray((length(x$alpha):1) / (length(x$alpha) + 1)),
+  shadecols = gray(rev(seq_along(x$alpha)) / (length(x$alpha) + 1)),
   pointcol = 1,
   ...
 ) {
@@ -236,7 +235,6 @@ hdrcde.filled.contour <- function(
   invisible()
 }
 
-
 interp.2d <- function(x, y, z, x0, y0) {
   # Bilinear interpolation of function (x,y,z) onto (x0,y0).
   # Taken from Numerical Recipies (second edition) section 3.6.
@@ -272,7 +270,6 @@ interp.2d <- function(x, y, z, x0, y0) {
     (1 - v) * u * DD
   return(z0)
 }
-
 
 # Bivariate density estimate
 
@@ -311,7 +308,6 @@ den.estimate.2d <- function(
   }
   return(den)
 }
-
 
 # Alpha
 #

@@ -127,7 +127,6 @@ cde.bandwidths <- function(
   }
 }
 
-
 cde.bandwidths0 <- function(
   x,
   y,
@@ -177,7 +176,7 @@ cde.bandwidths0 <- function(
       k = k
     )
 
-    for (i in 1:passes) {
+    for (i in seq_len(passes)) {
       if (i == 1) {
         a.grid <- bands$a * seq(0.1, 3, l = ngrid)
         b.grid <- bands$b * seq(0.1, 3, l = ngrid)
@@ -186,14 +185,14 @@ cde.bandwidths0 <- function(
         na <- length(regout$a.grid)
         nb <- length(bootout$b.grid)
         adiff <- abs(bands$a - regout$a.grid)
-        idx <- (1:na)[adiff == min(adiff)]
+        idx <- seq_len(na)[adiff == min(adiff)]
         a.grid <- seq(
           regout$a.grid[max(idx - 2, 1)],
           regout$a.grid[min(idx + 2, na)],
           l = ngrid
         )
         bdiff <- abs(bands$b - bootout$b.grid)
-        idx <- (1:nb)[bdiff == min(bdiff)]
+        idx <- seq_len(nb)[bdiff == min(bdiff)]
         b.grid <- seq(
           bootout$b.grid[max(idx - 2, 1)],
           bootout$b.grid[min(idx + 2, nb)],
@@ -421,9 +420,9 @@ cdeband.Mbh <- function(
 
   n <- length(x)
   if (use.sample & n > nx) {
-    idx <- sample(1:n, nx, replace = F)
+    idx <- sample(seq_len(n), nx, replace = FALSE)
   } else {
-    idx <- 1:n
+    idx <- seq_len(n)
   }
   xx <- x[idx]
   yy <- y[idx]
@@ -449,7 +448,7 @@ cdeband.Mbh <- function(
 
   if (passes > 1 & !is.na(first$a)) {
     na <- length(first$a.grid)
-    idx <- c(1:na)[first$a.grid == first$a]
+    idx <- seq_len(na)[first$a.grid == first$a]
     if (na > 4) {
       idx <- idx + (-2:2)
     } else {
@@ -486,7 +485,7 @@ cdeband.Mbh <- function(
 
   if (!is.na(a) & usequad) {
     na <- length(fulla.grid)
-    idx <- (c(1:na)[fulla.grid == a])[1]
+    idx <- (seq_len(na)[fulla.grid == a])[1]
     if (na > 4) {
       idx <- idx + (-2:2)
     } else {
@@ -501,7 +500,7 @@ cdeband.Mbh <- function(
       a <- -0.5 * fit$coef[2] / fit$coef[3]
     }
   } else {
-    a <- fulla.grid[fullq == min(fullq, na.rm = T)]
+    a <- fulla.grid[fullq == min(fullq, na.rm = TRUE)]
     a <- a[!is.na(a)]
   }
 
@@ -520,7 +519,7 @@ CDEband.Mbh <- function(
 ) {
   na <- length(a.grid)
   q <- numeric(na)
-  for (i in 1:na) {
+  for (i in seq_len(na)) {
     junk <- cde(
       x,
       y,
@@ -537,7 +536,7 @@ CDEband.Mbh <- function(
       q[i] <- junk$AIC
     }
   }
-  idx <- (1:na)[q == min(q, na.rm = TRUE)]
+  idx <- seq_len(na)[q == min(q, na.rm = TRUE)]
   idx <- idx[!is.na(idx)]
   if (idx == 1 | idx == na) {
     warning("No minimum found")
@@ -591,7 +590,7 @@ cdeband.bootstrap <- function(
   }
   fit.grid <- suppressWarnings(approx(x, fits, xout = x.margin, rule = 2)$y) # Quicker than predict and works when constant model used.
   truecde <- list(x = x.margin, y = y.margin, z = matrix(NA, nx, ny))
-  for (i in 1:nx) {
+  for (i in seq_len(nx)) {
     truecde$z[i, ] <- dnorm(y.margin, fit.grid[i], rse)
   }
 
@@ -609,7 +608,7 @@ cdeband.bootstrap <- function(
 
   m <- max(m, 5)
   bootsamples <- matrix(NA, nrow = n, ncol = m)
-  for (i in 1:m) {
+  for (i in seq_len(m)) {
     bootsamples[, i] <- fits + rnorm(n, 0, rse)
   }
 
@@ -623,9 +622,9 @@ cdeband.bootstrap <- function(
 
   ## First pass
 
-  for (i in 1:na) {
+  for (i in seq_len(na)) {
     a <- a.grid[i]
-    for (j in 1:nb) {
+    for (j in seq_len(nb)) {
       b <- b.grid[j]
       for (k in 1:3) {
         bootcde <- cde(
@@ -647,8 +646,8 @@ cdeband.bootstrap <- function(
   ## Second pass near minimum
 
   idx <- (imse == min(imse))
-  idx.a <- max(3, (1:na)[apply(idx, 1, sum) == 1]) + c(-2:2)
-  idx.b <- max(3, (1:nb)[apply(idx, 2, sum) == 1]) + c(-2:2)
+  idx.a <- max(3, seq_len(na)[apply(idx, 1, sum) == 1]) + c(-2:2)
+  idx.b <- max(3, seq_len(nb)[apply(idx, 2, sum) == 1]) + c(-2:2)
   idx.a <- idx.a[idx.a > 0 & idx.a <= na]
   idx.b <- idx.b[idx.b > 0 & idx.b <= nb]
 
@@ -675,8 +674,8 @@ cdeband.bootstrap <- function(
 
   # Find minimum on grid
   idx <- (imse == min(imse))
-  idx.a <- (1:na)[apply(idx, 1, sum) > 0]
-  idx.b <- (1:nb)[apply(idx, 2, sum) > 0]
+  idx.a <- seq_len(na)[apply(idx, 1, sum) > 0]
+  idx.b <- seq_len(nb)[apply(idx, 2, sum) > 0]
   best.a <- a.grid[idx.a[1]]
   best.b <- b.grid[idx.b[1]]
   bestmse <- imse[idx.a[1], idx.b[1]]
@@ -698,7 +697,7 @@ cdeband.bootstrap <- function(
     best.a <- (best.b * fit$coef[6] + fit$coef[2]) / (-2 * fit$coef[4])
   } else if (nb > 2) {
     # na=1 or 2
-    for (i in 1:na) {
+    for (i in seq_len(na)) {
       fit <- lm(
         imse ~ b + I(b^2),
         data = data.frame(imse = imse[idx.a[i], idx.b], b = b.grid[idx.b])
@@ -713,7 +712,7 @@ cdeband.bootstrap <- function(
     }
   } else if (na > 2) {
     # nb=1 or 2
-    for (i in 1:nb) {
+    for (i in seq_len(nb)) {
       fit <- lm(
         imse ~ a + I(a^2),
         data = data.frame(imse = imse[idx.a, idx.b[i]], a = a.grid[idx.a])
@@ -759,7 +758,7 @@ CDEband.regress <- function(
   v <- Kernel(y, y.margin, b)
   na <- length(a.grid)
   q <- numeric(na)
-  for (i in 1:na) {
+  for (i in seq_len(na)) {
     w <- Kernel(x, x, a.grid[i])
     row.sum <- apply(w, 1, sum)
     w <- w / matrix(rep(row.sum, n), ncol = n)
@@ -783,7 +782,7 @@ CDEband.regress <- function(
     #            q[i] <- mean(apply(junk,1,sum)*pen)
     #        }
   }
-  idx <- (1:na)[q == min(q)]
+  idx <- seq_len(na)[q == min(q)]
   if (idx == 1 | idx == na) {
     #        warning("No minimum found")
     a <- NA
@@ -822,9 +821,9 @@ cdeband.regress <- function(
 
   n <- length(x)
   if (use.sample & n > nx) {
-    idx <- sample(1:n, nx, replace = FALSE)
+    idx <- sample(seq_len(n), nx, replace = FALSE)
   } else {
-    idx <- 1:n
+    idx <- seq_len(n)
   }
   xx <- x[idx]
   yy <- y[idx]
@@ -866,7 +865,7 @@ cdeband.regress <- function(
 
   if (passes > 1 & !is.na(first$a)) {
     na <- length(first$a.grid)
-    idx <- c(1:na)[first$a.grid == first$a]
+    idx <- seq_len(na)[first$a.grid == first$a]
     if (na > 4) {
       idx <- idx + (-2:2)
     } else {
@@ -902,7 +901,7 @@ cdeband.regress <- function(
 
   if (!is.na(a) & usequad) {
     na <- length(fulla.grid)
-    idx <- (c(1:na)[fulla.grid == a])[1]
+    idx <- (seq_len(na)[fulla.grid == a])[1]
     if (na > 4) {
       idx <- idx + (-2:2)
     } else {

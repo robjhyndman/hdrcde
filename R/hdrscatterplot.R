@@ -26,7 +26,7 @@
 #' x <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))
 #' y <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))
 #' hdrscatterplot(x, y)
-#' hdrscatterplot(x, y, label = paste0("p", 1:length(x)))
+#' hdrscatterplot(x, y, label = paste0("p", seq_along(x)))
 #' @export hdrscatterplot
 hdrscatterplot <- function(
   x,
@@ -116,6 +116,5 @@ hdrscatterplot <- function(
   }
   return(p)
 }
-
 
 utils::globalVariables(".data")
