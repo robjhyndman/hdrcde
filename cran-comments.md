@@ -1,8 +1,10 @@
 ## Test environments
-* ubuntu 20.10 (local): R 4.0.3
+
+* KDE neon 6.5.4 based on ubuntu 24.04 (local): R 4.5.2
+* macOS (on GitHub Actions): release
 * windows (on GitHub Actions): release
-* ubuntu 16.04 (on GitHub Actions): devel, release
-* win-builder: R-devel, R-release, R-oldrelease
+* ubuntu 24.04.3 (on GitHub Actions): devel, release, oldrel
+* win-builder: devel, release, oldrelease
 
 ## R CMD check results
 
@@ -10,5 +12,4 @@
 
 ## revdep checks
 
-All reverse dependencies have been checked and no issues found.
-
+All reverse dependencies have been checked with no new errors detected.
