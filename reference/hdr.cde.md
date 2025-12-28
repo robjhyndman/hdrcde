@@ -7,23 +7,7 @@ estimate. Uses output from
 ## Usage
 
 ``` r
-hdr.cde(
-  den,
-  prob = c(50, 95, 99),
-  plot = TRUE,
-  plot.modes = TRUE,
-  mden = rep(1, length(den$x)),
-  threshold = 0.05,
-  nn = 1000,
-  xlim,
-  ylim,
-  xlab,
-  ylab,
-  border = TRUE,
-  font = 1,
-  cex = 1,
-  ...
-)
+hdr.cde(den, prob = c(0.5, 0.95, 0.99), plot = TRUE, nn = 1000, ...)
 ```
 
 ## Arguments
@@ -41,56 +25,15 @@ hdr.cde(
 
   Should HDRs be plotted? If FALSE, results are returned.
 
-- plot.modes:
-
-  Should modes be plotted as well as HDRs?
-
-- mden:
-
-  Marginal density in the `x` direction. When small, the HDRs won't be
-  plotted. Default is uniform so all HDRs are plotted.
-
-- threshold:
-
-  Threshold for margin density. HDRs are not plotted if the margin
-  density `mden` is lower than this value.
-
 - nn:
 
   Number of points to be sampled from each density when estimating the
   HDRs.
 
-- xlim:
-
-  Limits for x-axis.
-
-- ylim:
-
-  Limits for y-axis.
-
-- xlab:
-
-  Label for x-axis.
-
-- ylab:
-
-  Label for y-axis.
-
-- border:
-
-  Show border of polygons
-
-- font:
-
-  Font to be used in plot.
-
-- cex:
-
-  Size of characters.
-
 - ...:
 
-  Other arguments passed to plotting functions.
+  Other arguments passed to
+  [`plot.hdrcde()`](https://pkg.robjhyndman.com/hdrcde/reference/plot.hdrcde.md).
 
 ## Value
 
@@ -103,6 +46,8 @@ hdr.cde(
 
   estimated mode of each conditional density
 
+The result is returned invisibly if `plot=TRUE`.
+
 ## References
 
 Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996) "Estimating
@@ -111,8 +56,8 @@ Graphical Statistics*, **5**, 315-336.
 
 ## See also
 
+[`plot.hdrcde()`](https://pkg.robjhyndman.com/hdrcde/reference/plot.hdrcde.md),
 [`cde()`](https://pkg.robjhyndman.com/hdrcde/reference/cde.md),
-[`hdr()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.md)
 
 ## Author
 
@@ -122,5 +67,11 @@ Rob J Hyndman
 
 ``` r
 faithful.cde <- cde(faithful$waiting,faithful$eruptions)
-plot(faithful.cde,xlab="Waiting time",ylab="Duration time",plot.fn="hdr")
+faithful.hdr <- hdr.cde(faithful.cde, prob=c(0.50,0.95))
+
+faithful.hdr
+#> HDRs for conditional density estimate
+#> Conditioning values: 43.00, 46.79, 50.57, 54.36, 58.14, 61.93, 65.71, 69.50, 73.29, 77.07, 80.86, 84.64, 88.43, 92.21, 96.00 
+#> Levels:  50%, 95% 
+plot(faithful.hdr,xlab="Waiting time",ylab="Duration time")
 ```

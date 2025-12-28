@@ -69,16 +69,11 @@ Rob J Hyndman
 ``` r
 x <- c(rnorm(100,0,1),rnorm(100,4,1))
 den <- density(x,bw=hdrbw(x,50))
-trueden <- den
-trueden$y <- 0.5*(exp(-0.5*(den$x*den$x)) + exp(-0.5*(den$x-4)^2))/sqrt(2*pi)
-sortx <- sort(x)
-
-par(mfcol=c(2,2))
-for(conf in c(50,95))
-{
-  m <- hdrconf(sortx,trueden,conf=conf)
-  plot(m,trueden,main=paste(conf,"% HDR from true density"))
-  m <- hdrconf(sortx,den,conf=conf)
-  plot(m,den,main=paste(conf,"% HDR from empirical density\n(n=200)"))
-}
+hdrconf(x, den)
+#> 90% Highest Density Region: [-1.188, 2.017], [2.288, 5.350]
+#>            95% Lower Limit: [-1.216, 5.379]
+#>            95% Upper Limit: [-1.160, 1.896], [2.414, 5.321]
+#> 
+#> f-alpha value: 0.09411   95% CI: [0.09204, 0.09617]
+hdrconf(x, den) |> plot(den, main = "50% HDR with 95% CI")
 ```

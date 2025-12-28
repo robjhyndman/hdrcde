@@ -40,23 +40,7 @@ estimate. Uses output from <code><a href="cde.html">cde()</a></code>.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">hdr.cde</span><span class="op">(</span></span>
-<span>  <span class="va">den</span>,</span>
-<span>  prob <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">95</span>, <span class="fl">99</span><span class="op">)</span>,</span>
-<span>  plot <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  plot.modes <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  mden <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">den</span><span class="op">$</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>  threshold <span class="op">=</span> <span class="fl">0.05</span>,</span>
-<span>  nn <span class="op">=</span> <span class="fl">1000</span>,</span>
-<span>  <span class="va">xlim</span>,</span>
-<span>  <span class="va">ylim</span>,</span>
-<span>  <span class="va">xlab</span>,</span>
-<span>  <span class="va">ylab</span>,</span>
-<span>  border <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  font <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  cex <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  <span class="va">...</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">hdr.cde</span><span class="op">(</span><span class="va">den</span>, prob <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">0.95</span>, <span class="fl">0.99</span><span class="op">)</span>, plot <span class="op">=</span> <span class="cn">TRUE</span>, nn <span class="op">=</span> <span class="fl">1000</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -76,55 +60,12 @@ estimate. Uses output from <code><a href="cde.html">cde()</a></code>.</p>
 <dd><p>Should HDRs be plotted? If FALSE, results are returned.</p></dd>
 
 
-<dt id="arg-plot-modes">plot.modes<a class="anchor" aria-label="anchor" href="#arg-plot-modes"></a></dt>
-<dd><p>Should modes be plotted as well as HDRs?</p></dd>
-
-
-<dt id="arg-mden">mden<a class="anchor" aria-label="anchor" href="#arg-mden"></a></dt>
-<dd><p>Marginal density in the <code>x</code> direction. When small, the HDRs
-won't be plotted. Default is uniform so all HDRs are plotted.</p></dd>
-
-
-<dt id="arg-threshold">threshold<a class="anchor" aria-label="anchor" href="#arg-threshold"></a></dt>
-<dd><p>Threshold for margin density. HDRs are not plotted if the
-margin density <code>mden</code> is lower than this value.</p></dd>
-
-
 <dt id="arg-nn">nn<a class="anchor" aria-label="anchor" href="#arg-nn"></a></dt>
-<dd><p>Number of points to be sampled from each density when estimating
-the HDRs.</p></dd>
-
-
-<dt id="arg-xlim">xlim<a class="anchor" aria-label="anchor" href="#arg-xlim"></a></dt>
-<dd><p>Limits for x-axis.</p></dd>
-
-
-<dt id="arg-ylim">ylim<a class="anchor" aria-label="anchor" href="#arg-ylim"></a></dt>
-<dd><p>Limits for y-axis.</p></dd>
-
-
-<dt id="arg-xlab">xlab<a class="anchor" aria-label="anchor" href="#arg-xlab"></a></dt>
-<dd><p>Label for x-axis.</p></dd>
-
-
-<dt id="arg-ylab">ylab<a class="anchor" aria-label="anchor" href="#arg-ylab"></a></dt>
-<dd><p>Label for y-axis.</p></dd>
-
-
-<dt id="arg-border">border<a class="anchor" aria-label="anchor" href="#arg-border"></a></dt>
-<dd><p>Show border of polygons</p></dd>
-
-
-<dt id="arg-font">font<a class="anchor" aria-label="anchor" href="#arg-font"></a></dt>
-<dd><p>Font to be used in plot.</p></dd>
-
-
-<dt id="arg-cex">cex<a class="anchor" aria-label="anchor" href="#arg-cex"></a></dt>
-<dd><p>Size of characters.</p></dd>
+<dd><p>Number of points to be sampled from each density when estimating the HDRs.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>Other arguments passed to plotting functions.</p></dd>
+<dd><p>Other arguments passed to <code><a href="plot.hdrcde.html">plot.hdrcde()</a></code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -138,7 +79,8 @@ b gives the HDR endpoints and c gives the probability coverage.</p></dd>
 <dt>modes</dt>
 <dd><p>estimated mode of each conditional density</p></dd>
 
-</dl></div>
+</dl><p>The result is returned invisibly if <code>plot=TRUE</code>.</p>
+    </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
@@ -147,7 +89,7 @@ Computational and Graphical Statistics</em>, <strong>5</strong>, 315-336.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="cde.html">cde()</a></code>, <code><a href="hdr.html">hdr()</a></code></p></div>
+    <div class="dont-index"><p><code><a href="plot.hdrcde.html">plot.hdrcde()</a></code>, <code><a href="cde.html">cde()</a></code>,</p></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -157,8 +99,14 @@ Computational and Graphical Statistics</em>, <strong>5</strong>, 315-336.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">faithful.cde</span> <span class="op">&lt;-</span> <span class="fu"><a href="cde.html">cde</a></span><span class="op">(</span><span class="va">faithful</span><span class="op">$</span><span class="va">waiting</span>,<span class="va">faithful</span><span class="op">$</span><span class="va">eruptions</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">faithful.cde</span>,xlab<span class="op">=</span><span class="st">"Waiting time"</span>,ylab<span class="op">=</span><span class="st">"Duration time"</span>,plot.fn<span class="op">=</span><span class="st">"hdr"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">faithful.hdr</span> <span class="op">&lt;-</span> <span class="fu">hdr.cde</span><span class="op">(</span><span class="va">faithful.cde</span>, prob<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.50</span>,<span class="fl">0.95</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="hdr.cde-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="va">faithful.hdr</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> HDRs for conditional density estimate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Conditioning values: 43.00, 46.79, 50.57, 54.36, 58.14, 61.93, 65.71, 69.50, 73.29, 77.07, 80.86, 84.64, 88.43, 92.21, 96.00 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels:  50%, 95% </span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">faithful.hdr</span>,xlab<span class="op">=</span><span class="st">"Waiting time"</span>,ylab<span class="op">=</span><span class="st">"Duration time"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="hdr.cde-2.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

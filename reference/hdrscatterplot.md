@@ -69,11 +69,6 @@ Rob J Hyndman
 x <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))
 y <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))
 hdrscatterplot(x, y)
-#> Warning: `aes_string()` was deprecated in ggplot2 3.0.0.
-#> ℹ Please use tidy evaluation idioms with `aes()`.
-#> ℹ See also `vignette("ggplot2-in-packages")` for more information.
-#> ℹ The deprecated feature was likely used in the hdrcde package.
-#>   Please report the issue at <https://github.com/robjhyndman/hdrcde/issues>.
 
 hdrscatterplot(x, y, label = paste0("p", 1:length(x)))
 ```

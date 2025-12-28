@@ -58,17 +58,10 @@ This package is free and open source software, licensed under GPL 3.
 
 # Package index
 
-## Functions
+## Highest Density Regions
 
-Functions for estimating and plotting highest density regions and
-conditional density estimates
+Functions for estimating and plotting highest density regions
 
-- [`BoxCox()`](https://pkg.robjhyndman.com/hdrcde/reference/BoxCox.md) :
-  Box Cox Transformation
-- [`cde()`](https://pkg.robjhyndman.com/hdrcde/reference/cde.md) :
-  Conditional Density Estimation
-- [`cde.bandwidths()`](https://pkg.robjhyndman.com/hdrcde/reference/cde.bandwidths.md)
-  : Bandwidth calculation for conditional density estimation
 - [`hdr()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.md) :
   Highest Density Regions
 - [`hdr.2d()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.boxplot.2d.md)
@@ -88,12 +81,35 @@ conditional density estimates
   : HDRs with confidence intervals
 - [`hdrscatterplot()`](https://pkg.robjhyndman.com/hdrcde/reference/hdrscatterplot.md)
   : Scatterplot showing bivariate highest density regions
-- [`plot(`*`<cde>`*`)`](https://pkg.robjhyndman.com/hdrcde/reference/plot.cde.md)
-  : Plots conditional densities
+- [`plot(`*`<hdrcde>`*`)`](https://pkg.robjhyndman.com/hdrcde/reference/plot.hdrcde.md)
+  : Plots highest density regions continously over some conditioned
+  variable.
 - [`plot(`*`<hdrconf>`*`)`](https://pkg.robjhyndman.com/hdrcde/reference/plot.hdrconf.md)
   : Plot HDRs with confidence intervals
+
+## Conditional Density Estimation
+
+Functions for estimating and plotting conditional density estimates
+
+- [`cde()`](https://pkg.robjhyndman.com/hdrcde/reference/cde.md) :
+  Conditional Density Estimation
+- [`cde.bandwidths()`](https://pkg.robjhyndman.com/hdrcde/reference/cde.bandwidths.md)
+  : Bandwidth calculation for conditional density estimation
+- [`hdr.cde()`](https://pkg.robjhyndman.com/hdrcde/reference/hdr.cde.md)
+  : Calculate highest density regions continously over some conditioned
+  variable.
+- [`plot(`*`<cde>`*`)`](https://pkg.robjhyndman.com/hdrcde/reference/plot.cde.md)
+  : Plots conditional densities
+- [`plot(`*`<hdrcde>`*`)`](https://pkg.robjhyndman.com/hdrcde/reference/plot.hdrcde.md)
+  : Plots highest density regions continously over some conditioned
+  variable.
 - [`modalreg()`](https://pkg.robjhyndman.com/hdrcde/reference/modalreg.md)
   : Nonparametric Multimodal Regression
+
+## Other Functions
+
+- [`BoxCox()`](https://pkg.robjhyndman.com/hdrcde/reference/BoxCox.md) :
+  Box Cox Transformation
 
 ## Data
 
