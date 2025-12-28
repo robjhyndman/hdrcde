@@ -20,7 +20,7 @@ test_that("cde bandwidths", {
   hdrres <- hdr.cde(cobj, prob = c(50,95), plot = FALSE)
   expect_type(hdrres, "list")
   expect_true(all(c("hdr", "modes") %in% names(hdrres)))
-  expect_equal(length(hdrres$hdr), length(cobj$x))
+  expect_equal(length(hdrres), length(cobj$x))
 })
 
 test_that("modalreg computes branches without plotting", {

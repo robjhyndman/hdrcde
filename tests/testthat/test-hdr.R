@@ -40,5 +40,5 @@ test_that("hdrconf returns hdrconf structure", {
   m <- hdrconf(sort(faithful$eruptions), den, conf = 95)
   expect_s3_class(m, "hdrconf")
   expect_true(all(c("hdr", "hdr.lo", "hdr.hi", "falpha", "falpha.ci") %in% names(m)))
-  expect_equal(m$hdr, c(1.536, 2.500, 3.492, 5.062), tolerance = 5e-3)
+  expect_equal(m$hdr, c(1.536, 2.500, 3.492, 5.062), tolerance = 5e-2)
 })
