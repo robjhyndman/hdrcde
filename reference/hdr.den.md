@@ -144,7 +144,7 @@ hdr.den(faithful$eruptions)
 #> Mode: 4.381
 
 # Simple bimodal example
-x <- c(rnorm(100,0,1), rnorm(100,5,1))
+x <- c(rnorm(100, 0, 1), rnorm(100, 5, 1))
 hdr.den(x)
 
 #> Highest Density Regions

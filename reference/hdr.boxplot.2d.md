@@ -160,11 +160,11 @@ Rob J Hyndman
 ## Examples
 
 ``` r
-x <- c(rnorm(200,0,1),rnorm(200,4,1))
-y <- c(rnorm(200,0,1),rnorm(200,4,1))
-hdr.boxplot.2d(x,y)
+x <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))
+y <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))
+hdr.boxplot.2d(x, y)
 
 
-hdrinfo <- hdr.2d(x,y)
-plot(hdrinfo, pointcol="red", show.points=TRUE, pch=3)
+hdrinfo <- hdr.2d(x, y)
+plot(hdrinfo, pointcol = "red", show.points = TRUE, pch = 3)
 ```

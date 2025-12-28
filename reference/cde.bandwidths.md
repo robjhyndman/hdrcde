@@ -143,6 +143,6 @@ Rob J Hyndman
 ## Examples
 
 ``` r
-bands <- cde.bandwidths(faithful$waiting,faithful$eruptions,method=2)
-plot(cde(faithful$waiting,faithful$eruptions,a=bands$a,b=bands$b))
+bands <- cde.bandwidths(faithful$waiting, faithful$eruptions, method = 2)
+plot(cde(faithful$waiting, faithful$eruptions, a = bands$a, b = bands$b))
 ```

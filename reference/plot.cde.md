@@ -84,9 +84,10 @@ Rob J Hyndman
 ## Examples
 
 ``` r
-faithful.cde <- cde(faithful$waiting,faithful$eruptions,
-   x.name="Waiting time", y.name="Duration time")
+faithful.cde <- cde(faithful$waiting, faithful$eruptions,
+  x.name = "Waiting time", y.name = "Duration time"
+)
 plot(faithful.cde)
 
-plot(faithful.cde,plot.fn="hdr")
+plot(faithful.cde, plot.fn = "hdr")
 ```

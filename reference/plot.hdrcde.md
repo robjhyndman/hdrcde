@@ -98,7 +98,7 @@ Rob J Hyndman
 ## Examples
 
 ``` r
-faithful.cde <- cde(faithful$waiting,faithful$eruptions)
-faithful.hdr <- hdr.cde(faithful.cde, prob=c(0.50,0.95), plot = FALSE)
-plot(faithful.hdr,xlab="Waiting time",ylab="Duration time")
+faithful.cde <- cde(faithful$waiting, faithful$eruptions)
+faithful.hdr <- hdr.cde(faithful.cde, prob = c(0.50, 0.95), plot = FALSE)
+plot(faithful.hdr, xlab = "Waiting time", ylab = "Duration time")
 ```

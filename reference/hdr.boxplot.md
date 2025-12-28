@@ -127,16 +127,16 @@ hdr.boxplot(faithful$eruptions)
 
 
 # Simple bimodal example
-x <- c(rnorm(100,0,1), rnorm(100,5,1))
-par(mfrow=c(1,2))
+x <- c(rnorm(100, 0, 1), rnorm(100, 5, 1))
+par(mfrow = c(1, 2))
 boxplot(x)
 hdr.boxplot(x)
 
 
 # Highly skewed example
-x <- exp(rnorm(100,0,1))
-par(mfrow=c(1,2))
+x <- exp(rnorm(100, 0, 1))
+par(mfrow = c(1, 2))
 boxplot(x)
-hdr.boxplot(x,lambda=0)
+hdr.boxplot(x, lambda = 0)
 
 ```
