@@ -5,27 +5,40 @@
 
 PKG_NAME=$(shell grep -i ^package DESCRIPTION | cut -d : -d \  -f 2)
 
-all: build pkgdown install
-
-check:
-	rcheck
+default: build
 
 build:
-	R CMD build .
-	mv -f *.tar.gz ..
+	Rscript -e "devtools::build(args = c('--compact-vignettes=both'))"
 
-install:
-	rmake
-
-pkgdown:
-	Rscript -e "rt::rdoc(); rt::rpkgdown()"
-
-winbuild:
-	Rscript -e "rt::rwinbuild(devel=TRUE)"
+check:
+	Rscript -e "try(devtools::check('.'), silent=FALSE)"
 
 clean:
-	-rm -f ../$(PKG_NAME)_*.tar.gz
-	-rm -rf man/*.Rd
-	-rm -rf src/*.o
-	-rm -rf src/*.so
+	rm -f ../$(PKG_NAME)_*.tar.gz
+	rm -r -f man/*.Rd
+	rm -r -f NAMESPACE
+	rm -f .Rhistory
+	rm -f *.RData
+	rm -f *.Rproj
+	rm -rf .Rproj.user
 
+coverage:
+	Rscript -e "devtools::test_coverage('.')"
+
+docs:
+	Rscript -e "devtools::document()"
+
+install:
+	R CMD INSTALL .
+
+pkgdown:
+	Rscript -e "pkgdown::build_site('.')"
+
+revdep:
+	Rscript -e "revdepcheck::revdep_check(num_workers=3)"
+
+release:
+	Rscript -e "devtools::submit_cran(args = c('--compact-vignettes=both'))"
+
+test:
+	Rscript -e "devtools::test('.')"
