@@ -19,7 +19,7 @@ test_that("cde bandwidths", {
   # hdr.cde
   hdrres <- hdr.cde(cobj, prob = c(50,95), plot = FALSE)
   expect_type(hdrres, "list")
-  expect_true(all(c("hdr", "modes") %in% names(hdrres)))
+  expect_all_true(unlist(lapply(hdrres, class)) == "hdr")
   expect_equal(length(hdrres), length(cobj$x))
 })
 

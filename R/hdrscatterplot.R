@@ -113,3 +113,6 @@ hdrscatterplot <- function(
   }
   return(p)
 }
+
+
+utils::globalVariables(".data")
