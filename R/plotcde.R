@@ -30,10 +30,11 @@
 #' Computational and Graphical Statistics*, **5**, 315-336.
 #' @keywords smooth distribution hplot
 #' @examples
-#' faithful.cde <- cde(faithful$waiting,faithful$eruptions,
-#' 	 x.name="Waiting time", y.name="Duration time")
+#' faithful.cde <- cde(faithful$waiting, faithful$eruptions,
+#'   x.name = "Waiting time", y.name = "Duration time"
+#' )
 #' plot(faithful.cde)
-#' plot(faithful.cde,plot.fn="hdr")
+#' plot(faithful.cde, plot.fn = "hdr")
 #' @name plot.cde
 #' @export
 plot.cde <- function(
@@ -140,7 +141,7 @@ stacked.plot <- function(
 
   if (length(den$x) == 1) {
     main <- paste(ylab, "|", xlab, "=", den$x)
-    plot(den$y, den$z[1, ], type = 'l', xlab = ylab, ylab = "Density")
+    plot(den$y, den$z[1, ], type = "l", xlab = ylab, ylab = "Density")
     mtext(main, 3, cex = 1, font = font)
     return(invisible())
   }
@@ -263,18 +264,24 @@ stacked.plot <- function(
 #' \item{modes}{estimated mode of each conditional density}
 #' The result is returned invisibly if `plot=TRUE`.
 #' @author Rob J Hyndman
-#' @seealso [plot.hdrcde()], [cde()], 
+#' @seealso [plot.hdrcde()], [cde()],
 #' @references Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
 #' "Estimating and visualizing conditional densities". *Journal of
 #' Computational and Graphical Statistics*, **5**, 315-336.
 #' @keywords smooth distribution hplot
 #' @examples
-#' faithful.cde <- cde(faithful$waiting,faithful$eruptions)
-#' faithful.hdr <- hdr.cde(faithful.cde, prob=c(0.50,0.95))
+#' faithful.cde <- cde(faithful$waiting, faithful$eruptions)
+#' faithful.hdr <- hdr.cde(faithful.cde, prob = c(0.50, 0.95))
 #' faithful.hdr
-#' plot(faithful.hdr,xlab="Waiting time",ylab="Duration time")
+#' plot(faithful.hdr, xlab = "Waiting time", ylab = "Duration time")
 #' @export hdr.cde
-hdr.cde <- function(den, prob = c(0.50, 0.95, 0.99), plot = TRUE, nn = 1000, ...) {
+hdr.cde <- function(
+  den,
+  prob = c(0.50, 0.95, 0.99),
+  plot = TRUE,
+  nn = 1000,
+  ...
+) {
   nx <- nrow(den$z)
   na <- length(prob)
   hdrs <- list()
@@ -331,15 +338,15 @@ print.hdrcde <- function(x, ...) {
 #' @param \dots Other arguments passed to plotting functions.
 #' @return None.
 #' @author Rob J Hyndman
-#' @seealso [hdr.cde()], [cde()], 
+#' @seealso [hdr.cde()], [cde()],
 #' @references Hyndman, R.J., Bashtannyk, D.M. and Grunwald, G.K. (1996)
 #' "Estimating and visualizing conditional densities". *Journal of
 #' Computational and Graphical Statistics*, **5**, 315-336.
 #' @keywords smooth distribution hplot
 #' @examples
-#' faithful.cde <- cde(faithful$waiting,faithful$eruptions)
-#' faithful.hdr <- hdr.cde(faithful.cde, prob=c(0.50,0.95), plot = FALSE)
-#' plot(faithful.hdr,xlab="Waiting time",ylab="Duration time")
+#' faithful.cde <- cde(faithful$waiting, faithful$eruptions)
+#' faithful.hdr <- hdr.cde(faithful.cde, prob = c(0.50, 0.95), plot = FALSE)
+#' plot(faithful.hdr, xlab = "Waiting time", ylab = "Duration time")
 #' @export
 plot.hdrcde <- function(
   x,

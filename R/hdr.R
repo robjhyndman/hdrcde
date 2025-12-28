@@ -211,7 +211,7 @@ hdr.ends <- function(den, falpha) {
 #' hdr.den(faithful$eruptions)
 #'
 #' # Simple bimodal example
-#' x <- c(rnorm(100,0,1), rnorm(100,5,1))
+#' x <- c(rnorm(100, 0, 1), rnorm(100, 5, 1))
 #' hdr.den(x)
 #' @export hdr.den
 hdr.den <- function(
@@ -271,7 +271,7 @@ hdr.den <- function(
       border = FALSE
     )
   }
-  #abline(h=0, col="gray")
+  # abline(h=0, col="gray")
   lines(den$x, den$y)
   box()
   axis(1)
@@ -311,7 +311,7 @@ hdr.den <- function(
     )
   }
   if (legend) {
-    rightlim = apply(hd$hdr, 1, function(i) i[length(i[!is.na(i)])])
+    rightlim <- apply(hd$hdr, 1, function(i) i[length(i[!is.na(i)])])
     text(
       rightlim,
       (seq(nregions) - nregions - 0.5) * stepy,
@@ -369,16 +369,16 @@ hdr.den <- function(
 #' hdr.boxplot(faithful$eruptions)
 #'
 #' # Simple bimodal example
-#' x <- c(rnorm(100,0,1), rnorm(100,5,1))
-#' par(mfrow=c(1,2))
+#' x <- c(rnorm(100, 0, 1), rnorm(100, 5, 1))
+#' par(mfrow = c(1, 2))
 #' boxplot(x)
 #' hdr.boxplot(x)
 #'
 #' # Highly skewed example
-#' x <- exp(rnorm(100,0,1))
-#' par(mfrow=c(1,2))
+#' x <- exp(rnorm(100, 0, 1))
+#' par(mfrow = c(1, 2))
 #' boxplot(x)
-#' hdr.boxplot(x,lambda=0)
+#' hdr.boxplot(x, lambda = 0)
 #'
 #' @export hdr.boxplot
 hdr.boxplot <- function(
@@ -498,8 +498,8 @@ hdr.box <- function(x, prob = c(0.99, 0.50), h, lambda, ...) {
 print.hdr <- function(x, ...) {
   cat("Highest Density Regions\n")
   for (i in rev(seq_len(nrow(x$hdr)))) {
-    cat(paste0("  ", x$level[i]*100, "%:"))
-    print_intervals(x$hdr[i,])
+    cat(paste0("  ", x$level[i] * 100, "%:"))
+    print_intervals(x$hdr[i, ])
   }
   cat("\nf-alpha values: ")
   cat(show4(rev(x$falpha)))

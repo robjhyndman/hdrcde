@@ -1,4 +1,3 @@
-
 #' Box Cox Transformation
 #'
 #' BoxCox() returns a transformation of the input variable using a Box-Cox
@@ -88,7 +87,7 @@ show4 <- function(x) {
 print_intervals <- function(x) {
   intervals <- matrix(x, ncol = 2, byrow = TRUE)
   for (j in seq_len(nrow(intervals))) {
-    cat(paste0(" [", show4(intervals[j,1]), ", ", show4(intervals[j,2]), "]"))
+    cat(paste0(" [", show4(intervals[j, 1]), ", ", show4(intervals[j, 2]), "]"))
     cat(ifelse(j < nrow(intervals), ",", "\n"))
   }
 }

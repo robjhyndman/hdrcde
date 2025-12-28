@@ -19,18 +19,18 @@
 #' regions *American Statistician*, **50**, 120-126.
 #' @keywords smooth distribution
 #' @examples
-#' x <- c(rnorm(100,0,1),rnorm(100,4,1))
-#' den <- density(x,bw=hdrbw(x,50))
+#' x <- c(rnorm(100, 0, 1), rnorm(100, 4, 1))
+#' den <- density(x, bw = hdrbw(x, 50))
 #' hdrconf(x, den)
 #' hdrconf(x, den) |> plot(den, main = "50% HDR with 95% CI")
 #' @export hdrconf
 hdrconf <- function(x, den, prob = 0.9, conf = 0.95) {
   # Returns hdr with confidence limits
   # Assumes x is a sorted sample from the density den.
-  if(any(prob > 1)) {
+  if (any(prob > 1)) {
     prob <- prob / 100
   }
-  if(any(conf > 1)) {
+  if (any(conf > 1)) {
     conf <- conf / 100
   }
   alpha <- 1 - prob
@@ -73,12 +73,12 @@ hdrconf <- function(x, den, prob = 0.9, conf = 0.95) {
 print.hdrconf <- function(x, ...) {
   cat(paste0(x$prob * 100, "%"), "Highest Density Region:")
   print_intervals(x$hdr)
-  cat(paste0("           ",x$conf * 100, "%"), "Lower Limit:")
+  cat(paste0("           ", x$conf * 100, "%"), "Lower Limit:")
   print_intervals(x$hdr.lo)
-  cat(paste0("           ",x$conf * 100, "%"), "Upper Limit:")
+  cat(paste0("           ", x$conf * 100, "%"), "Upper Limit:")
   print_intervals(x$hdr.hi)
   cat("\nf-alpha value: ")
   cat(show4(x$falpha))
-  cat(paste0("   ", x$conf*100, "% CI:"))
+  cat(paste0("   ", x$conf * 100, "% CI:"))
   print_intervals(x$falpha.ci)
 }

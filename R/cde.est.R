@@ -65,20 +65,24 @@
 #' @examples
 #' # Old faithful data
 #' faithful.cde <- cde(faithful$waiting, faithful$eruptions,
-#'   x.name="Waiting time", y.name="Duration time")
+#'   x.name = "Waiting time", y.name = "Duration time"
+#' )
 #' plot(faithful.cde)
-#' plot(faithful.cde, plot.fn="hdr")
+#' plot(faithful.cde, plot.fn = "hdr")
 #'
 #' # Melbourne maximum temperatures with bias adjustment
 #' x <- maxtemp[1:3649]
 #' y <- maxtemp[2:3650]
 #' maxtemp.cde <- cde(x, y,
-#'   x.name="Today's max temperature", y.name="Tomorrow's max temperature")
+#'   x.name = "Today's max temperature", y.name = "Tomorrow's max temperature"
+#' )
 #' # Assume linear mean
-#' fit <- lm(y~x)
-#' fit.mean <- list(x=6:45,y=fit$coef[1]+fit$coef[2]*(6:45))
-#' maxtemp.cde2 <- cde(x, y, mean=fit.mean,
-#' 	 x.name="Today's max temperature", y.name="Tomorrow's max temperature")
+#' fit <- lm(y ~ x)
+#' fit.mean <- list(x = 6:45, y = fit$coef[1] + fit$coef[2] * (6:45))
+#' maxtemp.cde2 <- cde(x, y,
+#'   mean = fit.mean,
+#'   x.name = "Today's max temperature", y.name = "Tomorrow's max temperature"
+#' )
 #' plot(maxtemp.cde)
 #' @export cde
 cde <- function(
@@ -101,10 +105,10 @@ cde <- function(
   a.nndefault = 0.3,
   ...
 ) {
-  xname = deparse(substitute(x))
-  yname = deparse(substitute(y))
-  miss.xmargin = missing(x.margin)
-  miss.ymargin = missing(y.margin)
+  xname <- deparse(substitute(x))
+  yname <- deparse(substitute(y))
+  miss.xmargin <- missing(x.margin)
+  miss.ymargin <- missing(y.margin)
   miss.a <- missing(a)
   miss.b <- missing(b)
   miss.xname <- missing(x.name)
@@ -189,7 +193,7 @@ cde <- function(
     # turn it into a list
     x.margin <- split(c(x.margin), rep(1:nx, rep(nrow(x.margin), nx)))
   } else if (!is.list(x.margin)) {
-    #so is a vector
+    # so is a vector
     x.margin <- list(x.margin)
   }
   for (i in 1:nx) {

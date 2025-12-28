@@ -18,7 +18,7 @@ hdr.2d <- function(
   yextend = 0.15
 ) {
   # Convert prob to coverage percentage if necessary
-  if(any(prob > 1)) {
+  if (any(prob > 1)) {
     prob <- prob / 100
   }
   if (max(prob) > 0.5) {
@@ -99,12 +99,12 @@ hdr.2d <- function(
 #' regions *American Statistician*, **50**, 120-126.
 #' @keywords smooth distribution hplot
 #' @examples
-#' x <- c(rnorm(200,0,1),rnorm(200,4,1))
-#' y <- c(rnorm(200,0,1),rnorm(200,4,1))
-#' hdr.boxplot.2d(x,y)
+#' x <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))
+#' y <- c(rnorm(200, 0, 1), rnorm(200, 4, 1))
+#' hdr.boxplot.2d(x, y)
 #'
-#' hdrinfo <- hdr.2d(x,y)
-#' plot(hdrinfo, pointcol="red", show.points=TRUE, pch=3)
+#' hdrinfo <- hdr.2d(x, y)
+#' plot(hdrinfo, pointcol = "red", show.points = TRUE, pch = 3)
 #' @export hdr.boxplot.2d
 hdr.boxplot.2d <- function(
   x,
@@ -121,7 +121,7 @@ hdr.boxplot.2d <- function(
   outside.points = TRUE,
   ...
 ) {
-  if(any(prob > 1)) {
+  if (any(prob > 1)) {
     prob <- prob / 100
   }
   # Generate shades

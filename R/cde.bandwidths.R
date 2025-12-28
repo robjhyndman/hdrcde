@@ -50,8 +50,8 @@
 #' Statistics*, **14**(3), 259-278.
 #' @keywords smooth distribution
 #' @examples
-#' bands <- cde.bandwidths(faithful$waiting,faithful$eruptions,method=2)
-#' plot(cde(faithful$waiting,faithful$eruptions,a=bands$a,b=bands$b))
+#' bands <- cde.bandwidths(faithful$waiting, faithful$eruptions, method = 2)
+#' plot(cde(faithful$waiting, faithful$eruptions, a = bands$a, b = bands$b))
 #' @export cde.bandwidths
 cde.bandwidths <- function(
   x,
@@ -129,116 +129,116 @@ cde.bandwidths <- function(
 
 
 cde.bandwidths0 <- function(
-    x,
-    y,
-    method = 1,
-    y.margin,
-    sdlinear = FALSE,
-    xden = "normal",
-    penalty = 4,
-    ngrid = 8,
-    modified = FALSE,
-    k = 3,
-    m = 25,
-    nx = 30,
-    ny = 25,
-    passes = 2,
-    tol = 0.99999,
-    use.sample = FALSE,
-    usequad = TRUE
-  ) {
-    if (missing(y.margin)) {
-      y.margin <- seq(min(y), max(y), l = ny)
-    } else {
-      ny <- length(y.margin)
-    }
-
-    if (method == 2) {
-      return(cdeband.rules0(x, y, sdlinear, xden, k, modified))
-    } else if (method == 3) {
-      return(cdeband.regress(
-        x,
-        y,
-        use.sample = use.sample,
-        y.margin = y.margin,
-        penalty = penalty,
-        tol = tol,
-        usequad = usequad
-      ))
-    } else if (method == 4) {
-      return(cdeband.bootstrap(x, y, m = m, nx = nx, y.margin = y.margin))
-    } else {
-      firstbands <- bands <- cdeband.rules0(
-        x,
-        y,
-        sdlinear = sdlinear,
-        xden = xden,
-        modified = modified,
-        k = k
-      )
-
-      for (i in 1:passes) {
-        if (i == 1) {
-          a.grid <- bands$a * seq(0.1, 3, l = ngrid)
-          b.grid <- bands$b * seq(0.1, 3, l = ngrid)
-        } else {
-          # Choose values around previous minimums
-          na <- length(regout$a.grid)
-          nb <- length(bootout$b.grid)
-          adiff <- abs(bands$a - regout$a.grid)
-          idx <- (1:na)[adiff == min(adiff)]
-          a.grid <- seq(
-            regout$a.grid[max(idx - 2, 1)],
-            regout$a.grid[min(idx + 2, na)],
-            l = ngrid
-          )
-          bdiff <- abs(bands$b - bootout$b.grid)
-          idx <- (1:nb)[bdiff == min(bdiff)]
-          b.grid <- seq(
-            bootout$b.grid[max(idx - 2, 1)],
-            bootout$b.grid[min(idx + 2, nb)],
-            l = min(8, ngrid)
-          )
-        }
-        regout <- cdeband.regress(
-          x,
-          y,
-          a.grid,
-          bands$b,
-          y.margin = y.margin,
-          tol = tol,
-          use.sample = use.sample,
-          usequad = usequad
-        )
-        regna <- is.na(regout$a)
-        if (regna) {
-          bands$a <- firstbands$a
-        } else {
-          bands$a <- regout$a
-        }
-        regna <- is.na(regout$a)
-        bootout <- cdeband.bootstrap(
-          x,
-          y,
-          bands$a,
-          b.grid,
-          m,
-          nx,
-          y.margin = y.margin
-        )
-        bands$b <- bootout$b
-      }
-      return(list(
-        a = bands$a,
-        b = bands$b,
-        a.grid = regout$a.grid,
-        b.grid = bootout$b.grid,
-        q = regout$q,
-        imse = bootout$imse,
-        regna = regna
-      ))
-    }
+  x,
+  y,
+  method = 1,
+  y.margin,
+  sdlinear = FALSE,
+  xden = "normal",
+  penalty = 4,
+  ngrid = 8,
+  modified = FALSE,
+  k = 3,
+  m = 25,
+  nx = 30,
+  ny = 25,
+  passes = 2,
+  tol = 0.99999,
+  use.sample = FALSE,
+  usequad = TRUE
+) {
+  if (missing(y.margin)) {
+    y.margin <- seq(min(y), max(y), l = ny)
+  } else {
+    ny <- length(y.margin)
   }
+
+  if (method == 2) {
+    return(cdeband.rules0(x, y, sdlinear, xden, k, modified))
+  } else if (method == 3) {
+    return(cdeband.regress(
+      x,
+      y,
+      use.sample = use.sample,
+      y.margin = y.margin,
+      penalty = penalty,
+      tol = tol,
+      usequad = usequad
+    ))
+  } else if (method == 4) {
+    return(cdeband.bootstrap(x, y, m = m, nx = nx, y.margin = y.margin))
+  } else {
+    firstbands <- bands <- cdeband.rules0(
+      x,
+      y,
+      sdlinear = sdlinear,
+      xden = xden,
+      modified = modified,
+      k = k
+    )
+
+    for (i in 1:passes) {
+      if (i == 1) {
+        a.grid <- bands$a * seq(0.1, 3, l = ngrid)
+        b.grid <- bands$b * seq(0.1, 3, l = ngrid)
+      } else {
+        # Choose values around previous minimums
+        na <- length(regout$a.grid)
+        nb <- length(bootout$b.grid)
+        adiff <- abs(bands$a - regout$a.grid)
+        idx <- (1:na)[adiff == min(adiff)]
+        a.grid <- seq(
+          regout$a.grid[max(idx - 2, 1)],
+          regout$a.grid[min(idx + 2, na)],
+          l = ngrid
+        )
+        bdiff <- abs(bands$b - bootout$b.grid)
+        idx <- (1:nb)[bdiff == min(bdiff)]
+        b.grid <- seq(
+          bootout$b.grid[max(idx - 2, 1)],
+          bootout$b.grid[min(idx + 2, nb)],
+          l = min(8, ngrid)
+        )
+      }
+      regout <- cdeband.regress(
+        x,
+        y,
+        a.grid,
+        bands$b,
+        y.margin = y.margin,
+        tol = tol,
+        use.sample = use.sample,
+        usequad = usequad
+      )
+      regna <- is.na(regout$a)
+      if (regna) {
+        bands$a <- firstbands$a
+      } else {
+        bands$a <- regout$a
+      }
+      regna <- is.na(regout$a)
+      bootout <- cdeband.bootstrap(
+        x,
+        y,
+        bands$a,
+        b.grid,
+        m,
+        nx,
+        y.margin = y.margin
+      )
+      bands$b <- bootout$b
+    }
+    return(list(
+      a = bands$a,
+      b = bands$b,
+      a.grid = regout$a.grid,
+      b.grid = bootout$b.grid,
+      q = regout$q,
+      imse = bootout$imse,
+      regna = regna
+    ))
+  }
+}
 
 cdeband.rules0 <- function(
   x,
