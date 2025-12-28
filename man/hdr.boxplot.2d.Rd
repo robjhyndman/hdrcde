@@ -9,7 +9,7 @@
 hdr.2d(
   x,
   y,
-  prob = c(50, 95, 99),
+  prob = c(0.5, 0.95, 0.99),
   den = NULL,
   kde.package = c("ash", "ks"),
   h = NULL,
@@ -20,7 +20,7 @@ hdr.2d(
 hdr.boxplot.2d(
   x,
   y,
-  prob = c(50, 99),
+  prob = c(0.5, 0.99),
   kde.package = c("ash", "ks"),
   h = NULL,
   xextend = 0.15,

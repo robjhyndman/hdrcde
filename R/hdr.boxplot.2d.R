@@ -10,7 +10,7 @@
 hdr.2d <- function(
   x,
   y,
-  prob = c(50, 95, 99),
+  prob = c(0.50, 0.95, 0.99),
   den = NULL,
   kde.package = c("ash", "ks"),
   h = NULL,
@@ -18,9 +18,12 @@ hdr.2d <- function(
   yextend = 0.15
 ) {
   # Convert prob to coverage percentage if necessary
-  if (max(prob) > 50) {
+  if(any(prob > 1)) {
+    prob <- prob / 100
+  }
+  if (max(prob) > 0.5) {
     # Assume prob is coverage percentage
-    alpha <- (100 - prob) / 100
+    alpha <- 1 - prob
   } else {
     # prob is tail probability (for backward compatibility)
     alpha <- prob
@@ -106,7 +109,7 @@ hdr.2d <- function(
 hdr.boxplot.2d <- function(
   x,
   y,
-  prob = c(50, 99),
+  prob = c(0.50, 0.99),
   kde.package = c("ash", "ks"),
   h = NULL,
   xextend = 0.15,
@@ -118,6 +121,9 @@ hdr.boxplot.2d <- function(
   outside.points = TRUE,
   ...
 ) {
+  if(any(prob > 1)) {
+    prob <- prob / 100
+  }
   # Generate shades
   shadecols <- shades(shadecols, length(prob))
   # Estimate bivariate density
