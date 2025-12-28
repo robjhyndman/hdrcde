@@ -29,14 +29,18 @@ navbar:
       href: https://github.com/robjhyndman/hdrcde
 
 reference:
-  - title: "Functions"
-    desc: "Functions for estimating and plotting highest density regions and conditional density estimates"
+  - title: "Highest Density Regions"
+    desc: "Functions for estimating and plotting highest density regions"
+    contents:
+      - contains("hdr")
+  - title: "Conditional Density Estimation"
+    desc: "Functions for estimating and plotting conditional density estimates"
+    contents:
+      - contains("cde")
+      - modalreg
+  - title: "Other Functions"
     contents:
       - BoxCox
-      - starts_with("cde")
-      - starts_with("hdr")
-      - starts_with("plot")
-      - modalreg
   - title: "Data"
     desc: "Data sets in the package"
     contents:

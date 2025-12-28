@@ -88,15 +88,7 @@ print.hdrconf <- function(x, ...) {
   cat(paste0("           ",x$conf * 100, "%"), "Upper Limit:")
   print_intervals(x$hdr.hi)
   cat("\nf-alpha value: ")
-  cat(sprintf("%.4f", x$falpha))
+  cat(show4(x$falpha))
   cat(paste0("   ", x$conf*100, "% CI: "))
   print_intervals(x$falpha.ci)
-}
-
-print_intervals <- function(x) {
-  intervals <- matrix(x, ncol = 2, byrow = TRUE)
-  for (j in seq_len(nrow(intervals))) {
-    cat(sprintf(" [%.4f, %.4f]", intervals[j, 1], intervals[j, 2]))
-    cat(ifelse(j < nrow(intervals), ",", "\n"))
-  }
 }

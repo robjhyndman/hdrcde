@@ -330,10 +330,10 @@ print.hdr2d <- function(x, ...) {
   cat("Bivariate Highest Density Regions:\n")
   for (i in rev(seq_along(x$alpha))) {
     cat(paste0("  ", (1 - x$alpha[i]) * 100, "% HDR at f-alpha = "))
-    cat(sprintf("%.4f", x$falpha[i]), "\n")
+    cat(show4(x$falpha[i]), "\n")
   }
   cat("Mode at (")
-  cat(paste0(sprintf("%.4f", x$mode[1]), ", "))
-  cat(paste0(sprintf("%.4f", x$mode[2]), ")\n"))
+  cat(paste0(show4(x$mode[1]), ", "))
+  cat(paste0(show4(x$mode[2]), ")\n"))
   invisible(x)
 }
