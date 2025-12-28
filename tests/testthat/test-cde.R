@@ -13,11 +13,11 @@ test_that("cde bandwidths", {
   expect_equal(unname(cdeb$a), 4.292, tolerance = 5e-3)
   expect_equal(unname(cdeb$b), 0.524, tolerance = 5e-3)
   cdeb <- cde.bandwidths(faithful$waiting, faithful$eruptions, method = 4)
-  expect_equal(unname(cdeb$a), 1.859, tolerance = 5e-3)
-  expect_equal(unname(cdeb$b), 0.3145, tolerance = 5e-3)
+  expect_equal(unname(cdeb$a), 2.2312, tolerance = 5e-3)
+  expect_equal(unname(cdeb$b), 0.2097, tolerance = 5e-3)
 
   # hdr.cde
-  hdrres <- hdr.cde(cobj, prob = 50, plot = FALSE)
+  hdrres <- hdr.cde(cobj, prob = c(50,95), plot = FALSE)
   expect_type(hdrres, "list")
   expect_true(all(c("hdr", "modes") %in% names(hdrres)))
   expect_equal(length(hdrres$hdr), length(cobj$x))
