@@ -79,8 +79,8 @@ hdrscatterplot <- function(
     outliers <- order(den$fxy[ord])[seq(noutliers)]
   }
 
-  p <- ggplot2::ggplot(data, ggplot2::aes_string(vnames[1], vnames[2])) +
-    ggplot2::geom_point(ggplot2::aes_string(col = "Region"))
+  p <- ggplot2::ggplot(data, ggplot2::aes(.data[[vnames[1]]], .data[[vnames[2]]])) +
+    ggplot2::geom_point(ggplot2::aes(col = .data[["Region"]]))
   p <- p +
     ggplot2::scale_colour_manual(
       name = "HDRs",
