@@ -24,3 +24,5 @@ Makefile
 ^cran-comments\.md$
 ^CRAN-RELEASE$
 ^pkgdown$
+^CRAN-SUBMISSION$
+^hex$
