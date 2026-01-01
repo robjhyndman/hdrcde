@@ -21,7 +21,7 @@ showtext_auto()
 img_padded <- image_border(
   image_read(here::here("hex/hdrcde.png")),
   color    = "#eff4f7",
-  geometry = "140x140"       # border size in pixels (x- and y-direction)
+  geometry = "140x280"       # border size in pixels (x- and y-direction)
 )
 
 # Write padded image to a temporary file (or a real file if you prefer)
@@ -39,11 +39,11 @@ ggplot() +
   geom_from_path(aes(0.5, 0.5, path = img_cropped)) +
   annotate(
     "text",
-    x = 0.33,
-    y = 0.16,
+    x = 0.28,
+    y = 0.2,
     label = "hdrcde",
     family = "firasans",
-    size = 24,
+    size = 32,
     colour = "#0570b7",
     angle = 0,
     hjust = 0,
