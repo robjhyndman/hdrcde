@@ -1,4 +1,4 @@
-# hdrcde: Highest Density Regions and Conditional Density Estimation
+# hdrcde: Highest Density Regions and Conditional Density Estimation ![](reference/figures/hdrcde-hex.png)
 
 [![R-CMD-check](https://github.com/robjhyndman/hdrcde/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/robjhyndman/hdrcde/actions/workflows/R-CMD-check.yaml)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/hdrcde)](https://cran.r-project.org/package=hdrcde)

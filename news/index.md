@@ -1,6 +1,6 @@
 # Changelog
 
-## hdrcde (development version)
+## hdrcde 3.5.0
 
 - Added print methods for hdr2d, hdrconf and hdrcde
 - Added plot method for hdrcde
