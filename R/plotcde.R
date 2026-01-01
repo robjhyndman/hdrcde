@@ -282,6 +282,8 @@ hdr.cde <- function(
   nn = 1000,
   ...
 ) {
+  xname <- den$x.name
+  yname <- den$y.name
   nx <- nrow(den$z)
   na <- length(prob)
   hdrs <- list()
@@ -301,8 +303,8 @@ hdr.cde <- function(
   }
   names(hdrs) <- paste("x = ", show4(den$x))
   hdrs <- structure(hdrs, class = "hdrcde")
-  attributes(hdrs)$xname <- den$xname
-  attributes(hdrs)$yname <- den$yname
+  attributes(hdrs)$xname <- xname
+  attributes(hdrs)$yname <- yname
   if (plot) {
     plot.hdrcde(hdrs, ...)
     invisible(hdrs)
