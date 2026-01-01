@@ -70,7 +70,8 @@ faithful.cde <- cde(faithful$waiting, faithful$eruptions)
 faithful.hdr <- hdr.cde(faithful.cde, prob = c(0.50, 0.95))
 
 faithful.hdr
-#> HDRs for conditional density estimate
+#> HDRs for conditional density estimate:
+#>    faithful$eruptions | faithful$waiting 
 #> Conditioning values: 43.00, 46.79, 50.57, 54.36, 58.14, 61.93, 65.71, 69.50, 73.29, 77.07, 80.86, 84.64, 88.43, 92.21, 96.00 
 #> Levels:  50%, 95% 
 plot(faithful.hdr, xlab = "Waiting time", ylab = "Duration time")
