@@ -315,7 +315,8 @@ hdr.cde <- function(
 
 #' @export
 print.hdrcde <- function(x, ...) {
-  cat("HDRs for conditional density estimate\n")
+  cat("HDRs for conditional density estimate:\n")
+  cat("  ",paste(attributes(x)$yname, "|", attributes(x)$xname), "\n")
   cond_x <- show4(unlist(lapply(x, function(z) z$x)))
   cat("Conditioning values:", paste(cond_x, collapse = ", "), "\n")
   cat("Levels: ", paste0(sort(100 * x[[1]]$level), "%", collapse = ", "), "\n")
