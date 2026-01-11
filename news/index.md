@@ -1,6 +1,10 @@
 # Changelog
 
+## hdrcde (development version)
+
 ## hdrcde 3.5.0
+
+CRAN release: 2026-01-11
 
 - Added print methods for hdr2d, hdrconf and hdrcde
 - Added plot method for hdrcde

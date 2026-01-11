@@ -20,13 +20,13 @@ Source:
 [`inst/CITATION`](https://github.com/robjhyndman/hdrcde/blob/master/inst/CITATION)
 
 Hyndman RJ, Einbeck J, Wand MP (2026). *hdrcde: Highest Density Regions
-and Conditional Density Estimation*. R package version 3.5.0,
+and Conditional Density Estimation*. R package version 3.5.0.9000,
 <https://pkg.robjhyndman.com/hdrcde/>.
 
     @Manual{,
       title = {{hdrcde}: Highest Density Regions and Conditional Density Estimation},
       author = {Rob J Hyndman and Jochen Einbeck and Matthew P Wand},
       year = {2026},
-      note = {R package version 3.5.0},
+      note = {R package version 3.5.0.9000},
       url = {https://pkg.robjhyndman.com/hdrcde/},
     }
