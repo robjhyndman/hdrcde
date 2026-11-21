@@ -379,7 +379,6 @@ hdr.den <- function(
 #' par(mfrow = c(1, 2))
 #' boxplot(x)
 #' hdr.boxplot(x, lambda = 0)
-#'
 #' @export hdr.boxplot
 hdr.boxplot <- function(
   x,
