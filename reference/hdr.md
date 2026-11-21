@@ -104,10 +104,10 @@ Rob J Hyndman
 # Old faithful eruption duration times
 hdr(faithful$eruptions)
 #> Highest Density Regions
-#>   50%: [1.923, 2.025], [3.942, 4.772]
+#>   50%: [1.924, 2.025], [3.942, 4.772]
 #>   95%: [1.501, 2.521], [3.500, 5.092]
 #>   99%: [1.324, 2.819], [3.152, 5.282]
 #> 
-#> f-alpha values: 0.3610 0.1529 0.06747
+#> f-alpha values: 0.3609 0.1530 0.06751
 #> Mode: 4.378
 ```

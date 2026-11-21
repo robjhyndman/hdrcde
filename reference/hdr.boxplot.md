@@ -138,5 +138,4 @@ x <- exp(rnorm(100, 0, 1))
 par(mfrow = c(1, 2))
 boxplot(x)
 hdr.boxplot(x, lambda = 0)
-
 ```

@@ -42,6 +42,7 @@ You can install the **stable** version on [R
 CRAN](https://cran.r-project.org/package=hdrcde).
 
 ``` r
+
 install.packages('hdrcde', dependencies = TRUE)
 ```
 
@@ -49,6 +50,7 @@ You can install the **development** version from
 [Github](https://github.com/robjhyndman/hdrcde)
 
 ``` r
+
 pak::pak("robjhyndman/hdrcde")
 ```
 

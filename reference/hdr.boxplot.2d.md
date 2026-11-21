@@ -75,7 +75,7 @@ plot(
 
   Pair of bandwidths passed to either
   [`ash::ash2()`](https://rdrr.io/pkg/ash/man/ash2.html) or
-  [`ks::kde()`](https://rdrr.io/pkg/ks/man/kde.html). If NULL, a
+  [`ks::kde()`](https://mvstat.net/ks/reference/kde.html). If NULL, a
   reasonable default is used. Ignored if `den` is not `NULL`.
 
 - xextend:
@@ -133,9 +133,9 @@ Some information about the HDRs is returned. See code for details.
 
 The density is estimated using kernel density estimation. Either
 [`ash::ash2()`](https://rdrr.io/pkg/ash/man/ash2.html) or
-[`ks::kde()`](https://rdrr.io/pkg/ks/man/kde.html) is used to do the
-calculations. Then Hyndman's (1996) density quantile algorithm is used
-to compute the HDRs.
+[`ks::kde()`](https://mvstat.net/ks/reference/kde.html) is used to do
+the calculations. Then Hyndman's (1996) density quantile algorithm is
+used to compute the HDRs.
 
 `hdr.2d` returns an object of class `hdr2d` containing all the
 information needed to compute the HDR contours. This object can be
